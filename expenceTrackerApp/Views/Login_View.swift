@@ -9,17 +9,14 @@ import SwiftUI
 
 struct Login_View: View {
     
+    @ObservedObject var loginViewModel = Login_ViewModel()
+    
     @State private var email = ""
     @State private var password = ""
-    @State private var showAlert = false
-    @State private var showPasswordReset = false
+    @State private var showAlert : Bool = false
+
     
-    
-    //  Example login validation function
-        func isValidLogin() -> Bool {
-            // Add your own logic to validate the login here
-            return email == "your_username" && password == "your_password"
-        }
+
  
     var body: some View {
         
@@ -42,7 +39,16 @@ struct Login_View: View {
                                    .font(.largeTitle)
                                    .bold()
                                    .padding(.vertical)
-                                .shadow(radius: 2)                              //     .frame(maxWidth:.infinity,alignment: .leading)
+                                .shadow(radius: 2)
+                                .alert(isPresented:$loginViewModel.notValidLogin) {
+                                    Alert(title: Text("Invalid Login"), message: Text("Please check your Email and Password "), dismissButton: .default(Text("OK"))
+                                        {
+                                       
+                                    })}
+                            
+                
+                
+             
                                   
                        
                 TextField("Email", text: $email)
@@ -58,24 +64,37 @@ struct Login_View: View {
                                 .shadow(radius: 2)
                             
                 Button(action: {
-                                // Add your login logic here
-                                if isValidLogin() {
-                                    // Navigate to the next screen or perform the desired action
-                                } else {
-                                    showAlert = true
-                                }
-                            }) {
-                                Text("Login")
+                            
+                    guard loginViewModel.login(email: email, password: password) else {
+                                        return
+                                    }
+                                }) {
+                
+                                    Text("Login")
                                     .font(.headline)
                                     .foregroundColor(.white)
                                     .padding()
                                     .frame(maxWidth: .infinity)
                                     .background(Color.blue)
                                     .cornerRadius(10)
-                                    .shadow(radius: 5)                            }
-                            .alert(isPresented: $showAlert) {
-                                Alert(title: Text("Invalid Login"), message: Text("Please check your Email and password and try again."), dismissButton: .default(Text("OK")))
-                            }
+                                    .shadow(radius: 5)
+                    
+                    
+                    ////
+                    
+                  NavigationLink(
+                    destination: CreateAccount_View(),
+                    label: {
+                       
+                    
+                                       Text("")
+                                 
+                    } )
+                    /////
+                    
+                                    }
+
+        
                 
                 
               NavigationLink(
@@ -85,7 +104,7 @@ struct Login_View: View {
                 
                                    Text("Create Account")
                                        .font(.headline)
-                                       .foregroundColor(.blue) // You can customize the color
+                                       .foregroundColor(.blue)
                                        .padding()
                                        .frame(maxWidth: .infinity)
                                     .shadow(radius: 2)
@@ -96,7 +115,7 @@ struct Login_View: View {
                     label:{
                                      Text("Forgot Password?")
                                          .foregroundColor(.blue)
-                                        .shadow(radius: 2)                                     //    .padding()
+                                        .shadow(radius: 2)                                        .padding()
                 })
                      
                              
@@ -108,8 +127,9 @@ struct Login_View: View {
             
         }
     
-      
+    
     }
+    
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
