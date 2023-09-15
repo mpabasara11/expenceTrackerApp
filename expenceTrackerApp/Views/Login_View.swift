@@ -13,7 +13,7 @@ struct Login_View: View {
     
     @State private var email = ""
     @State private var password = ""
-    @State private var showAlert : Bool = false
+  
 
     
 
@@ -45,11 +45,7 @@ struct Login_View: View {
                                         {
                                        
                                     })}
-                            
-                
-                
-             
-                                  
+                             
                        
                 TextField("Email", text: $email)
                                  .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -62,13 +58,14 @@ struct Login_View: View {
                                 .padding(.horizontal)
                                 .padding(.bottom, 20)
                                 .shadow(radius: 2)
-                            
+                
+          
+                   
                 Button(action: {
-                            
-                    guard loginViewModel.login(email: email, password: password) else {
-                                        return
-                                    }
-                                }) {
+                    
+                    loginViewModel.login(email: email, password: password)
+                    
+                }) {
                 
                                     Text("Login")
                                     .font(.headline)
@@ -79,24 +76,18 @@ struct Login_View: View {
                                     .cornerRadius(10)
                                     .shadow(radius: 5)
                     
-                    
-                    ////
-                    
-                  NavigationLink(
-                    destination: CreateAccount_View(),
-                    label: {
-                       
-                    
-                                       Text("")
-                                 
-                    } )
-                    /////
-                    
+                
                                     }
-
         
+   
                 
+      NavigationLink(
+        destination: Dashboard_View(),
+        isActive: $loginViewModel.isLoggedIn){}
                 
+  
+                
+             
               NavigationLink(
                 destination: CreateAccount_View(),
                 label: {
@@ -120,8 +111,7 @@ struct Login_View: View {
                      
                              
                              Spacer()
-         
-            }
+                }
             .padding()
          
             

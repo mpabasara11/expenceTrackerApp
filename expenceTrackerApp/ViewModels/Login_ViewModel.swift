@@ -13,13 +13,14 @@ class Login_ViewModel : ObservableObject
 {
     
     @Published var notValidLogin: Bool = false
+    @Published var isLoggedIn: Bool = false
     
     
     
     
-    func login(email : String , password : String) -> (Bool)
+    func login(email : String , password : String)
     {
-       // var retVal: Bool = false
+       
 
         Auth.auth().signIn(withEmail: email, password: password) {
             result , error in
@@ -33,11 +34,10 @@ class Login_ViewModel : ObservableObject
             else
             {
              
-           //   retVal = true
+                self.isLoggedIn = true
                 self.notValidLogin = false            }
         }
-  //  return retVal
-        return true
+ 
     }
     
     
