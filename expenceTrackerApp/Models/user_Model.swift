@@ -7,18 +7,20 @@
 
 import Foundation
 
-
-
-
-struct user : Identifiable
+struct user_Model : Identifiable
 {
-
-    var id = UUID()
+    var id : UUID
     var email : String
     var password : String
+    var confirmPassword : String
     
+ //   init() {
+    //    id = UUID()
+    //    email = ""
+    //    password = ""
+ //       confirmPassword = ""
+  //  }
     
-
-    
+  
     
 }

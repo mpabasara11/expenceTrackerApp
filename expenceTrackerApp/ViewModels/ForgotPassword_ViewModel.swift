@@ -37,7 +37,9 @@ class ForgotPassword_ViewModel: ObservableObject
     
     func resPass(email : String )
    {
-        isValidMail(email : email)
+        let user_model = user_Model(id: UUID(),email: email, password: "", confirmPassword: "")
+        
+        isValidMail(email : user_model.email)
      
         
       
@@ -47,7 +49,7 @@ class ForgotPassword_ViewModel: ObservableObject
         }
         else
         {
-            Auth.auth().sendPasswordReset(withEmail: email) { error in
+            Auth.auth().sendPasswordReset(withEmail: user_model.email) { error in
                 if error != nil
                 {
                     print(error!.localizedDescription)

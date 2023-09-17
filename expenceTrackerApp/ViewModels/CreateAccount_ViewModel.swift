@@ -13,7 +13,8 @@ import Firebase
 
 class CreateAccount_ViewModel : ObservableObject
 {
-    
+     //   @Published private var user_model : user_Model?
+       
         @Published var email: String = ""
         @Published var notValidMail: Bool = false
         @Published var notValidPass: Bool = false
@@ -61,10 +62,12 @@ class CreateAccount_ViewModel : ObservableObject
      
     func createAc(email : String , password : String , confirmpassword : String)
    {
-        isValidMail(email : email)
-        isValidPassword(password : password)
-        isConfirmPassValid(password : password, confirmPassword : confirmpassword)
+    
+        let user_model = user_Model(id: UUID(), email: email, password: password , confirmPassword: confirmpassword)
         
+        isValidMail(email : user_model.email)
+        isValidPassword(password : user_model.password)
+        isConfirmPassValid(password : user_model.password , confirmPassword: user_model.confirmPassword)
         
       
         if notValidMail
@@ -86,7 +89,8 @@ class CreateAccount_ViewModel : ObservableObject
                 }
                 else
                 {
-                    Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                    Auth.auth().createUser(withEmail: user_model.email, password: user_model.password)
+                    { result, error in
                         if error != nil
                         {
                             print(error!.localizedDescription)
