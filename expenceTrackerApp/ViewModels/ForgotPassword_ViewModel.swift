@@ -11,6 +11,7 @@ import Firebase
 
 class ForgotPassword_ViewModel: ObservableObject
 {
+    @Published var user_model = user_Model(id: UUID(),email: "", password: "", confirmPassword: "")
     
     @Published var notValidMail: Bool = false
     @Published var successReset: Bool = false
@@ -33,11 +34,19 @@ class ForgotPassword_ViewModel: ObservableObject
       
     }
     
+    private func clearFields()
+    {
+        user_model.email = ""
+        user_model.password = ""
+        user_model.confirmPassword = ""
+    }
+    
     
     
     func resPass(email : String )
    {
-        let user_model = user_Model(id: UUID(),email: email, password: "", confirmPassword: "")
+        user_model.email = email
+        
         
         isValidMail(email : user_model.email)
      
@@ -53,11 +62,12 @@ class ForgotPassword_ViewModel: ObservableObject
                 if error != nil
                 {
                     print(error!.localizedDescription)
+                
                 }
                 else
                 {
                     self.successReset = true
-                  
+                    self.clearFields()
                 }            }
         }
     }

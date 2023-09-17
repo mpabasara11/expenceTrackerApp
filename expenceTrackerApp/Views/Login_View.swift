@@ -11,13 +11,7 @@ struct Login_View: View {
     
     @ObservedObject var loginViewModel = Login_ViewModel()
     
-    @State private var email = ""
-    @State private var password = ""
-  
 
-    
-
- 
     var body: some View {
         
         
@@ -47,13 +41,13 @@ struct Login_View: View {
                                     })}
                              
                        
-                TextField("Email", text: $email)
+                TextField("Email", text: $loginViewModel.user_model.email)
                                  .textFieldStyle(RoundedBorderTextFieldStyle())
                                  .padding(.horizontal)
                                  .padding(.bottom, 5)
                                 .shadow(radius: 2)
                 
-                             SecureField("Password", text: $password)
+                SecureField("Password", text: $loginViewModel.user_model.password)
                                  .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal)
                                 .padding(.bottom, 20)
@@ -63,7 +57,7 @@ struct Login_View: View {
                    
                 Button(action: {
                     
-                    loginViewModel.login(email: email, password: password)
+                    loginViewModel.login(email: loginViewModel.user_model.email, password: loginViewModel.user_model.password)
                     
                 }) {
                 

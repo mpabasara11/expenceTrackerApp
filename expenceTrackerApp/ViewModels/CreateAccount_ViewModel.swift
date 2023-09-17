@@ -15,7 +15,12 @@ class CreateAccount_ViewModel : ObservableObject
 {
      //   @Published private var user_model : user_Model?
        
-        @Published var email: String = ""
+  // @Published var email: String = ""
+   // @Published var password: String = ""
+   // @Published var confirmPassword: String = ""
+    
+    
+    @Published var user_model = user_Model(id: UUID(),email: "", password: "", confirmPassword: "")
         @Published var notValidMail: Bool = false
         @Published var notValidPass: Bool = false
         @Published var notMatchedConfirmPass: Bool = false
@@ -57,13 +62,19 @@ class CreateAccount_ViewModel : ObservableObject
     }
     
     
+    private func clearFields()
+    {
+        user_model.email = ""
+        user_model.password = ""
+        user_model.confirmPassword = ""
+    }
+    
 
     
      
     func createAc(email : String , password : String , confirmpassword : String)
    {
     
-        let user_model = user_Model(id: UUID(), email: email, password: password , confirmPassword: confirmpassword)
         
         isValidMail(email : user_model.email)
         isValidPassword(password : user_model.password)
@@ -98,6 +109,7 @@ class CreateAccount_ViewModel : ObservableObject
                         else
                         {
                             self.successAcCreate = true
+                            self.clearFields()
                           
                         }
                         

@@ -10,7 +10,7 @@ import SwiftUI
 struct ForgotPassword_View: View {
 
     @ObservedObject var forgotPassword_ViewModel = ForgotPassword_ViewModel()
-    @State private var email = ""
+    
 
     
     var body: some View {
@@ -30,7 +30,7 @@ struct ForgotPassword_View: View {
             
             
             
-            TextField("Email Address", text: $email)
+            TextField("Email Address", text: $forgotPassword_ViewModel.user_model.email)
               .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
                 .padding(.bottom, 10)
@@ -51,7 +51,7 @@ struct ForgotPassword_View: View {
               Button(action: {
             
                 
-                forgotPassword_ViewModel.resPass(email: email)
+                forgotPassword_ViewModel.resPass(email: forgotPassword_ViewModel.user_model.email)
                 
               }) {
                 Text("Send")

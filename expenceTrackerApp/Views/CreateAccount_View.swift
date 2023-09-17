@@ -12,12 +12,7 @@ struct CreateAccount_View: View {
     
     @ObservedObject var creatAccountViewModel = CreateAccount_ViewModel()
     
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
-
-
-
+  
     
     var body: some View {
         
@@ -29,7 +24,7 @@ struct CreateAccount_View: View {
                     .padding(.vertical)
                     .shadow(radius: 2)
             
-                  TextField("Email", text: $email)
+            TextField("Email", text: $creatAccountViewModel.user_model.email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                       .padding(.horizontal)
                       .padding(.bottom, 10)
@@ -42,7 +37,7 @@ struct CreateAccount_View: View {
                 
                     
             
-                  SecureField("Password", text: $password)
+            SecureField("Password", text: $creatAccountViewModel.user_model.password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                       .padding(.horizontal)
                       .padding(.bottom, 10)
@@ -55,7 +50,7 @@ struct CreateAccount_View: View {
             
             
             
-                 SecureField("Confirm Password", text: $confirmPassword)
+            SecureField("Confirm Password", text: $creatAccountViewModel.user_model.confirmPassword)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                       .padding(.horizontal)
                       .padding(.bottom, 10)
@@ -73,7 +68,7 @@ struct CreateAccount_View: View {
                   Button(action: {
                       // Perform account creation logic here
                       // You can validate the input and create an account
-                    creatAccountViewModel.createAc(email: email, password: password, confirmpassword: confirmPassword)
+                    creatAccountViewModel.createAc(email: creatAccountViewModel.user_model.email, password: creatAccountViewModel.user_model.password, confirmpassword: creatAccountViewModel.user_model.confirmPassword)
                     
                   }) {
                     Text("Create Account")
