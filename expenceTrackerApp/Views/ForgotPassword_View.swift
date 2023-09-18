@@ -18,6 +18,7 @@ struct ForgotPassword_View: View {
         VStack {
                   Text("Forgot Password")
                     .font(.largeTitle)
+                    .foregroundColor(.primary)
                     .bold()
                     .padding(.vertical)
                     .shadow(radius: 2)
@@ -32,8 +33,9 @@ struct ForgotPassword_View: View {
             
             TextField("Email Address", text: $forgotPassword_ViewModel.user_model.email)
               .textFieldStyle(RoundedBorderTextFieldStyle())
+                .foregroundColor(.secondary)
                 .padding(.horizontal)
-                .padding(.bottom, 10)
+                .padding(.bottom, 20)
                 .shadow(radius: 2)
             
                 .alert(isPresented:$forgotPassword_ViewModel.notValidMail) {
@@ -61,6 +63,7 @@ struct ForgotPassword_View: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)
                     .cornerRadius(10)
+                    .shadow(radius: 5)
               }
               .padding(.horizontal)
               .shadow(radius: 5)}

@@ -22,15 +22,11 @@ struct Login_View: View {
             
             VStack
             {
-                // Image("lgnpg1")
-                        //             .resizable()
-                           //          .aspectRatio(contentMode: .fit)
-                         //            .frame(width: 100, height: 100)
-                            //         .padding()
-                        
+               
                 
                                Text("Sign In")
                                    .font(.largeTitle)
+                                .foregroundColor(.primary)
                                    .bold()
                                    .padding(.vertical)
                                 .shadow(radius: 2)
@@ -42,12 +38,14 @@ struct Login_View: View {
                              
                        
                 TextField("Email", text: $loginViewModel.user_model.email)
+                                 .foregroundColor(.secondary)
                                  .textFieldStyle(RoundedBorderTextFieldStyle())
                                  .padding(.horizontal)
                                  .padding(.bottom, 5)
                                 .shadow(radius: 2)
                 
                 SecureField("Password", text: $loginViewModel.user_model.password)
+                                .foregroundColor(.secondary)
                                  .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal)
                                 .padding(.bottom, 20)
@@ -118,6 +116,7 @@ struct Login_View: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Login_View()
+            .preferredColorScheme(.dark)
     }
 }
 }

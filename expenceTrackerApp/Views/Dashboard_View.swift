@@ -8,25 +8,32 @@
 import SwiftUI
 
 struct Dashboard_View: View {
-   @State var x : Bool = true
-    
-    var body: some View {
+        var body: some View {
         
-      
+            TabView{
+            NavigationView {
+                            CreateAccount_View()
+                        }
+                            .tabItem {
+                                Label("Home", systemImage: "house")
+                            }
+
+                        NavigationView {
+                            Login_View()
+                        }
+                            .tabItem {
+                                Label("Another", systemImage: "star")
+                            }
+
+                        NavigationView {
+                            ForgotPassword_View()
+                        }
+                            .tabItem {
+                                Label("Settings", systemImage: "gear")
+                            }
+                    
+            }
         
-        NavigationView{
-            
-            VStack{
-            
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                
-     
-        
-            
-      }
-        
-     
-        }
 }
 
 struct Dashboard_View_Previews: PreviewProvider {

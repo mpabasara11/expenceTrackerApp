@@ -17,17 +17,21 @@ struct CreateAccount_View: View {
     var body: some View {
         
         
-        VStack {
+        VStack{
+         //   Spacer()
                   Text("Create Account")
                     .font(.largeTitle)
+                    .foregroundColor(.primary)
                     .bold()
                     .padding(.vertical)
+                   .padding(.top, 90)
                     .shadow(radius: 2)
             
             TextField("Email", text: $creatAccountViewModel.user_model.email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                .foregroundColor(.secondary)
                       .padding(.horizontal)
-                      .padding(.bottom, 10)
+                      .padding(.bottom, 5)
                     .shadow(radius: 2)
                     .alert(isPresented: $creatAccountViewModel.notValidMail) {
                         Alert(title: Text("Invalid Email"), message: Text("Please check your Email "), dismissButton: .default(Text("OK"))
@@ -39,8 +43,9 @@ struct CreateAccount_View: View {
             
             SecureField("Password", text: $creatAccountViewModel.user_model.password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                .foregroundColor(.secondary)
                       .padding(.horizontal)
-                      .padding(.bottom, 10)
+                      .padding(.bottom, 5)
                     .shadow(radius: 2)
                     .alert(isPresented: $creatAccountViewModel.notValidPass) {
                         Alert(title: Text("Not a Valid Password"), message: Text("Please check your Password"), dismissButton: .default(Text("OK"))
@@ -52,8 +57,9 @@ struct CreateAccount_View: View {
             
             SecureField("Confirm Password", text: $creatAccountViewModel.user_model.confirmPassword)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                .foregroundColor(.secondary)
                       .padding(.horizontal)
-                      .padding(.bottom, 10)
+                      .padding(.bottom, 20)
                     .shadow(radius: 2)
                     .alert(isPresented: $creatAccountViewModel.notMatchedConfirmPass) {
                         Alert(title: Text("Mismatched Password"), message: Text("Please check your Password with Confirm Password "), dismissButton: .default(Text("OK"))
@@ -66,8 +72,7 @@ struct CreateAccount_View: View {
             
             
                   Button(action: {
-                      // Perform account creation logic here
-                      // You can validate the input and create an account
+                   
                     creatAccountViewModel.createAc(email: creatAccountViewModel.user_model.email, password: creatAccountViewModel.user_model.password, confirmpassword: creatAccountViewModel.user_model.confirmPassword)
                     
                   }) {
@@ -98,5 +103,7 @@ struct CreateAccount_View: View {
 struct createAccount_View_Previews: PreviewProvider {
     static var previews: some View {
         CreateAccount_View()
+            .preferredColorScheme(.dark)
+            
     }
 }

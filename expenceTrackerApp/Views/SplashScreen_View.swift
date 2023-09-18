@@ -26,15 +26,16 @@ struct SplashScreen_View: View {
             {
                 VStack
             {
-                Image("lgnpg1")
+                Image("owl_002")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 120, height:120)
+                    .frame(width: 100, height:100)
                     .font(.system(size: 80))
                     .foregroundColor(.red)
                 Text("WalletWise")
-                    .font(Font.custom("Baskerville-Bold", size: 26))
-                    .foregroundColor(.black.opacity(0.88))
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(.primary)
             }.scaleEffect(size)
             .opacity(opacity)
             .onAppear
@@ -56,7 +57,7 @@ struct SplashScreen_View: View {
             
         }.onAppear
         {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8)
                 {
                 withAnimation
                 {
