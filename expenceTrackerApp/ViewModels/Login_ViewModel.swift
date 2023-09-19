@@ -12,7 +12,7 @@ import Firebase
 class Login_ViewModel : ObservableObject
 {
 
-    @Published var user_model = user_Model(id: UUID(),email: "", password: "", confirmPassword: "")
+    @Published var user_model = user_Model(email: "", password: "", confirmPassword: "")
 
     
     @Published var notValidLogin: Bool = false

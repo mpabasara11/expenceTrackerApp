@@ -15,6 +15,9 @@
 		846DD6102AADB77000C3B636 /* BLUE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 846DD60F2AADB77000C3B636 /* BLUE.ttf */; };
 		846DD6152AADC66500C3B636 /* CreateAccount_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD6142AADC66500C3B636 /* CreateAccount_View.swift */; };
 		846DD6172AADC69C00C3B636 /* ForgotPassword_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD6162AADC69C00C3B636 /* ForgotPassword_View.swift */; };
+		84B9FE362AB96FE400BE67D1 /* ExpenseTracking_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9FE352AB96FE300BE67D1 /* ExpenseTracking_View.swift */; };
+		84B9FE382AB971CE00BE67D1 /* expense_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9FE372AB971CD00BE67D1 /* expense_Model.swift */; };
+		84B9FE3A2AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */; };
 		84BDDAAD2AB4305500582D94 /* Dashboard_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDDAAC2AB4305500582D94 /* Dashboard_View.swift */; };
 		84D306A62AB5B4EF00EFFD95 /* SplashScreen_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */; };
 		84DEED5B2AB02DEA00B31716 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84DEED5A2AB02DEA00B31716 /* GoogleService-Info.plist */; };
@@ -36,6 +39,9 @@
 		846DD60F2AADB77000C3B636 /* BLUE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BLUE.ttf; sourceTree = "<group>"; };
 		846DD6142AADC66500C3B636 /* CreateAccount_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount_View.swift; sourceTree = "<group>"; };
 		846DD6162AADC69C00C3B636 /* ForgotPassword_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword_View.swift; sourceTree = "<group>"; };
+		84B9FE352AB96FE300BE67D1 /* ExpenseTracking_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTracking_View.swift; sourceTree = "<group>"; };
+		84B9FE372AB971CD00BE67D1 /* expense_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expense_Model.swift; sourceTree = "<group>"; };
+		84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTracking_ViewModel.swift; sourceTree = "<group>"; };
 		84BDDAAC2AB4305500582D94 /* Dashboard_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard_View.swift; sourceTree = "<group>"; };
 		84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen_View.swift; sourceTree = "<group>"; };
 		84DEED5A2AB02DEA00B31716 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 				846DD6162AADC69C00C3B636 /* ForgotPassword_View.swift */,
 				84BDDAAC2AB4305500582D94 /* Dashboard_View.swift */,
 				84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */,
+				84B9FE352AB96FE300BE67D1 /* ExpenseTracking_View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -121,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				84DEED652AB03B2A00B31716 /* user_Model.swift */,
+				84B9FE372AB971CD00BE67D1 /* expense_Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -131,6 +139,7 @@
 				84DEED612AB039DA00B31716 /* Login_ViewModel.swift */,
 				84DEED632AB03B0000B31716 /* CreateAccount_ViewModel.swift */,
 				84042A762AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift */,
+				84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -215,12 +224,15 @@
 			files = (
 				84042A772AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift in Sources */,
 				846DD6152AADC66500C3B636 /* CreateAccount_View.swift in Sources */,
+				84B9FE382AB971CE00BE67D1 /* expense_Model.swift in Sources */,
+				84B9FE3A2AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift in Sources */,
 				84BDDAAD2AB4305500582D94 /* Dashboard_View.swift in Sources */,
 				846DD5FE2AADA15B00C3B636 /* Login_View.swift in Sources */,
 				846DD6172AADC69C00C3B636 /* ForgotPassword_View.swift in Sources */,
 				84D306A62AB5B4EF00EFFD95 /* SplashScreen_View.swift in Sources */,
 				84DEED662AB03B2A00B31716 /* user_Model.swift in Sources */,
 				84DEED622AB039DA00B31716 /* Login_ViewModel.swift in Sources */,
+				84B9FE362AB96FE400BE67D1 /* ExpenseTracking_View.swift in Sources */,
 				84DEED642AB03B0000B31716 /* CreateAccount_ViewModel.swift in Sources */,
 				846DD5FC2AADA15B00C3B636 /* expenceTrackerAppApp.swift in Sources */,
 			);

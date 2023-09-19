@@ -19,10 +19,10 @@ struct Dashboard_View: View {
                             }
 
                         NavigationView {
-                            Login_View()
+                            ExpenseTracking_View()
                         }
                             .tabItem {
-                                Label("Another", systemImage: "star")
+                                Label("Expense Tracking", systemImage: "star")
                             }
 
                         NavigationView {
