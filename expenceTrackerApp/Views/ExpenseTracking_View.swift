@@ -99,7 +99,10 @@ struct ExpenseTracking_View: View {
             
 
                     
-        }
+            }.sheet(isPresented: $expenseTracking_viewModel.isSheetPresent)
+                {
+               
+            }
      
         
         

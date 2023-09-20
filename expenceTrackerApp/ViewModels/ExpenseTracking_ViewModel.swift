@@ -11,7 +11,7 @@ import SwiftUI
 class ExpenseTracking_ViewModel: ObservableObject
 {
     @Published var expense_model : [expense_Model] = []
-    
+    @Published var isSheetPresent: Bool = true
     init() {
         addSampleExpenses()
     }

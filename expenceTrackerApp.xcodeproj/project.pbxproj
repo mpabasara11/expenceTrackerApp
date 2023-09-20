@@ -15,6 +15,7 @@
 		846DD6102AADB77000C3B636 /* BLUE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 846DD60F2AADB77000C3B636 /* BLUE.ttf */; };
 		846DD6152AADC66500C3B636 /* CreateAccount_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD6142AADC66500C3B636 /* CreateAccount_View.swift */; };
 		846DD6172AADC69C00C3B636 /* ForgotPassword_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD6162AADC69C00C3B636 /* ForgotPassword_View.swift */; };
+		848EF80B2ABB76F50040E0FF /* AddExpense_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EF80A2ABB76F40040E0FF /* AddExpense_View.swift */; };
 		84B9FE362AB96FE400BE67D1 /* ExpenseTracking_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9FE352AB96FE300BE67D1 /* ExpenseTracking_View.swift */; };
 		84B9FE382AB971CE00BE67D1 /* expense_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9FE372AB971CD00BE67D1 /* expense_Model.swift */; };
 		84B9FE3A2AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */; };
@@ -39,6 +40,7 @@
 		846DD60F2AADB77000C3B636 /* BLUE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BLUE.ttf; sourceTree = "<group>"; };
 		846DD6142AADC66500C3B636 /* CreateAccount_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount_View.swift; sourceTree = "<group>"; };
 		846DD6162AADC69C00C3B636 /* ForgotPassword_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword_View.swift; sourceTree = "<group>"; };
+		848EF80A2ABB76F40040E0FF /* AddExpense_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_View.swift; sourceTree = "<group>"; };
 		84B9FE352AB96FE300BE67D1 /* ExpenseTracking_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTracking_View.swift; sourceTree = "<group>"; };
 		84B9FE372AB971CD00BE67D1 /* expense_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expense_Model.swift; sourceTree = "<group>"; };
 		84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTracking_ViewModel.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				84BDDAAC2AB4305500582D94 /* Dashboard_View.swift */,
 				84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */,
 				84B9FE352AB96FE300BE67D1 /* ExpenseTracking_View.swift */,
+				848EF80A2ABB76F40040E0FF /* AddExpense_View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				84B9FE362AB96FE400BE67D1 /* ExpenseTracking_View.swift in Sources */,
 				84DEED642AB03B0000B31716 /* CreateAccount_ViewModel.swift in Sources */,
 				846DD5FC2AADA15B00C3B636 /* expenceTrackerAppApp.swift in Sources */,
+				848EF80B2ABB76F50040E0FF /* AddExpense_View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
