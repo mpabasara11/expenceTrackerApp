@@ -66,12 +66,12 @@ struct ExpenseTracking_View: View {
                                             //   .foregroundColor(.primary)
                                        }
                                     
-                                    if let location = expense.location {
+                                    if let place = expense.place {
                                          HStack {
                                             // Image(systemName: "location.fill") // Replace with the appropriate SF Symbol name
                                               //  .foregroundColor(.primary)
                                               //   .font(.footnote)
-                                             Text("Location: \(location)")
+                                             Text("Place: \(place)")
                                                //  .font(.footnote)
                                               //   .foregroundColor(.primary)
                                          }
@@ -101,7 +101,10 @@ struct ExpenseTracking_View: View {
                     
             }.sheet(isPresented: $expenseTracking_viewModel.isSheetPresent)
                 {
-               
+                
+                AddExpense_View()
+            
+    
             }
      
         

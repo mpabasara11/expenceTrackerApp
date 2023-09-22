@@ -9,20 +9,20 @@ import Foundation
 struct expense_Model : Identifiable
 {
     var id = UUID()
-    let date : Date
-    let category : String
-    let amount : Double
-    let description : String
-    let  location : String?
+    var date : Date
+    var category : String
+    var amount : Double
+    var description : String
+    var place : String
     
     
-    init(date: Date,category: String,amount: Double,description: String,location: String?) {
+    init(date: Date,category: String,amount: Double,description: String,place: String) {
         
         self.date = date
         self.category = category
         self.amount = amount
         self.description = description
-        self.location = location
+        self.place = place
     }
 
 }
