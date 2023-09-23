@@ -17,6 +17,7 @@ class Login_ViewModel : ObservableObject
     
     @Published var notValidLogin: Bool = false
     @Published var isLoggedIn: Bool = false
+    @Published var loginId = ""
     
     private func clearFields()
     {
@@ -43,15 +44,23 @@ class Login_ViewModel : ObservableObject
                 self.notValidLogin = true
                 
                 
+                
               
             }
             else
             {
              
-                self.isLoggedIn = true
+               self.isLoggedIn = true
                 self.notValidLogin = false
-                
                 self.clearFields()
+                
+                //retrieve userid from firebase authentication db
+                let auth = Auth.auth()
+                let user = auth.currentUser
+                let uid = user?.uid
+              //  self.loginId = uid!
+                
+                UserDefaults.standard.set(uid,forKey: "userId")
                 
             }
         }

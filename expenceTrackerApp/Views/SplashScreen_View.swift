@@ -17,6 +17,8 @@ struct SplashScreen_View: View {
         
         if isActive
         {
+            
+            
             Login_View()
         }
         else

@@ -22,7 +22,7 @@ struct Login_View: View {
             
             VStack
             {
-               
+              
                 
                                Text("Sign In")
                                    .font(.largeTitle)
@@ -116,7 +116,7 @@ struct Login_View: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Login_View()
-            .preferredColorScheme(.dark)
+            
     }
 }
 
