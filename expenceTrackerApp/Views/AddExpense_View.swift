@@ -10,15 +10,16 @@ import SwiftUI
 struct AddExpense_View: View {
     
     @ObservedObject var addExpense_viewModel = AddExpense_ViewModel()
-    
-    
-    @State private var selectedOp = "Groceries"
+    @State var selectedOp = "Groceries"
+  
+
 
     let predefinedCategories = ["Groceries","Entertainment","Rent","Utilities","Transportation","Dining Out","Shopping"]
     
 
     var body: some View {
-    //    Text("a")
+        NavigationView
+        {
         Form
         {
            
@@ -31,9 +32,14 @@ struct AddExpense_View: View {
                 TextField("Place",text: $addExpense_viewModel.expense_model.place)
                 
                 
-                     TextField("Amount",value: $addExpense_viewModel.expense_model.amount,formatter:NumberFormatter())
-                 
+            
+                
+                TextField("Amount",value: $addExpense_viewModel.expense_model.amount,formatter:NumberFormatter())
+                
+             
                
+               
+                
                 DatePicker("Date",selection: $addExpense_viewModel.expense_model.date,displayedComponents: .date)
                             
             
@@ -55,29 +61,32 @@ struct AddExpense_View: View {
             Section
             {
                 Button(action: {
-                    
+                   
+                   
                 }){
                     Text("Submit")
-                        .foregroundColor(.white)
+                        .foregroundColor(.blue)
                         .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius:5)
-                }
+                       // .padding()
+                       // .background(Color.blue)
+                    //    .cornerRadius(10)
+                     //   .shadow(radius:5)
+                }.buttonStyle(BorderlessButtonStyle())
                 
                 Button(action: {
                     
                 }){
+                    
                     Text("Clear All")
-                        .foregroundColor(.white)
+                        .foregroundColor(.red)
                         .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius:5)
-                }            }
-        }
+                       // .padding()
+                    //   .background(Color.red)
+                     //   .cornerRadius(10)
+                     //   .shadow(radius:5)
+                    }  } .buttonStyle(BorderlessButtonStyle())           
+        }.navigationTitle("Add expense")
+    }
         
     }
 }
@@ -88,3 +97,4 @@ struct AddExpense_View_Previews: PreviewProvider {
             
     }
 }
+

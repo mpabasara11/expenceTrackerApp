@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		84042A772AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84042A762AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift */; };
+		8422D52B2ABEC26D003E5ADA /* Settings_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8422D52A2ABEC244003E5ADA /* Settings_View.swift */; };
+		8422D52F2ABEFF34003E5ADA /* Settings_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8422D52E2ABEFF34003E5ADA /* Settings_ViewModel.swift */; };
 		846DD5FC2AADA15B00C3B636 /* expenceTrackerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD5FB2AADA15B00C3B636 /* expenceTrackerAppApp.swift */; };
 		846DD5FE2AADA15B00C3B636 /* Login_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD5FD2AADA15B00C3B636 /* Login_View.swift */; };
 		846DD6002AADA16200C3B636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846DD5FF2AADA16200C3B636 /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		84042A762AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword_ViewModel.swift; sourceTree = "<group>"; };
+		8422D52A2ABEC244003E5ADA /* Settings_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings_View.swift; sourceTree = "<group>"; };
+		8422D52E2ABEFF34003E5ADA /* Settings_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings_ViewModel.swift; sourceTree = "<group>"; };
 		846DD5F82AADA15B00C3B636 /* expenceTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expenceTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846DD5FB2AADA15B00C3B636 /* expenceTrackerAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expenceTrackerAppApp.swift; sourceTree = "<group>"; };
 		846DD5FD2AADA15B00C3B636 /* Login_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_View.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 				84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */,
 				84B9FE352AB96FE300BE67D1 /* ExpenseTracking_View.swift */,
 				84EBADAD2ABDA37F001270EC /* AddExpense_View.swift */,
+				8422D52A2ABEC244003E5ADA /* Settings_View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				84042A762AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift */,
 				84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */,
 				84EBADAF2ABDA45A001270EC /* AddExpense_ViewModel.swift */,
+				8422D52E2ABEFF34003E5ADA /* Settings_ViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -237,11 +243,13 @@
 				846DD5FE2AADA15B00C3B636 /* Login_View.swift in Sources */,
 				846DD6172AADC69C00C3B636 /* ForgotPassword_View.swift in Sources */,
 				84D306A62AB5B4EF00EFFD95 /* SplashScreen_View.swift in Sources */,
+				8422D52B2ABEC26D003E5ADA /* Settings_View.swift in Sources */,
 				84DEED662AB03B2A00B31716 /* user_Model.swift in Sources */,
 				84DEED622AB039DA00B31716 /* Login_ViewModel.swift in Sources */,
 				84B9FE362AB96FE400BE67D1 /* ExpenseTracking_View.swift in Sources */,
 				84DEED642AB03B0000B31716 /* CreateAccount_ViewModel.swift in Sources */,
 				846DD5FC2AADA15B00C3B636 /* expenceTrackerAppApp.swift in Sources */,
+				8422D52F2ABEFF34003E5ADA /* Settings_ViewModel.swift in Sources */,
 				84EBADAE2ABDA37F001270EC /* AddExpense_View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

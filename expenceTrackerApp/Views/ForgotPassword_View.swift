@@ -68,11 +68,11 @@ struct ForgotPassword_View: View {
               .padding(.horizontal)
               .shadow(radius: 5)}
     }
-
+}
 struct forgotPassword_View_Previews: PreviewProvider {
     static var previews: some View {
         ForgotPassword_View()
             
     }
 }
-}
+

@@ -9,10 +9,11 @@ import SwiftUI
 
 struct Dashboard_View: View {
         var body: some View {
-        
+            
+            
             TabView{
             NavigationView {
-                            CreateAccount_View()
+                           ExpenseTracking_View()
                         }
                             .tabItem {
                                 Label("Home", systemImage: "house")
@@ -26,19 +27,20 @@ struct Dashboard_View: View {
                             }
 
                         NavigationView {
-                            ForgotPassword_View()
+                           Settings_View()
                         }
                             .tabItem {
                                 Label("Settings", systemImage: "gear")
                             }
                     
             }
-        
+                
+            }        
 }
-
 struct Dashboard_View_Previews: PreviewProvider {
     static var previews: some View {
         Dashboard_View()
+            .preferredColorScheme(.dark)
     }
 }
-}
+

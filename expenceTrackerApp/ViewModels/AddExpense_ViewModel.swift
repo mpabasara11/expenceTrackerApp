@@ -14,6 +14,13 @@ class AddExpense_ViewModel: ObservableObject
    
   
   
+    func AddExpensedate(date: Date,category: String,amount: Double,description: String,place: String)
+    {
+        
+    }
+    
+    
+    
     
     
 }

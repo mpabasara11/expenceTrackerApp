@@ -50,7 +50,7 @@ struct SplashScreen_View: View {
                 ProgressView
                 {
                     Text("Loading")
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .bold()
                 }
                     
@@ -74,10 +74,12 @@ struct SplashScreen_View: View {
  
     }
     
-}
 
+}
 struct SplashScreen_View_Previews: PreviewProvider {
     static var previews: some View {
         SplashScreen_View()
+            .preferredColorScheme(.dark)
     }
 }
+

@@ -24,8 +24,8 @@ struct ExpenseTracking_View: View {
     
     var body: some View {
         
-      
-       
+        NavigationView
+        {
             VStack{
                 List(expenseTracking_viewModel.expense_model, id: \.id) { expense in
                     
@@ -90,9 +90,9 @@ struct ExpenseTracking_View: View {
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
-                            .padding()
+                           .padding()
                            .background(Color.blue)
-                            .cornerRadius(10)
+                           .cornerRadius(10)
                             .shadow(radius: 5)
                     }.padding()
                     
@@ -105,9 +105,11 @@ struct ExpenseTracking_View: View {
                 AddExpense_View()
             
     
-            }
+            }.navigationTitle("Your expenses")
      
         
+        }
+         
         
         
     }
@@ -117,6 +119,9 @@ struct ExpenseTracking_View: View {
 struct ExpenseTracking_View_Previews: PreviewProvider {
     static var previews: some View {
         ExpenseTracking_View()
+        //    .preferredColorScheme(.dark)
+        
     }
 }
+
 
