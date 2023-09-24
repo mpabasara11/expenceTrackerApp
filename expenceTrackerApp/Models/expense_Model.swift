@@ -18,7 +18,7 @@ struct expense_Model : Identifiable
     
     init(date: Date,category: String,amount: Double,description: String,place: String) {
         
-        self.date = date
+       self.date = date
         self.category = category
         self.amount = amount
         self.description = description

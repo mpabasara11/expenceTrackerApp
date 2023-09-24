@@ -21,6 +21,8 @@ class CreateAccount_ViewModel : ObservableObject
     
     
     @Published var user_model = user_Model(email: "", password: "", confirmPassword: "")
+   
+    
         @Published var notValidMail: Bool = false
         @Published var notValidPass: Bool = false
         @Published var notMatchedConfirmPass: Bool = false

@@ -19,8 +19,8 @@ struct user_Model : Identifiable
     
         self.email = email
         self.password = password
-        self.confirmPassword = confirmPassword
-    }
+       self.confirmPassword = confirmPassword
+   }
     
   
     

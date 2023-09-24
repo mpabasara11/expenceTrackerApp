@@ -84,7 +84,9 @@ struct ExpenseTracking_View: View {
                 .cornerRadius(10)
                 .shadow(radius: 5)
                     
-                    Button(action: {})
+                    Button(action: {
+                        expenseTracking_viewModel.isSheetPresent = true
+                    })
                         {
                         Text("Add New Expense")
                             .font(.headline)
@@ -99,7 +101,10 @@ struct ExpenseTracking_View: View {
             
 
                     
-            }.sheet(isPresented: $expenseTracking_viewModel.isSheetPresent)
+            }.sheet(isPresented: $expenseTracking_viewModel.isSheetPresent,onDismiss:
+                        {
+                            expenseTracking_viewModel.isSheetPresent = false
+                        })
                 {
                 
                 AddExpense_View()

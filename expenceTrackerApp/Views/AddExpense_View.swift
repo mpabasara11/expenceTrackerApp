@@ -10,7 +10,9 @@ import SwiftUI
 struct AddExpense_View: View {
     
     @ObservedObject var addExpense_viewModel = AddExpense_ViewModel()
+    @ObservedObject var expenseTracking_viewModel = ExpenseTracking_ViewModel()
     @State var selectedOp = "Groceries"
+    
   
 
 
@@ -26,25 +28,68 @@ struct AddExpense_View: View {
             Section(header: Text("Basic"))
                 {
                 
-                TextField("Description",text:$addExpense_viewModel.expense_model.description)
-            
+                TextField("Description",text:$addExpense_viewModel.expense_model.description)   .alert(isPresented: $addExpense_viewModel.notValiDescription) {
+                    Alert(title: Text("Empty Description"), message: Text("Description cannot be empty"), dismissButton: .default(Text("OK"))
+                        {
+                        addExpense_viewModel.dismissAlert()
+                    })}
         
                 TextField("Place",text: $addExpense_viewModel.expense_model.place)
+                    .alert(isPresented: $addExpense_viewModel.notValidPlace) {
+                        Alert(title: Text("Empty Place"), message: Text("Place cannot be empty"), dismissButton: .default(Text("OK"))
+                            {
+                            addExpense_viewModel.dismissAlert()
+                        })}
                 
                 
             
                 
-                TextField("Amount",value: $addExpense_viewModel.expense_model.amount,formatter:NumberFormatter())
-                
-             
-               
-               
+          
                 
                 DatePicker("Date",selection: $addExpense_viewModel.expense_model.date,displayedComponents: .date)
                             
             
      
             }
+            Section(header: Text("Amount"))
+            {
+                let amountRange: ClosedRange<Double> = 500...50000 // Range for the slider
+                
+                Slider(value:$addExpense_viewModel.expense_model.amount,in: amountRange, step: 500)
+             
+                
+                VStack{
+                
+                Text("Amount: Rs. \(addExpense_viewModel.expense_model.amount,specifier: "%.2f")") // Display the selected value
+                                     .foregroundColor(.primary)
+                                     .font(.headline)
+                                     .padding(.horizontal)
+                    .multilineTextAlignment(.center)
+                }.frame(maxWidth: .infinity)
+                
+                
+                //not success alert
+                .alert(isPresented: $addExpense_viewModel.notSuccessOperation) {
+                    Alert(title: Text("Something Happened!"), message: Text("Could not add the expense.plese try again"), dismissButton: .default(Text("OK"))
+                        {
+                       
+                    })}
+                
+                //success alert
+                .alert(isPresented: $addExpense_viewModel.successOperation) {
+                    Alert(title: Text("Success"), message: Text("Expense added successfully"), dismissButton: .default(Text("OK"))
+                        {
+                        addExpense_viewModel.clearFields()
+                        
+                    })}
+                
+                
+                
+                
+                
+                
+                }
+            
             Section(header: Text("Additional"))
                 {
                 Picker("Category",selection: $selectedOp)
@@ -55,6 +100,7 @@ struct AddExpense_View: View {
                         }
                     }.pickerStyle(DefaultPickerStyle())
                // Text("you selected: \(selectedOp)")
+               
                 
                          }
             
@@ -62,7 +108,11 @@ struct AddExpense_View: View {
             {
                 Button(action: {
                    
-                    addExpense_viewModel.addExpense()
+                    
+                    //assigning local catagory value to the model value since it cannot do outside of a method
+                    addExpense_viewModel.expense_model.category = selectedOp
+                    
+                    addExpense_viewModel.addExpense(userId:"exp1", description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
                 }){
                     Text("Submit")
                         .foregroundColor(.blue)
@@ -74,7 +124,7 @@ struct AddExpense_View: View {
                 }.buttonStyle(BorderlessButtonStyle())
                 
                 Button(action: {
-                    
+                    addExpense_viewModel.clearFields()
                 }){
                     
                     Text("Clear All")

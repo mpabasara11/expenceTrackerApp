@@ -11,15 +11,79 @@ import Foundation
 
 class AddExpense_ViewModel: ObservableObject
 {
-    @Published var expense_model = expense_Model(date: Date(), category: "", amount: 0.0, description: "", place: "")
+    @Published var expense_model = expense_Model(date: Date(), category: "", amount: 500, description: "", place: "")
+    
+    @Published var notValiDescription: Bool = false
+    @Published var notValidPlace: Bool = false
+    @Published var notSuccessOperation: Bool = false
+    @Published var successOperation: Bool = false
+   
+
    
   
-  
-    func addExpense()
+    
+    
+     func clearFields()
     {
-     
+        expense_model.date = Date()
+        expense_model.amount = 500
+        expense_model.description = ""
+        expense_model.place = ""
+    }
+    
+    func dismissAlert()
+    {
+        notValiDescription = false
+        notValidPlace = false
+  
+  
         
-        addToDatabase(collectionName: "colukaray", userId: "aaaa", description: "adsd`", place: "asdasd", amount: 10.6, date: Date() ,category: "asdfsafs")
+    }
+    
+    
+    private func validateDescription(description: String)  {
+        notValiDescription = expense_model.description.isEmpty
+       }
+
+    private func validatePlace(place: String)  {
+         notValidPlace = expense_model.place.isEmpty
+       }
+
+
+    
+    
+    
+    
+    
+  
+    func addExpense(userId: String,description: String,place: String,amount: Double,date: Date,category: String)
+    {
+        
+        
+        validateDescription(description: expense_model.description)
+        validatePlace(place: expense_model.place)
+
+        
+        if notValiDescription
+        {
+            
+        }
+        else
+        {
+            if notValidPlace
+            {
+                
+            }
+            else
+            {
+                addToDatabase(collectionName: "Expenses", userId: userId, description: description, place: place, amount: amount, date: date ,category: category)
+            }
+            
+            
+        }
+        
+        
+        
     }
     
     
@@ -55,15 +119,20 @@ class AddExpense_ViewModel: ObservableObject
                     URLSession.shared.dataTask(with: request) { data, response, error in
                         if let error = error {
                             print("Error: \(error)")
+                            self.notSuccessOperation = true
+                            self.successOperation = false
+                            
                         } else if let data = data {
                             if let responseString = String(data: data, encoding: .utf8) {
                                 print("Response: \(responseString)")
+                                self.notSuccessOperation = false
+                                self.successOperation = true
                             }
                         }
                     }.resume()
                 }
                 
-                // Clear the input field
+          
                
             }
 
