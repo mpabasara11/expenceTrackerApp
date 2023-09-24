@@ -11,7 +11,7 @@ import Foundation
 
 class AddExpense_ViewModel: ObservableObject
 {
-    @Published var expense_model = expense_Model(date: Date(), category: "", amount: 500, description: "", place: "")
+    @Published var expense_model = expense_Model(userId: "",date: Date(), category: "", amount: 500, description: "", place: "")
     
     @Published var notValiDescription: Bool = false
     @Published var notValidPlace: Bool = false
@@ -20,11 +20,10 @@ class AddExpense_ViewModel: ObservableObject
    
 
    
-  
-    
     
      func clearFields()
     {
+        expense_model.userId = "" 
         expense_model.date = Date()
         expense_model.amount = 500
         expense_model.description = ""

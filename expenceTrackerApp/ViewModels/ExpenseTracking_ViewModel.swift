@@ -17,8 +17,8 @@ class ExpenseTracking_ViewModel: ObservableObject
     }
     
     private func addSampleExpenses() {
-            let sampleExpense1 = expense_Model(date: Date(), category: "Groceries", amount: 50.0, description: "Weekly grocery shopping", place: "Supermarket")
-        let sampleExpense2 = expense_Model(date: Date(), category: "Entertainment", amount: 20.0, description: "Movie night", place: "Cinema")
+        let sampleExpense1 = expense_Model(userId:"jasaya",date: Date(), category: "Groceries", amount: 50.0, description: "Weekly grocery shopping", place: "Supermarket")
+        let sampleExpense2 = expense_Model(userId: "junda",date: Date(), category: "Entertainment", amount: 20.0, description: "Movie night", place: "Cinema")
             
         expense_model = [sampleExpense1, sampleExpense2]
         }

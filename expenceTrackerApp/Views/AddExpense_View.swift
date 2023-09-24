@@ -10,7 +10,7 @@ import SwiftUI
 struct AddExpense_View: View {
     
     @ObservedObject var addExpense_viewModel = AddExpense_ViewModel()
-    @ObservedObject var expenseTracking_viewModel = ExpenseTracking_ViewModel()
+  //  @ObservedObject var expenseTracking_viewModel = ExpenseTracking_ViewModel()
     @State var selectedOp = "Groceries"
     
   
@@ -112,7 +112,7 @@ struct AddExpense_View: View {
                     //assigning local catagory value to the model value since it cannot do outside of a method
                     addExpense_viewModel.expense_model.category = selectedOp
                     
-                    addExpense_viewModel.addExpense(userId:"exp1", description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
+                    addExpense_viewModel.addExpense(userId:"maliya", description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
                 }){
                     Text("Submit")
                         .foregroundColor(.blue)
@@ -144,6 +144,7 @@ struct AddExpense_View: View {
 struct AddExpense_View_Previews: PreviewProvider {
     static var previews: some View {
         AddExpense_View()
+            .preferredColorScheme(.dark)
             
     }
 }

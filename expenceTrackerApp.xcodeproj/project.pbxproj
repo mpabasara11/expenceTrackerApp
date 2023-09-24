@@ -22,6 +22,7 @@
 		84B9FE3A2AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */; };
 		84BDDAAD2AB4305500582D94 /* Dashboard_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDDAAC2AB4305500582D94 /* Dashboard_View.swift */; };
 		84D306A62AB5B4EF00EFFD95 /* SplashScreen_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */; };
+		84DCF7D62AC0AD8800B21D5C /* userAllowance_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCF7D52AC0AD8800B21D5C /* userAllowance_Model.swift */; };
 		84DEED5B2AB02DEA00B31716 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84DEED5A2AB02DEA00B31716 /* GoogleService-Info.plist */; };
 		84DEED5E2AB033A500B31716 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84DEED5D2AB033A500B31716 /* FirebaseAuth */; };
 		84DEED602AB033A500B31716 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 84DEED5F2AB033A500B31716 /* FirebaseFirestore */; };
@@ -50,6 +51,7 @@
 		84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTracking_ViewModel.swift; sourceTree = "<group>"; };
 		84BDDAAC2AB4305500582D94 /* Dashboard_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard_View.swift; sourceTree = "<group>"; };
 		84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen_View.swift; sourceTree = "<group>"; };
+		84DCF7D52AC0AD8800B21D5C /* userAllowance_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userAllowance_Model.swift; sourceTree = "<group>"; };
 		84DEED5A2AB02DEA00B31716 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84DEED612AB039DA00B31716 /* Login_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_ViewModel.swift; sourceTree = "<group>"; };
 		84DEED632AB03B0000B31716 /* CreateAccount_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount_ViewModel.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				84DEED652AB03B2A00B31716 /* user_Model.swift */,
 				84B9FE372AB971CD00BE67D1 /* expense_Model.swift */,
+				84DCF7D52AC0AD8800B21D5C /* userAllowance_Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DCF7D62AC0AD8800B21D5C /* userAllowance_Model.swift in Sources */,
 				84042A772AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift in Sources */,
 				846DD6152AADC66500C3B636 /* CreateAccount_View.swift in Sources */,
 				84B9FE382AB971CE00BE67D1 /* expense_Model.swift in Sources */,

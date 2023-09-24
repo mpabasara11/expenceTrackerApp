@@ -9,6 +9,7 @@ import Foundation
 struct expense_Model : Identifiable
 {
     var id = UUID()
+    var userId : String
     var date : Date
     var category : String
     var amount : Double
@@ -16,8 +17,9 @@ struct expense_Model : Identifiable
     var place : String
     
     
-    init(date: Date,category: String,amount: Double,description: String,place: String) {
+    init(userId: String,date: Date,category: String,amount: Double,description: String,place: String) {
         
+        self.userId = userId
        self.date = date
         self.category = category
         self.amount = amount

@@ -9,12 +9,24 @@ import SwiftUI
 
 struct Settings_View: View {
     
-    @State var x = "nigga"
-    @State var y = 12.2
+ 
+    @ObservedObject var settings_viewModel = Settings_ViewModel()
     
-
+    let quentityFormatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+       // formatter.numberStyle = .decimal
+      //  formatter.zeroSymbol = ""
+        return formatter
+    }()
+    
+    
+   
+ 
     
     var body: some View {
+        
+      
+        
        
         NavigationView{
         Form
@@ -25,50 +37,47 @@ struct Settings_View: View {
                   {
                   Text("Groceries")
                     Spacer()
-                    Text("(x)")
+                    
+                    Text("Rs. \(settings_viewModel.userAllowance_modelRead.mnthlyGrocerries,specifier: "%.2f")")
                     
                   }
                 HStack
                   {
                   Text("Entertainment")
                     Spacer()
-                    Text("(x)")
+                    Text("Rs. \(settings_viewModel.userAllowance_modelRead.mnthlyEntertainment,specifier: "%.2f")")
                     
                   }
                 HStack
                   {
                   Text("Rent")
                     Spacer()
-                    Text("(x)")
-                    
+                    Text("Rs. \(settings_viewModel.userAllowance_modelRead.mnthlyRent,specifier: "%.2f")")
                   }
                 HStack
                   {
                   Text("Utilities")
                     Spacer()
-                    Text("(x)")
+                    Text("Rs. \(settings_viewModel.userAllowance_modelRead.mnthlyUtility,specifier: "%.2f")")
                     
                   }
                 HStack
                   {
                   Text("Transportation")
                     Spacer()
-                    Text("(x)")
-                    
+                    Text("Rs. \(settings_viewModel.userAllowance_modelRead.mnthlyTransportation,specifier: "%.2f")")
                   }
                 HStack
                   {
                   Text("Dining Out")
                     Spacer()
-                    Text("(x)")
-                    
+                    Text("Rs. \(settings_viewModel.userAllowance_modelRead.mnthlyDiningOut,specifier: "%.2f")")
                   }
                 HStack
                   {
                   Text("Shopping")
                     Spacer()
-                    Text("(x)")
-                    
+                    Text("Rs. \(settings_viewModel.userAllowance_modelRead.mnthlyShopping,specifier: "%.2f")")
                   }
                 
                
@@ -76,25 +85,27 @@ struct Settings_View: View {
             
             Section(header: Text("Update"))
                 {
+                
+           
 
-                TextField("Groceries",value: $y,formatter:NumberFormatter()).keyboardType(.decimalPad)
+                TextField("Groceries",value: $settings_viewModel.userAllowance_modelWrite.mnthlyGrocerries,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
-                TextField("Entertainment",value: $y,formatter:NumberFormatter()).keyboardType(.decimalPad)
+                TextField("Entertainment",value: $settings_viewModel.userAllowance_modelWrite.mnthlyRent,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
-                TextField("Rent",value: $y,formatter:NumberFormatter()).keyboardType(.decimalPad)
+                TextField("Rent",value: $settings_viewModel.userAllowance_modelWrite.mnthlyRent,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
-                TextField("Utilities",value: $y,formatter:NumberFormatter()).keyboardType(.decimalPad)
+                TextField("Utilities",value: $settings_viewModel.userAllowance_modelWrite.mnthlyUtility,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
-                TextField("Transportation",value: $y,formatter:NumberFormatter()).keyboardType(.decimalPad)
+                TextField("Transportation",value: $settings_viewModel.userAllowance_modelWrite.mnthlyTransportation,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
-                TextField("Dining Out",value: $y,formatter:NumberFormatter()).keyboardType(.decimalPad)
+                TextField("Dining Out",value: $settings_viewModel.userAllowance_modelWrite.mnthlyDiningOut,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
-                TextField("Shopping",value: $y,formatter:NumberFormatter()).keyboardType(.decimalPad)
+                TextField("Shopping",value: $settings_viewModel.userAllowance_modelWrite.mnthlyShopping,formatter:quentityFormatter).keyboardType(.decimalPad)
                 }
             
             Section{
                 Button(action: {
-                   
+                    settings_viewModel.updateSettings(userId: settings_viewModel.userAllowance_modelWrite.userId, mnthlyGrocerries: settings_viewModel.userAllowance_modelWrite.mnthlyGrocerries, mnthlyEntertainment: settings_viewModel.userAllowance_modelWrite.mnthlyEntertainment, mnthlyRent: settings_viewModel.userAllowance_modelWrite.mnthlyRent, mnthlyUtility: settings_viewModel.userAllowance_modelWrite.mnthlyUtility, mnthlyTransportation: settings_viewModel.userAllowance_modelWrite.mnthlyTransportation, mnthlyDiningOut: settings_viewModel.userAllowance_modelWrite.mnthlyDiningOut, mnthlyShopping: settings_viewModel.userAllowance_modelWrite.mnthlyShopping)
                    
                 }){
                     Text("Update")
@@ -107,7 +118,7 @@ struct Settings_View: View {
                 }.buttonStyle(BorderlessButtonStyle())
                 
                 Button(action: {
-                    
+                    settings_viewModel.clearFields()
                 }){
                     Text("Clear All")
                         .foregroundColor(.red)
