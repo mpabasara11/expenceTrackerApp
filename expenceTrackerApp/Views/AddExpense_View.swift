@@ -62,7 +62,7 @@ struct AddExpense_View: View {
             {
                 Button(action: {
                    
-                   
+                    addExpense_viewModel.addExpense()
                 }){
                     Text("Submit")
                         .foregroundColor(.blue)
