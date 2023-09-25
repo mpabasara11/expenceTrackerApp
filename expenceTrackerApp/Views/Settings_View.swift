@@ -111,6 +111,14 @@ struct Settings_View: View {
                 TextField("Dining Out",value: $settings_viewModel.userAllowance_modelWrite.mnthlyDiningOut,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
                 TextField("Shopping",value: $settings_viewModel.userAllowance_modelWrite.mnthlyShopping,formatter:quentityFormatter).keyboardType(.decimalPad)
+                
+                    .alert(isPresented:$settings_viewModel.showMessage) {
+                        Alert(title: Text("Invalid Login"), message: Text("Please check your Email and Password "), dismissButton: .default(Text("OK"))
+                            {
+                           
+                        })}
+                
+                
                 }
             
             Section{
@@ -120,7 +128,10 @@ struct Settings_View: View {
                     //setting the user id before calling the method
                     settings_viewModel.userAllowance_modelWrite.userId = "test user"
                     
-                    settings_viewModel.updateSettings(userId: settings_viewModel.userAllowance_modelWrite.userId, mnthlyGrocerries: settings_viewModel.userAllowance_modelWrite.mnthlyGrocerries, mnthlyEntertainment: settings_viewModel.userAllowance_modelWrite.mnthlyEntertainment, mnthlyRent: settings_viewModel.userAllowance_modelWrite.mnthlyRent, mnthlyUtility: settings_viewModel.userAllowance_modelWrite.mnthlyUtility, mnthlyTransportation: settings_viewModel.userAllowance_modelWrite.mnthlyTransportation, mnthlyDiningOut: settings_viewModel.userAllowance_modelWrite.mnthlyDiningOut, mnthlyShopping: settings_viewModel.userAllowance_modelWrite.mnthlyShopping)
+                    //setting the date before calling the method
+                    let todayDate = Date()
+                    
+                    settings_viewModel.updateSettings(userId: settings_viewModel.userAllowance_modelWrite.userId, mnthlyGrocerries: settings_viewModel.userAllowance_modelWrite.mnthlyGrocerries, mnthlyEntertainment: settings_viewModel.userAllowance_modelWrite.mnthlyEntertainment, mnthlyRent: settings_viewModel.userAllowance_modelWrite.mnthlyRent, mnthlyUtility: settings_viewModel.userAllowance_modelWrite.mnthlyUtility, mnthlyTransportation: settings_viewModel.userAllowance_modelWrite.mnthlyTransportation, mnthlyDiningOut: settings_viewModel.userAllowance_modelWrite.mnthlyDiningOut, mnthlyShopping: settings_viewModel.userAllowance_modelWrite.mnthlyShopping,date: todayDate)
                    
                 }){
                     Text("Update")

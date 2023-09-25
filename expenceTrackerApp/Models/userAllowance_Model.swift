@@ -18,16 +18,17 @@ struct userAllowance_Model : Identifiable
     var mnthlyDiningOut : Double
     var mnthlyShopping : Double
     
-    var remainGrocerries : Double
-    var remainEntertainment : Double
-    var remainRent : Double
-    var remainUtility : Double
-    var remaiTransportation : Double
-    var remainDiningOut : Double
-    var remainShopping : Double
+    var date : Date
+  //  var remainGrocerries : Double
+ //   var remainEntertainment : Double
+ //   var remainRent : Double
+   // var remainUtility : Double
+ //   var remaiTransportation : Double
+  //  var remainDiningOut : Double
+ //   var remainShopping : Double
     
     
-    init(userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,remainGrocerries: Double,remainEntertainment: Double,remainRent: Double,remainUtility: Double,remaiTransportation: Double,remainDiningOut: Double,remainShopping: Double) {
+    init(userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date) {
         
         self.userId = userId
         self.mnthlyGrocerries = mnthlyGrocerries
@@ -37,14 +38,14 @@ struct userAllowance_Model : Identifiable
         self.mnthlyTransportation = mnthlyTransportation
         self.mnthlyDiningOut = mnthlyDiningOut
         self.mnthlyShopping = mnthlyShopping
-        
-        self.remainGrocerries = remainGrocerries
-        self.remainEntertainment = remainEntertainment
-        self.remainRent = remainRent
-        self.remainUtility = remainUtility
-        self.remaiTransportation = remaiTransportation
-        self.remainDiningOut = remainDiningOut
-        self.remainShopping = remainShopping
+       
+        self.date = date//     self.remainGrocerries = remainGrocerries
+      //  self.remainEntertainment = remainEntertainment
+    //    self.remainRent = remainRent
+    //    self.remainUtility = remainUtility
+    //    self.remaiTransportation = remaiTransportation
+     //   self.remainDiningOut = remainDiningOut
+     //   self.remainShopping = remainShopping
         
         
     }

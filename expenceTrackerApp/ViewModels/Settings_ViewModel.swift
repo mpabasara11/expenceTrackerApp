@@ -10,19 +10,17 @@ class Settings_ViewModel: ObservableObject
 {
 
     //this model is used to take input data
-    @Published var userAllowance_modelWrite =  userAllowance_Model(userId: "", mnthlyGrocerries: 0, mnthlyEntertainment: 0, mnthlyRent: 0, mnthlyUtility: 0, mnthlyTransportation: 0, mnthlyDiningOut: 0, mnthlyShopping: 0, remainGrocerries: 0, remainEntertainment: 0, remainRent: 0, remainUtility: 0, remaiTransportation: 0, remainDiningOut: 0, remainShopping: 0)
+    @Published var userAllowance_modelWrite =  userAllowance_Model(userId: "", mnthlyGrocerries: 0, mnthlyEntertainment: 0, mnthlyRent: 0, mnthlyUtility: 0, mnthlyTransportation: 0, mnthlyDiningOut: 0, mnthlyShopping: 0,date: Date())
     
     //this model is used to read data
-   @Published var userAllowance_modelRead =  userAllowance_Model(userId: "", mnthlyGrocerries: 0, mnthlyEntertainment: 0, mnthlyRent: 0, mnthlyUtility: 0, mnthlyTransportation: 0, mnthlyDiningOut: 0, mnthlyShopping: 0, remainGrocerries: 0, remainEntertainment: 0, remainRent: 0, remainUtility: 0, remaiTransportation: 0, remainDiningOut: 0, remainShopping: 0)
+   @Published var userAllowance_modelRead =  userAllowance_Model(userId: "", mnthlyGrocerries: 0, mnthlyEntertainment: 0, mnthlyRent: 0, mnthlyUtility: 0, mnthlyTransportation: 0, mnthlyDiningOut: 0, mnthlyShopping: 0,date: Date())
     
     //this model is used to send  data to DB
-   @Published var userAllowance_modelSendToDb =  userAllowance_Model(userId: "", mnthlyGrocerries: 0, mnthlyEntertainment: 0, mnthlyRent: 0, mnthlyUtility: 0, mnthlyTransportation: 0, mnthlyDiningOut: 0, mnthlyShopping: 0, remainGrocerries: 0, remainEntertainment: 0, remainRent: 0, remainUtility: 0, remaiTransportation: 0, remainDiningOut: 0, remainShopping: 0)
+   @Published var userAllowance_modelSendToDb =  userAllowance_Model(userId: "", mnthlyGrocerries: 0, mnthlyEntertainment: 0, mnthlyRent: 0, mnthlyUtility: 0, mnthlyTransportation: 0, mnthlyDiningOut: 0, mnthlyShopping: 0,date: Date())
     
     
-    
-    //validation messages triggers
-    @Published var notValidGrocery : Bool = false
-    
+    @Published var showMessage = false
+    @Published var massage = ""
     
     func clearFields()
     {
@@ -34,16 +32,18 @@ class Settings_ViewModel: ObservableObject
         userAllowance_modelWrite.mnthlyTransportation = 0
         userAllowance_modelWrite.mnthlyDiningOut = 0
         userAllowance_modelWrite.mnthlyShopping = 0
-    
-    
-    
+        userAllowance_modelWrite.date = Date()
+   
   
     }
     
+    
+    
     //validate inputs and add necessary missing values to the model
-    private func validateGroceries(userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double)  {
+    private func validateGroceries(userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date)  {
         
         userAllowance_modelSendToDb.userId = userId
+        userAllowance_modelSendToDb.date = date
         
    
         if userAllowance_modelWrite.mnthlyGrocerries.isEqual(to: 0)
@@ -103,23 +103,56 @@ class Settings_ViewModel: ObservableObject
         {
             userAllowance_modelSendToDb.mnthlyShopping = userAllowance_modelWrite.mnthlyShopping
         }
-
-        
-     
        }
     
 
     
+    private func addToDatabase (collectionName: String,userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date)
+    {
+    
+        
+          let dtformatter = DateFormatter()
+          dtformatter.dateFormat = "YYYY/MM/dd"
+          let dateToDb = dtformatter.string(from: date)
+   
+     
+    }
+    
+   
+    
+    
+    func updateMonthlyExpenses(userId: String,
+                                monthlyGroceries: Double,
+                                monthlyEntertainment: Double,
+                                monthlyRent: Double,
+                                monthlyTotal: Double,
+                                monthlyUtility: Double,
+                                monthlyTransportation: Double,
+                                monthlyDiningOut: Double,
+                                monthlyShopping: Double,
+                                date: String,
+                                completion: @escaping (Error?) -> Void) {}
+
+   
   
     
+   
     
-    public func updateSettings(userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double)
+    public func updateSettings(userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date)
     {
         
-     validateGroceries(userId: userId, mnthlyGrocerries: mnthlyGrocerries, mnthlyEntertainment: mnthlyEntertainment, mnthlyRent: mnthlyRent, mnthlyUtility: mnthlyRent, mnthlyTransportation: mnthlyTransportation, mnthlyDiningOut: mnthlyDiningOut, mnthlyShopping: mnthlyShopping)
+    // validateGroceries(userId: userId, mnthlyGrocerries: mnthlyGrocerries, mnthlyEntertainment: mnthlyEntertainment, mnthlyRent: mnthlyRent, mnthlyUtility: mnthlyRent, mnthlyTransportation: mnthlyTransportation, mnthlyDiningOut: mnthlyDiningOut, mnthlyShopping: mnthlyShopping,date: date)
+        
+        
+        
+   
         
     }
     
+ 
     
     
 }
+
+
+

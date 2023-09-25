@@ -124,7 +124,7 @@ struct ExpenseTracking_View: View {
 struct ExpenseTracking_View_Previews: PreviewProvider {
     static var previews: some View {
         ExpenseTracking_View()
-        //    .preferredColorScheme(.dark)
+         //  .preferredColorScheme(.dark)
         
     }
 }
