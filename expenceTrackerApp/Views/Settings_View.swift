@@ -12,10 +12,15 @@ struct Settings_View: View {
  
     @ObservedObject var settings_viewModel = Settings_ViewModel()
     
+    
+    //custom numberformatter for removing zero on textboxes
     let quentityFormatter: NumberFormatter = {
             let formatter = NumberFormatter()
-       // formatter.numberStyle = .decimal
-      //  formatter.zeroSymbol = ""
+        formatter.numberStyle = .decimal
+        formatter.zeroSymbol = ""
+        formatter.allowsFloats = false
+      //  formatter.allowsFloats = true
+    
         return formatter
     }()
     
@@ -86,11 +91,16 @@ struct Settings_View: View {
             Section(header: Text("Update"))
                 {
                 
+                
+            
            
 
                 TextField("Groceries",value: $settings_viewModel.userAllowance_modelWrite.mnthlyGrocerries,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
-                TextField("Entertainment",value: $settings_viewModel.userAllowance_modelWrite.mnthlyRent,formatter:quentityFormatter).keyboardType(.decimalPad)
+              
+                    
+                
+                TextField("Entertainment",value: $settings_viewModel.userAllowance_modelWrite.mnthlyEntertainment,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
                 TextField("Rent",value: $settings_viewModel.userAllowance_modelWrite.mnthlyRent,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
@@ -105,16 +115,18 @@ struct Settings_View: View {
             
             Section{
                 Button(action: {
+                    
+                    
+                    //setting the user id before calling the method
+                    settings_viewModel.userAllowance_modelWrite.userId = "test user"
+                    
                     settings_viewModel.updateSettings(userId: settings_viewModel.userAllowance_modelWrite.userId, mnthlyGrocerries: settings_viewModel.userAllowance_modelWrite.mnthlyGrocerries, mnthlyEntertainment: settings_viewModel.userAllowance_modelWrite.mnthlyEntertainment, mnthlyRent: settings_viewModel.userAllowance_modelWrite.mnthlyRent, mnthlyUtility: settings_viewModel.userAllowance_modelWrite.mnthlyUtility, mnthlyTransportation: settings_viewModel.userAllowance_modelWrite.mnthlyTransportation, mnthlyDiningOut: settings_viewModel.userAllowance_modelWrite.mnthlyDiningOut, mnthlyShopping: settings_viewModel.userAllowance_modelWrite.mnthlyShopping)
                    
                 }){
                     Text("Update")
                         .foregroundColor(.blue)
                         .frame(maxWidth: .infinity)
-                       // .padding()
-                       // .background(Color.blue)
-                    //    .cornerRadius(10)
-                     //   .shadow(radius:5)
+               
                 }.buttonStyle(BorderlessButtonStyle())
                 
                 Button(action: {
@@ -123,10 +135,7 @@ struct Settings_View: View {
                     Text("Clear All")
                         .foregroundColor(.red)
                         .frame(maxWidth: .infinity)
-                       // .padding()
-                    //   .background(Color.red)
-                     //   .cornerRadius(10)
-                     //   .shadow(radius:5)
+           
                 } .buttonStyle(BorderlessButtonStyle())           }
     
             

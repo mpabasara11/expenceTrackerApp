@@ -42,7 +42,7 @@ struct userAllowance_Model : Identifiable
         self.remainEntertainment = remainEntertainment
         self.remainRent = remainRent
         self.remainUtility = remainUtility
-        self.remaiTransportation = remainUtility
+        self.remaiTransportation = remaiTransportation
         self.remainDiningOut = remainDiningOut
         self.remainShopping = remainShopping
         
