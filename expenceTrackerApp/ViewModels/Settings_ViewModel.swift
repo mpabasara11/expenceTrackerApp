@@ -111,9 +111,6 @@ class Settings_ViewModel: ObservableObject
     {
     
         
-          let dtformatter = DateFormatter()
-          dtformatter.dateFormat = "YYYY/MM/dd"
-          let dateToDb = dtformatter.string(from: date)
    
      
     }
