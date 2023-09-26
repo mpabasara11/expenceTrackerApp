@@ -92,8 +92,9 @@ class AddExpense_ViewModel: ObservableObject
                    totalAllowanceInDb = 0.0
                 }
             
-   
+                self.massage = String(totalAllowanceInDb)
             }
+          
       
         }
      /////////////////////
