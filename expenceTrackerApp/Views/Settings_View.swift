@@ -112,12 +112,20 @@ struct Settings_View: View {
                 
                 TextField("Shopping",value: $settings_viewModel.userAllowance_modelWrite.mnthlyShopping,formatter:quentityFormatter).keyboardType(.decimalPad)
                 
-                    .alert(isPresented:$settings_viewModel.showMessage) {
-                        Alert(title: Text("Invalid Login"), message: Text("Please check your Email and Password "), dismissButton: .default(Text("OK"))
+                    //not success alert
+                    .alert(isPresented: $settings_viewModel.notSuccessOperation) {
+                        Alert(title: Text("Something Happened!"), message: Text("Could not update the allowance.plese try again"), dismissButton: .default(Text("OK"))
                             {
                            
                         })}
-                
+                    
+                    //success alert
+                    .alert(isPresented: $settings_viewModel.successOperation) {
+                        Alert(title: Text("Success"), message: Text("Allowance updated successfully"), dismissButton: .default(Text("OK"))
+                            {
+                            settings_viewModel.clearFields()
+                            
+                        })}
                 
                 }
             

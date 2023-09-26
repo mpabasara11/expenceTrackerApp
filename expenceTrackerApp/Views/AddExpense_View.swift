@@ -19,6 +19,19 @@ struct AddExpense_View: View {
 
     let predefinedCategories = ["Groceries","Entertainment","Rent","Utilities","Transportation","Dining Out","Shopping"]
     
+    
+    //custom numberformatter for removing zero on textboxes
+    let quentityFormatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.zeroSymbol = ""
+        formatter.allowsFloats = false
+      //  formatter.allowsFloats = true
+    
+        return formatter
+    }()
+    
+    
 
     var body: some View {
         NavigationView
@@ -42,7 +55,22 @@ struct AddExpense_View: View {
                             addExpense_viewModel.dismissAlert()
                         })}
                 
+                //this alert is for amount textfield.but it seems alerts are not working with textfield which output values
+                    .alert(isPresented: $addExpense_viewModel.notValidAmountValueZero) {
+                        Alert(title: Text("Empty Amount"), message: Text("Amount cannot be empty"), dismissButton: .default(Text("OK"))
+                            {
+                            addExpense_viewModel.dismissAlert()
+                        })}
                 
+                
+                
+                
+                
+                
+                
+                    TextField("Amount",value: $addExpense_viewModel.expense_model.amount,formatter:quentityFormatter).keyboardType(.decimalPad)
+                 
+                    
             
                 
           
@@ -51,23 +79,8 @@ struct AddExpense_View: View {
                             
             
      
-            }
-            Section(header: Text("Amount"))
-            {
-                let amountRange: ClosedRange<Double> = 500...50000 // Range for the slider
-                
-                Slider(value:$addExpense_viewModel.expense_model.amount,in: amountRange, step: 500)
-             
-                
-                VStack{
-                
-                Text("Amount: Rs. \(addExpense_viewModel.expense_model.amount,specifier: "%.2f")") // Display the selected value
-                                     .foregroundColor(.primary)
-                                     .font(.headline)
-                                     .padding(.horizontal)
-                    .multilineTextAlignment(.center)
-                }.frame(maxWidth: .infinity)
-                
+            
+            
                 
                 //not success alert
                 .alert(isPresented: $addExpense_viewModel.notSuccessOperation) {

@@ -4,7 +4,7 @@
 //
 //  Created by malindu pabasara on 2023-09-23.
 //
-
+import Firebase
 import Foundation
 class Settings_ViewModel: ObservableObject
 {
@@ -17,6 +17,10 @@ class Settings_ViewModel: ObservableObject
     
     //this model is used to send  data to DB
    @Published var userAllowance_modelSendToDb =  userAllowance_Model(userId: "", mnthlyGrocerries: 0, mnthlyEntertainment: 0, mnthlyRent: 0, mnthlyUtility: 0, mnthlyTransportation: 0, mnthlyDiningOut: 0, mnthlyShopping: 0,date: Date())
+    
+    
+    @Published var notSuccessOperation: Bool = false
+    @Published var successOperation: Bool = false
     
     
     @Published var showMessage = false
@@ -107,44 +111,102 @@ class Settings_ViewModel: ObservableObject
     
 
     
-    private func addToDatabase (collectionName: String,userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date)
-    {
-    
-        
-   
-     
-    }
-    
-   
-    
-    
-    func updateMonthlyExpenses(userId: String,
-                                monthlyGroceries: Double,
-                                monthlyEntertainment: Double,
-                                monthlyRent: Double,
-                                monthlyTotal: Double,
-                                monthlyUtility: Double,
-                                monthlyTransportation: Double,
-                                monthlyDiningOut: Double,
-                                monthlyShopping: Double,
-                                date: String,
-                                completion: @escaping (Error?) -> Void) {}
-
-   
-  
-    
+ 
    
     
     public func updateSettings(userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date)
     {
         
-    // validateGroceries(userId: userId, mnthlyGrocerries: mnthlyGrocerries, mnthlyEntertainment: mnthlyEntertainment, mnthlyRent: mnthlyRent, mnthlyUtility: mnthlyRent, mnthlyTransportation: mnthlyTransportation, mnthlyDiningOut: mnthlyDiningOut, mnthlyShopping: mnthlyShopping,date: date)
+     validateGroceries(userId: userId, mnthlyGrocerries: mnthlyGrocerries, mnthlyEntertainment: mnthlyEntertainment, mnthlyRent: mnthlyRent, mnthlyUtility: mnthlyRent, mnthlyTransportation: mnthlyTransportation, mnthlyDiningOut: mnthlyDiningOut, mnthlyShopping: mnthlyShopping,date: date)
         
-        
-        
+        addToDatabase(collectionName: "Allowance", userId: userAllowance_modelSendToDb.userId, mnthlyGrocerries: userAllowance_modelSendToDb.mnthlyGrocerries, mnthlyEntertainment: userAllowance_modelSendToDb.mnthlyEntertainment, mnthlyRent: userAllowance_modelSendToDb.mnthlyRent, mnthlyUtility: userAllowance_modelSendToDb.mnthlyUtility, mnthlyTransportation: userAllowance_modelSendToDb.mnthlyTransportation, mnthlyDiningOut: userAllowance_modelSendToDb.mnthlyDiningOut, mnthlyShopping: userAllowance_modelSendToDb.mnthlyShopping, date: userAllowance_modelSendToDb.date)
    
         
     }
+    
+    
+    
+    
+    private func addToDatabase (collectionName: String,userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date)
+    {
+     
+        
+        let dtformatter = DateFormatter()
+        dtformatter.dateFormat = "YYYY/MM/dd"
+        let dateToDb = dtformatter.string(from: date)
+        
+        let data: [String: Any] = [
+         "Groceries": Double(mnthlyGrocerries) ,
+           "Entertainment": Double(mnthlyEntertainment),
+           "Rent": Double(mnthlyRent),
+            "Utilities": Double(mnthlyUtility),
+            "Transportation": Double(mnthlyTransportation),
+            "Dining Out": Double(mnthlyDiningOut),
+             "Shopping": Double(mnthlyShopping),
+            "date": dateToDb
+         
+        ]
+        
+       
+        
+     
+        let collectionName = collectionName
+        let documentName = userId
+        let docrf = Firestore.firestore().collection(collectionName).document(documentName)
+        docrf.getDocument {(document,error) in
+            if let document = document
+            {
+                //if exist update the current doc
+                if document.exists
+                {
+                  
+          
+                    // using the existing document reference
+                    docrf.updateData(data) { error in
+                        if let error = error {
+                            print("Error creating document: \(error)")
+                         self.notSuccessOperation = true
+                        self.successOperation = false
+                        } else {
+                         self.notSuccessOperation = false
+                         self.successOperation = true
+                            
+                           
+                        }
+                   }
+        
+                
+                }
+                //if not exist create a new one
+                else
+                {
+               
+                    // using the existing document reference
+                    docrf.setData(data) { error in
+                        if let error = error {
+                            print("Error creating document: \(error)")
+                         self.notSuccessOperation = true
+                        self.successOperation = false
+                        } else {
+                         self.notSuccessOperation = false
+                         self.successOperation = true
+                            
+                           
+                        }
+                   }
+             
+                    
+                    
+                }
+            }
+     
+        }
+        
+           
+        
+    }
+    
+    
     
  
     

@@ -12,10 +12,12 @@ import Firebase
 
 class AddExpense_ViewModel: ObservableObject
 {
-    @Published var expense_model = expense_Model(userId: "",date: Date(), category: "", amount: 500, description: "", place: "")
+    @Published var expense_model = expense_Model(userId: "",date: Date(), category: "", amount: 0, description: "", place: "")
     
     @Published var notValiDescription: Bool = false
     @Published var notValidPlace: Bool = false
+    @Published var notValidAmountValueZero: Bool = false
+    @Published var notValidAmountEffiecency:Bool = false
     @Published var notSuccessOperation: Bool = false
     @Published var successOperation: Bool = false
    
@@ -26,7 +28,7 @@ class AddExpense_ViewModel: ObservableObject
     {
         expense_model.userId = "" 
         expense_model.date = Date()
-        expense_model.amount = 500
+        expense_model.amount = 0
         expense_model.description = ""
         expense_model.place = ""
     }
@@ -35,33 +37,75 @@ class AddExpense_ViewModel: ObservableObject
     {
         notValiDescription = false
         notValidPlace = false
-  
+        notValidAmountValueZero = false
+        notValidAmountEffiecency = false
   
         
     }
     
     
     private func validateDescription(description: String)  {
-        notValiDescription = expense_model.description.isEmpty
+        notValiDescription = description.isEmpty
        }
 
     private func validatePlace(place: String)  {
-         notValidPlace = expense_model.place.isEmpty
+         notValidPlace = place.isEmpty
+       }
+    
+    private func validateAmountValueZero(amount: Double)  {
+        notValidAmountValueZero = !(amount > 0)
+     
+     
+       }
+    
+    private func validateAmountEfficiancy(amount: Double,collectionName: String,userId: String,category: String)  {
+      //  notValidAmountEffiecency
+       ///////////////////////
+      //  var totalAllowanceInDb = 0
+        
+        
+        let collectionName = collectionName
+        let documentName = userId
+        let docrf = Firestore.firestore().collection(collectionName).document(documentName)
+        docrf.getDocument {(document,error) in
+            if let document = document
+            {
+                if document.exists
+                {
+                    let data = document.data()
+                if let totalAllowanceInDb = data[category]
+                {
+                    
+                }else
+                {
+                    
+                }
+                    
+                }
+                else
+                {
+                    
+                }
+        
+            }
+        
+        
+        
+        
+        
+        }
+     /////////////////////
        }
 
 
     
-    
-    
-    
-    
-  
     func addExpense(userId: String,description: String,place: String,amount: Double,date: Date,category: String)
     {
         
         
-        validateDescription(description: expense_model.description)
-        validatePlace(place: expense_model.place)
+        validateDescription(description: description)
+        validatePlace(place: place)
+        validateAmountValueZero(amount: amount)
 
         
         if notValiDescription
@@ -76,7 +120,21 @@ class AddExpense_ViewModel: ObservableObject
             }
             else
             {
-                addToDatabase(collectionName: "Expenses", userId: userId, description: description, place: place, amount: amount, date: date ,category: category)
+                if notValidAmountValueZero
+                {
+                    
+                }
+                else
+                {
+                    if notValidAmountEffiecency
+                    {
+                        
+                    }
+                    else
+                    {
+                        addToDatabase(collectionName: "Expenses", userId: userId, description: description, place: place, amount: amount, date: date ,category: category)
+                    }
+                }
             }
             
             
@@ -85,9 +143,6 @@ class AddExpense_ViewModel: ObservableObject
         
         
     }
-    
-    
-    
     
     private func addToDatabase (collectionName: String,userId: String,description: String,place: String,amount: Double,date: Date,category: String)
     {
@@ -101,9 +156,10 @@ class AddExpense_ViewModel: ObservableObject
         
         let db = Firestore.firestore()
                let collectionName = collectionName
-               let documentName = "custom_document_name"
+             //  let documentName = userId
 
                let data: [String: Any] = [
+                "userId": userId,
                 "amount": Double(amount) ,
                    "category": category,
                    "date": dateToDb,
@@ -111,8 +167,8 @@ class AddExpense_ViewModel: ObservableObject
                    "place": place
                ]
 
-               let customDocumentRef = db.collection(collectionName).document(documentName)
-
+        let customDocumentRef = db.collection(collectionName).document()
+        
                customDocumentRef.setData(data) { error in
                    if let error = error {
                        print("Error creating document: \(error)")
@@ -123,14 +179,7 @@ class AddExpense_ViewModel: ObservableObject
                     self.successOperation = true
                    }
                }
-        
-  
-                
-        
+     
     }
-    
-    
-    
-    
     
 }
