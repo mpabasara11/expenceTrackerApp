@@ -61,10 +61,20 @@ class AddExpense_ViewModel: ObservableObject
      
        }
     
-    public func validateAmountEfficiancy(amount: Double,collectionName: String,userId: String,category: String)  {
-      //  notValidAmountEffiecency
+    public func validateAmountEfficiancy(amount: Double,collectionName: String,userId: String,category: String,date: Date)  {
+  
        ///////////////////////
+    
+        
+        //avilable total allowance on database
         var totalAllowanceInDb = 0.0
+        
+        //total amount of selected category  in the selected month
+        var totalAmountOfMonth = 0.0
+        
+        
+        
+        
         
         let collectionName = collectionName
         let documentName = userId
@@ -75,23 +85,60 @@ class AddExpense_ViewModel: ObservableObject
                 let d = document.data()
                 if let fieldVal = d?[category] as? Double
                 {
-                    totalAllowanceInDb = fieldVal
+                   totalAllowanceInDb = fieldVal
                 }
                 else
                 {
-                    totalAllowanceInDb = 0.0
+                   totalAllowanceInDb = 0.0
                 }
             
-                self.massage = String(totalAllowanceInDb)
-                self.showMessage = true
+   
             }
-        
-        
-        
-        
-        
+      
         }
      /////////////////////
+      
+         let dtformatter = DateFormatter()
+          dtformatter.dateFormat = "YYYY/MM"
+          let dtForOp = dtformatter.string(from: date)
+        
+    
+        let db = Firestore.firestore()
+              let collectionRef = db.collection("Expenses")
+
+              collectionRef
+                .whereField("userId", isEqualTo: userId)
+                .whereField("category", isEqualTo: category)
+                .whereField("dtForOperations",isEqualTo:dtForOp )
+                  .getDocuments { (querySnapshot, error) in
+                      if let error = error {
+                          print("Error getting documents: \(error)")
+                          return
+                      }
+
+                      var tempTotalAmount: Double = 0.0
+
+                      for document in querySnapshot!.documents {
+                          if let amount = document.data()["amount"] as? Double {
+                              tempTotalAmount += amount
+                          }
+                      }
+
+                     totalAmountOfMonth = tempTotalAmount
+                    
+       
+                  }
+        
+        
+       
+        
+        
+        self.showMessage = true
+       self.massage = String(totalAllowanceInDb)
+        
+        
+      
+        //////////////////////
        }
 
 
@@ -145,9 +192,13 @@ class AddExpense_ViewModel: ObservableObject
     {
      
         
-        let dtformatter = DateFormatter()
+       let dtformatter = DateFormatter()
         dtformatter.dateFormat = "YYYY/MM/dd"
         let dateToDb = dtformatter.string(from: date)
+        
+        let dtformatter2 = DateFormatter()
+         dtformatter2.dateFormat = "YYYY/MM"
+         let dateToDb2 = dtformatter2.string(from: date)
         
        
         
@@ -161,7 +212,8 @@ class AddExpense_ViewModel: ObservableObject
                    "category": category,
                    "date": dateToDb,
                    "description": description,
-                   "place": place
+                "place": place,
+                "dtForOperations":dateToDb2
                ]
 
         let customDocumentRef = db.collection(collectionName).document()
