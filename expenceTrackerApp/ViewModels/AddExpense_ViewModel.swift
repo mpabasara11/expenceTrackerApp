@@ -14,6 +14,9 @@ class AddExpense_ViewModel: ObservableObject
 {
     @Published var expense_model = expense_Model(userId: "",date: Date(), category: "", amount: 0, description: "", place: "")
     
+    
+    
+    
     @Published var notValiDescription: Bool = false
     @Published var notValidPlace: Bool = false
     @Published var notValidAmountValueZero: Bool = false
@@ -21,8 +24,8 @@ class AddExpense_ViewModel: ObservableObject
     @Published var notSuccessOperation: Bool = false
     @Published var successOperation: Bool = false
    
-
-   
+    @Published var massage = ""
+    @Published var showMessage = false
     
      func clearFields()
     {
@@ -58,11 +61,10 @@ class AddExpense_ViewModel: ObservableObject
      
        }
     
-    private func validateAmountEfficiancy(amount: Double,collectionName: String,userId: String,category: String)  {
+    public func validateAmountEfficiancy(amount: Double,collectionName: String,userId: String,category: String)  {
       //  notValidAmountEffiecency
        ///////////////////////
-      //  var totalAllowanceInDb = 0
-        
+        var totalAllowanceInDb = 0.0
         
         let collectionName = collectionName
         let documentName = userId
@@ -70,23 +72,18 @@ class AddExpense_ViewModel: ObservableObject
         docrf.getDocument {(document,error) in
             if let document = document
             {
-                if document.exists
+                let d = document.data()
+                if let fieldVal = d?[category] as? Double
                 {
-                    let data = document.data()
-                if let totalAllowanceInDb = data[category]
-                {
-                    
-                }else
-                {
-                    
-                }
-                    
+                    totalAllowanceInDb = fieldVal
                 }
                 else
                 {
-                    
+                    totalAllowanceInDb = 0.0
                 }
-        
+            
+                self.massage = String(totalAllowanceInDb)
+                self.showMessage = true
             }
         
         

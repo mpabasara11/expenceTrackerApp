@@ -62,7 +62,13 @@ struct AddExpense_View: View {
                             addExpense_viewModel.dismissAlert()
                         })}
                 
-                
+                    //debuggggggggg
+                    .alert(isPresented: $addExpense_viewModel.showMessage) {
+                        Alert(title: Text("Empty Amount"), message: Text(addExpense_viewModel.massage), dismissButton: .default(Text("OK"))
+                                {
+                                addExpense_viewModel.dismissAlert()
+                            })}
+                    
                 
                 
                 
@@ -131,7 +137,13 @@ struct AddExpense_View: View {
                     addExpense_viewModel.expense_model.userId = "test user"
                     
                     
-                    addExpense_viewModel.addExpense(userId:addExpense_viewModel.expense_model.userId, description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
+                 //   addExpense_viewModel.addExpense(userId:addExpense_viewModel.expense_model.userId, description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
+                    
+                    
+                    addExpense_viewModel.validateAmountEfficiancy(amount: 0, collectionName: "Allowance", userId: "test user", category: "Groceries")
+                    
+                    
+                    
                 }){
                     Text("Submit")
                         .foregroundColor(.blue)
