@@ -8,12 +8,9 @@ import Firebase
 import Foundation
 class Settings_ViewModel: ObservableObject
 {
+  
     
-    init() {
-        loadLabels(userId: "test user")
-    }
-    
-    
+    @Published var usdUserId = UserDefaults.standard.string(forKey: "userId")
 
     //this model is used to take input data
     @Published var userAllowance_modelWrite =  userAllowance_Model(userId: "", mnthlyGrocerries: 0, mnthlyEntertainment: 0, mnthlyRent: 0, mnthlyUtility: 0, mnthlyTransportation: 0, mnthlyDiningOut: 0, mnthlyShopping: 0,date: Date())
@@ -31,6 +28,14 @@ class Settings_ViewModel: ObservableObject
     
     @Published var showMessage = false
     @Published var massage = ""
+    
+    
+    init() {
+        loadLabels(userId: usdUserId ?? "")
+    }
+    
+    
+    
     
     func clearFields()
     {
@@ -260,12 +265,16 @@ class Settings_ViewModel: ObservableObject
             }
         }
         
-      
 
-        
-        
-        
-        ////////////
+    }
+    
+    
+    func sighOut()
+    {
+        let isLoggedIn = false
+        let uid = ""
+        UserDefaults.standard.set(uid,forKey: "userId")
+        UserDefaults.standard.set(isLoggedIn,forKey: "isLoggedIn")
     }
     
     

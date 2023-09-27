@@ -125,7 +125,7 @@ struct Settings_View: View {
                             {
                             
                             //setting the user id before calling the method
-                            settings_viewModel.userAllowance_modelRead.userId = "test user"
+                            settings_viewModel.userAllowance_modelRead.userId = settings_viewModel.usdUserId ?? ""
                             
                             
                             settings_viewModel.clearFields()
@@ -143,7 +143,7 @@ struct Settings_View: View {
                     
                     
                     //setting the user id before calling the method
-                    settings_viewModel.userAllowance_modelWrite.userId = "test user"
+                    settings_viewModel.userAllowance_modelWrite.userId =  settings_viewModel.usdUserId ?? ""
                     
                     //setting the date before calling the method
                     let todayDate = Date()
@@ -170,7 +170,7 @@ struct Settings_View: View {
             Section
             {
                 Button(action: {
-                    
+                    settings_viewModel.sighOut()
                 }){
                     Text("Sign Out")
                         .foregroundColor(.red)

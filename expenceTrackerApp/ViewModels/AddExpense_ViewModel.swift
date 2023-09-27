@@ -26,6 +26,7 @@ class AddExpense_ViewModel: ObservableObject
     @Published var message = ""
     @Published var showmes: Bool = false
     @Published var canRunTheDbExecution :Bool = false
+    @Published var usdUserId = UserDefaults.standard.string(forKey: "userId")
     
     
    

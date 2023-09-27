@@ -12,6 +12,7 @@ class ExpenseTracking_ViewModel: ObservableObject
 {
     @Published var expense_model : [expense_Model] = []
     @Published var isSheetPresent: Bool = false
+    @Published var usdUserId = UserDefaults.standard.string(forKey: "userId")
     init() {
         addSampleExpenses()
     }
