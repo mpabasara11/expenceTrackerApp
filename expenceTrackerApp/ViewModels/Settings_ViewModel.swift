@@ -8,6 +8,12 @@ import Firebase
 import Foundation
 class Settings_ViewModel: ObservableObject
 {
+    
+    init() {
+        loadLabels(userId: "test user")
+    }
+    
+    
 
     //this model is used to take input data
     @Published var userAllowance_modelWrite =  userAllowance_Model(userId: "", mnthlyGrocerries: 0, mnthlyEntertainment: 0, mnthlyRent: 0, mnthlyUtility: 0, mnthlyTransportation: 0, mnthlyDiningOut: 0, mnthlyShopping: 0,date: Date())
@@ -204,6 +210,62 @@ class Settings_ViewModel: ObservableObject
         
            
         
+    }
+    
+    
+    
+    
+    
+    
+    func loadLabels(userId: String)
+    {
+        ///////////
+        
+        
+        
+        let docrf = Firestore.firestore().collection("Allowance").document(userId)
+        docrf.getDocument { (document, error) in
+            defer {
+               
+            }
+            if let document = document {
+               
+                if let dinOut = document.data()?["Dining Out"] as? Double {
+                    self.userAllowance_modelRead.mnthlyDiningOut = dinOut
+                }
+                
+                if let entert = document.data()?["Entertainment"] as? Double {
+                    self.userAllowance_modelRead.mnthlyEntertainment = entert
+                }
+                
+                if let groce = document.data()?["Groceries"] as? Double {
+                    self.userAllowance_modelRead.mnthlyGrocerries = groce
+                }
+                
+                if let rent = document.data()?["Rent"] as? Double {
+                    self.userAllowance_modelRead.mnthlyRent = rent
+                }
+                
+                if let shopp = document.data()?["Shopping"] as? Double {
+                    self.userAllowance_modelRead.mnthlyShopping = shopp
+                }
+                
+                if let trnas = document.data()?["Transportation"] as? Double {
+                    self.userAllowance_modelRead.mnthlyTransportation = trnas
+                }
+                
+                if let uti = document.data()?["Utilities"] as? Double {
+                    self.userAllowance_modelRead.mnthlyUtility = uti
+                }
+            }
+        }
+        
+      
+
+        
+        
+        
+        ////////////
     }
     
     

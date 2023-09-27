@@ -42,44 +42,47 @@ struct AddExpense_View: View {
             Section(header: Text("Basic"))
                 {
                 
-                TextField("Description",text:$addExpense_viewModel.expense_model.description)   .alert(isPresented: $addExpense_viewModel.notValiDescription) {
-                   Alert(title: Text("Empty Description"), message: Text("Description cannot be empty"), dismissButton: .default(Text("OK"))
-                       {
-                        addExpense_viewModel.dismissAlert()
-                    })}
-        
+                TextField("Description",text:$addExpense_viewModel.expense_model.description)
                 TextField("Place",text: $addExpense_viewModel.expense_model.place)
-                 //   .alert(isPresented: $addExpense_viewModel.notValidPlace) {
-                   //     Alert(title: Text("Empty Place"), message: Text("Place cannot be empty"), dismissButton: .default(Text("OK"))
-                       //     {
-                     //       addExpense_viewModel.dismissAlert()
-                     //   })}
-                
-                //this alert is for amount textfield.but it seems alerts are not working with textfield which output values
-                  //  .alert(isPresented: $addExpense_viewModel.notValidAmountValueZero) {
-                     //   Alert(title: Text("Empty Amount"), message: Text("Amount cannot be empty"), dismissButton: .default(Text("OK"))
-                    //        {
-                    //        addExpense_viewModel.dismissAlert()
-                    //    })}
-                
-                    //this alert is also for amount textfield.but it seems alerts are not working with textfield which output values
-                  //  .alert(isPresented: $addExpense_viewModel.notValidAmountEffiecency) {
-                   //     Alert(title: Text("Unavilable Amount"), message: Text("Entered amount is higher that your avilable target amount"), dismissButton: .default(Text("OK"))
-                         //       {
-                        //        addExpense_viewModel.dismissAlert()
-                         //   })}
-                    
               
+                //debug area
+      
+                    .alert(isPresented: $addExpense_viewModel.showmes) {
+                        Alert(title: Text(addExpense_viewModel.message), message: Text("Amount is too much"), dismissButton: .default(Text("OK"))
+                                     {
+                                     addExpense_viewModel.dismissAlert()
+                                 })}
+                         
+         
                 
                 
                 
                 
                 
                 
+                
+                
+                 //  .alert(isPresented: $addExpense_viewModel.notValidAmountEffiecency) {
+                      //  Alert(title: Text("Unavilable Amount"), message: Text("Amount is too much"), dismissButton: .default(Text("OK"))
+                             //       {
+                            //        addExpense_viewModel.dismissAlert()
+                           //     })}
+                        
+        
                 
                     TextField("Amount",value: $addExpense_viewModel.expense_model.amount,formatter:quentityFormatter).keyboardType(.decimalPad)
                  
-                    
+                        .alert(isPresented: $addExpense_viewModel.notValidAmountValueZero) {
+                            Alert(title: Text("Zero Amount"), message: Text("Amount cannot be Zero"), dismissButton: .default(Text("OK"))
+                                        {
+                                        addExpense_viewModel.dismissAlert()
+                                    })}
+                            
+                
+                
+                
+                
+                
             
                 
           
@@ -95,7 +98,7 @@ struct AddExpense_View: View {
                 .alert(isPresented: $addExpense_viewModel.notSuccessOperation) {
                     Alert(title: Text("Something Happened!"), message: Text("Could not add the expense.plese try again"), dismissButton: .default(Text("OK"))
                         {
-                       
+                        addExpense_viewModel.dismissAlert()
                     })}
                 
                 //success alert
@@ -103,8 +106,17 @@ struct AddExpense_View: View {
                     Alert(title: Text("Success"), message: Text("Expense added successfully"), dismissButton: .default(Text("OK"))
                         {
                         addExpense_viewModel.clearFields()
+                        addExpense_viewModel.dismissAlert()
                         
                     })}
+            
+       
+                
+                
+                
+                
+                
+                
                  
                 
                 }

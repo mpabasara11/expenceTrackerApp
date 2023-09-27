@@ -123,7 +123,13 @@ struct Settings_View: View {
                     .alert(isPresented: $settings_viewModel.successOperation) {
                         Alert(title: Text("Success"), message: Text("Allowance updated successfully"), dismissButton: .default(Text("OK"))
                             {
+                            
+                            //setting the user id before calling the method
+                            settings_viewModel.userAllowance_modelRead.userId = "test user"
+                            
+                            
                             settings_viewModel.clearFields()
+                            settings_viewModel.loadLabels( userId: settings_viewModel.userAllowance_modelRead.userId)
                             
                         })}
                 

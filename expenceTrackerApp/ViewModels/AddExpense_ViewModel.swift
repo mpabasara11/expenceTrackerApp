@@ -17,12 +17,15 @@ class AddExpense_ViewModel: ObservableObject
     
     
     
-    @Published var notValiDescription: Bool = false
-    @Published var notValidPlace: Bool = false
-    @Published var notValidAmountValueZero: Bool = false
+
+
     @Published var notValidAmountEffiecency:Bool = false
+    @Published var notValidAmountValueZero:Bool = false
     @Published var notSuccessOperation: Bool = false
     @Published var successOperation: Bool = false
+    @Published var message = ""
+    @Published var showmes: Bool = false
+    @Published var canRunTheDbExecution :Bool = false
     
     
    
@@ -38,45 +41,44 @@ class AddExpense_ViewModel: ObservableObject
     
     func dismissAlert()
     {
-        notValiDescription = false
-        notValidPlace = false
-        notValidAmountValueZero = false
+
         notValidAmountEffiecency = false
+        notValidAmountValueZero = false
+        canRunTheDbExecution = false
+        showmes = false
+        message = "pk"
 
     }
     
-    
-    private func validateDescription(description: String)  {
-        notValiDescription = description.isEmpty
 
-        
-       }
-
-    private func validatePlace(place: String)  {
-         notValidPlace = place.isEmpty
- 
-       }
-    
-    private func validateAmountValueZero(amount: Double)  {
+    func validateAmountValueZero(amount: Double)
+    {
         notValidAmountValueZero = !(amount > 0)
+    }
 
-        
-       }
-    
-
-    public func validateAmountEfficiency(amount: Double, collectionName1: String,collectionName2: String, userId: String, category: String, date: Date) {
+    public func validateAmountEfficiency(amount: Double, collectionName1: String,collectionName2: String, userId: String, category: String, date: Date)  {
       
+     
         //avilable total allowance on database
         var totalAllowanceInDb = 0.0
         
         //total amount of selected category  in the selected month
         var totalAmountOfMonth = 0.0
         
+        
+        
+        
+        
+        
         // Create a DispatchGroup to wait for Firestore queries to complete
-        let dispatchGroup = DispatchGroup()
+       let dispatchGroup = DispatchGroup()
+        
+        
 
         // Fetch total allowance from Firestore
         dispatchGroup.enter() // Enter the group before the Firestore query
+     
+        
         let docrf = Firestore.firestore().collection(collectionName1).document(userId)
         docrf.getDocument { (document, error) in
             defer {
@@ -88,7 +90,11 @@ class AddExpense_ViewModel: ObservableObject
                 }
             }
         }
+        
+      
 
+        
+        
         // Fetch total amount of selected category in the selected month from Firestore
         dispatchGroup.enter() // Enter the group before the Firestore query
         let dtformatter = DateFormatter()
@@ -121,27 +127,28 @@ class AddExpense_ViewModel: ObservableObject
 
                 totalAmountOfMonth = tempTotalAmount
             }
-
-        // Wait for both Firestore queries to complete
-        dispatchGroup.notify(queue: .main) {
-            // Now you can use totalAllowanceInDb and totalAmountOfMonth
-         
-            
-            
-            
-               if (totalAmountOfMonth + amount) > totalAllowanceInDb
-               {
-                self.notValidAmountEffiecency = true
         
-                
-               }
-               else
+      
+        
+        
+        // Wait for both Firestore queries to complete
+       dispatchGroup.notify(queue: .main) {
+            // Now you can use totalAllowanceInDb and totalAmountOfMonth
+          
+    
+            
+                if (totalAmountOfMonth + amount) > totalAllowanceInDb
                {
-                self.notValidAmountEffiecency = false
+               self.notValidAmountEffiecency = true
+            //        self.canRunTheDbExecution = false
+                    
+               //     self.message = String (totalAllowanceInDb)+" "+String(totalAmountOfMonth)+String(self.notValidAmountEffiecency)
+                //    self.showmes = true
                }
             
+            
+         
         }
-                
     }
 
     
@@ -151,47 +158,47 @@ class AddExpense_ViewModel: ObservableObject
     func addExpense(userId: String,description: String,place: String,amount: Double,date: Date,category: String)
     {
         
+
+        let dispatchGroup = DispatchGroup()
         
-        validateDescription(description: description)
-    //    validatePlace(place: place)
-       // validateAmountValueZero(amount: amount)
-    //    validateAmountEfficiency(amount: amount, collectionName1: "Allowance",collectionName2: "Expenses", userId: userId, category: category,date: date)
+
+        validateAmountValueZero(amount: amount)
+   
+        
+        dispatchGroup.enter()
+  
+        validateAmountEfficiency(amount: amount, collectionName1: "Allowance",collectionName2: "Expenses", userId: userId, category: category,date: date)
+      
+        dispatchGroup.leave()
+        
+        
        
+        dispatchGroup.notify(queue: .main) {
         
-     //   if notValiDescription
-      //  {
             
-       // }
-       // else
-     //   {
-        //    if notValidPlace
-       //     {
+            self.message = String (self.notValidAmountValueZero)+String(self.notValidAmountEffiecency)
+            self.showmes = true
+            
+            
+            if self.notValidAmountValueZero
+            {
                 
-       //     }
-       //     else
-        //    {
-            //    if notValidAmountValueZero
-            //    {
+            }
+            else
+            {
+                if self.notValidAmountEffiecency
+                {
                     
-           //     }
-          //      else
-          //      {
-           //         if notValidAmountEffiecency
-             //       {
-                        
-                 //   }
-                //    else
-               //     {
-                    //    addToDatabase(collectionName: "Expenses", userId: userId, description: description, place: place, amount: amount, date: date ,category: category)
-               //     }
-              //  }
-          //  }
-            
-            
-      //  }
-        
-        
-        
+                }
+                else
+                {
+                  // self.addToDatabase(collectionName: "Expenses", userId: userId, description: description, place: place, amount: amount, date: date ,category: category)
+                }
+            }
+
+      
+               
+        }
     }
     
     private func addToDatabase (collectionName: String,userId: String,description: String,place: String,amount: Double,date: Date,category: String)
