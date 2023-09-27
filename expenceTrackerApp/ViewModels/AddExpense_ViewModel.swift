@@ -23,10 +23,10 @@ class AddExpense_ViewModel: ObservableObject
     @Published var notValidAmountEffiecency:Bool = false
     @Published var notSuccessOperation: Bool = false
     @Published var successOperation: Bool = false
-   
-    @Published var massage = ""
-    @Published var showMessage = false
     
+    
+   
+
      func clearFields()
     {
         expense_model.userId = "" 
@@ -42,23 +42,25 @@ class AddExpense_ViewModel: ObservableObject
         notValidPlace = false
         notValidAmountValueZero = false
         notValidAmountEffiecency = false
-  
-        
+
     }
     
     
     private func validateDescription(description: String)  {
         notValiDescription = description.isEmpty
+
+        
        }
 
     private func validatePlace(place: String)  {
          notValidPlace = place.isEmpty
+ 
        }
     
     private func validateAmountValueZero(amount: Double)  {
         notValidAmountValueZero = !(amount > 0)
-     
-     
+
+        
        }
     
 
@@ -129,27 +131,17 @@ class AddExpense_ViewModel: ObservableObject
             
                if (totalAmountOfMonth + amount) > totalAllowanceInDb
                {
-                   self.showMessage = true
-                   self.massage = String(totalAmountOfMonth)
+                self.notValidAmountEffiecency = true
+        
+                
                }
                else
                {
-                   self.showMessage = true
-                 //  self.massage = String(totalAllowanceInDb)
-                self.massage = String(totalAmountOfMonth)+String(totalAllowanceInDb)
+                self.notValidAmountEffiecency = false
                }
             
-            
-            
-            
-            
-            
-            
         }
-        
-   
-        
-        
+                
     }
 
     
@@ -161,41 +153,42 @@ class AddExpense_ViewModel: ObservableObject
         
         
         validateDescription(description: description)
-        validatePlace(place: place)
-        validateAmountValueZero(amount: amount)
-
+    //    validatePlace(place: place)
+       // validateAmountValueZero(amount: amount)
+    //    validateAmountEfficiency(amount: amount, collectionName1: "Allowance",collectionName2: "Expenses", userId: userId, category: category,date: date)
+       
         
-        if notValiDescription
-        {
+     //   if notValiDescription
+      //  {
             
-        }
-        else
-        {
-            if notValidPlace
-            {
+       // }
+       // else
+     //   {
+        //    if notValidPlace
+       //     {
                 
-            }
-            else
-            {
-                if notValidAmountValueZero
-                {
+       //     }
+       //     else
+        //    {
+            //    if notValidAmountValueZero
+            //    {
                     
-                }
-                else
-                {
-                    if notValidAmountEffiecency
-                    {
+           //     }
+          //      else
+          //      {
+           //         if notValidAmountEffiecency
+             //       {
                         
-                    }
-                    else
-                    {
-                        addToDatabase(collectionName: "Expenses", userId: userId, description: description, place: place, amount: amount, date: date ,category: category)
-                    }
-                }
-            }
+                 //   }
+                //    else
+               //     {
+                    //    addToDatabase(collectionName: "Expenses", userId: userId, description: description, place: place, amount: amount, date: date ,category: category)
+               //     }
+              //  }
+          //  }
             
             
-        }
+      //  }
         
         
         

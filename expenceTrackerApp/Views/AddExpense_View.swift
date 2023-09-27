@@ -43,32 +43,35 @@ struct AddExpense_View: View {
                 {
                 
                 TextField("Description",text:$addExpense_viewModel.expense_model.description)   .alert(isPresented: $addExpense_viewModel.notValiDescription) {
-                    Alert(title: Text("Empty Description"), message: Text("Description cannot be empty"), dismissButton: .default(Text("OK"))
-                        {
+                   Alert(title: Text("Empty Description"), message: Text("Description cannot be empty"), dismissButton: .default(Text("OK"))
+                       {
                         addExpense_viewModel.dismissAlert()
                     })}
         
                 TextField("Place",text: $addExpense_viewModel.expense_model.place)
-                    .alert(isPresented: $addExpense_viewModel.notValidPlace) {
-                        Alert(title: Text("Empty Place"), message: Text("Place cannot be empty"), dismissButton: .default(Text("OK"))
-                            {
-                            addExpense_viewModel.dismissAlert()
-                        })}
+                 //   .alert(isPresented: $addExpense_viewModel.notValidPlace) {
+                   //     Alert(title: Text("Empty Place"), message: Text("Place cannot be empty"), dismissButton: .default(Text("OK"))
+                       //     {
+                     //       addExpense_viewModel.dismissAlert()
+                     //   })}
                 
                 //this alert is for amount textfield.but it seems alerts are not working with textfield which output values
-                    .alert(isPresented: $addExpense_viewModel.notValidAmountValueZero) {
-                        Alert(title: Text("Empty Amount"), message: Text("Amount cannot be empty"), dismissButton: .default(Text("OK"))
-                            {
-                            addExpense_viewModel.dismissAlert()
-                        })}
+                  //  .alert(isPresented: $addExpense_viewModel.notValidAmountValueZero) {
+                     //   Alert(title: Text("Empty Amount"), message: Text("Amount cannot be empty"), dismissButton: .default(Text("OK"))
+                    //        {
+                    //        addExpense_viewModel.dismissAlert()
+                    //    })}
                 
-                    //debuggggggggg
-                    .alert(isPresented: $addExpense_viewModel.showMessage) {
-                        Alert(title: Text("Empty Amount"), message: Text(addExpense_viewModel.massage), dismissButton: .default(Text("OK"))
-                                {
-                                addExpense_viewModel.dismissAlert()
-                            })}
+                    //this alert is also for amount textfield.but it seems alerts are not working with textfield which output values
+                  //  .alert(isPresented: $addExpense_viewModel.notValidAmountEffiecency) {
+                   //     Alert(title: Text("Unavilable Amount"), message: Text("Entered amount is higher that your avilable target amount"), dismissButton: .default(Text("OK"))
+                         //       {
+                        //        addExpense_viewModel.dismissAlert()
+                         //   })}
                     
+              
+                
+                
                 
                 
                 
@@ -115,9 +118,7 @@ struct AddExpense_View: View {
                         Text($0)
                         }
                     }.pickerStyle(DefaultPickerStyle())
-               // Text("you selected: \(selectedOp)")
-               
-                
+       
                          }
             
             Section
@@ -133,10 +134,10 @@ struct AddExpense_View: View {
                     addExpense_viewModel.expense_model.userId = "test user"
                     
                     
-                //  addExpense_viewModel.addExpense(userId:addExpense_viewModel.expense_model.userId, description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
+                  addExpense_viewModel.addExpense(userId:addExpense_viewModel.expense_model.userId, description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
                     
                     
-                    addExpense_viewModel.validateAmountEfficiency(amount:addExpense_viewModel.expense_model.amount, collectionName1: "Allowance",collectionName2: "Expenses", userId: "test user", category:addExpense_viewModel.expense_model.category,date: addExpense_viewModel.expense_model.date)
+                    //addExpense_viewModel.validateAmountEfficiency(amount:addExpense_viewModel.expense_model.amount, collectionName1: "Allowance",collectionName2: "Expenses", userId: "test user", category:addExpense_viewModel.expense_model.category,date: addExpense_viewModel.expense_model.date)
                     
                     
                     
