@@ -36,7 +36,7 @@ struct Settings_View: View {
         NavigationView{
         Form
         {
-            Section(header: Text("Current"))
+            Section(header: Text("Current"), footer: Text("View your current allowance settings"))
                 {
                 HStack
                   {
@@ -88,7 +88,7 @@ struct Settings_View: View {
                
                 }
             
-            Section(header: Text("Update"))
+            Section(header: Text("Update"), footer: Text("Update your each allownce settings"))
                 {
                 
                 
@@ -135,6 +135,9 @@ struct Settings_View: View {
                 
                 }
             
+            
+          
+            
             Section{
                 Button(action: {
                     
@@ -162,7 +165,18 @@ struct Settings_View: View {
                         .frame(maxWidth: .infinity)
            
                 } .buttonStyle(BorderlessButtonStyle())           }
-    
+                
+                
+            Section
+            {
+                Button(action: {
+                    
+                }){
+                    Text("Sign Out")
+                        .foregroundColor(.red)
+                        .frame(maxWidth: .infinity)
+           
+                } .buttonStyle(BorderlessButtonStyle())               }
             
             
             
