@@ -31,6 +31,8 @@
 		84DEED662AB03B2A00B31716 /* user_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEED652AB03B2A00B31716 /* user_Model.swift */; };
 		84EBADAE2ABDA37F001270EC /* AddExpense_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBADAD2ABDA37F001270EC /* AddExpense_View.swift */; };
 		84EBADB02ABDA45A001270EC /* AddExpense_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBADAF2ABDA45A001270EC /* AddExpense_ViewModel.swift */; };
+		84EFB1602AC4C0A10066C066 /* OverView_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFB15F2AC4C0A10066C066 /* OverView_View.swift */; };
+		84EFB1622AC4C0C10066C066 /* Reports_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFB1612AC4C0C10066C066 /* Reports_View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		84DEED652AB03B2A00B31716 /* user_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user_Model.swift; sourceTree = "<group>"; };
 		84EBADAD2ABDA37F001270EC /* AddExpense_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_View.swift; sourceTree = "<group>"; };
 		84EBADAF2ABDA45A001270EC /* AddExpense_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_ViewModel.swift; sourceTree = "<group>"; };
+		84EFB15F2AC4C0A10066C066 /* OverView_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverView_View.swift; sourceTree = "<group>"; };
+		84EFB1612AC4C0C10066C066 /* Reports_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reports_View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 				84B9FE352AB96FE300BE67D1 /* ExpenseTracking_View.swift */,
 				84EBADAD2ABDA37F001270EC /* AddExpense_View.swift */,
 				8422D52A2ABEC244003E5ADA /* Settings_View.swift */,
+				84EFB15F2AC4C0A10066C066 /* OverView_View.swift */,
+				84EFB1612AC4C0C10066C066 /* Reports_View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 				84042A772AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift in Sources */,
 				846DD6152AADC66500C3B636 /* CreateAccount_View.swift in Sources */,
 				84B9FE382AB971CE00BE67D1 /* expense_Model.swift in Sources */,
+				84EFB1602AC4C0A10066C066 /* OverView_View.swift in Sources */,
 				84B9FE3A2AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift in Sources */,
 				84EBADB02ABDA45A001270EC /* AddExpense_ViewModel.swift in Sources */,
 				84BDDAAD2AB4305500582D94 /* Dashboard_View.swift in Sources */,
@@ -250,6 +257,7 @@
 				8422D52B2ABEC26D003E5ADA /* Settings_View.swift in Sources */,
 				84DEED662AB03B2A00B31716 /* user_Model.swift in Sources */,
 				84DEED622AB039DA00B31716 /* Login_ViewModel.swift in Sources */,
+				84EFB1622AC4C0C10066C066 /* Reports_View.swift in Sources */,
 				84B9FE362AB96FE400BE67D1 /* ExpenseTracking_View.swift in Sources */,
 				84DEED642AB03B0000B31716 /* CreateAccount_ViewModel.swift in Sources */,
 				846DD5FC2AADA15B00C3B636 /* expenceTrackerAppApp.swift in Sources */,

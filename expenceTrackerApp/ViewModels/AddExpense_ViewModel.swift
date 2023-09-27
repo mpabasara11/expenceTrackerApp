@@ -25,10 +25,10 @@ class AddExpense_ViewModel: ObservableObject
     @Published var successOperation: Bool = false
     @Published var message = ""
     @Published var showmes: Bool = false
-    @Published var canRunTheDbExecution :Bool = false
     @Published var usdUserId = UserDefaults.standard.string(forKey: "userId")
     
-    
+    @Published var totalAllowanceInDb = 0.0
+    @Published var totalAmountOfMonth = 0.0
    
 
      func clearFields()
@@ -45,7 +45,6 @@ class AddExpense_ViewModel: ObservableObject
 
         notValidAmountEffiecency = false
         notValidAmountValueZero = false
-        canRunTheDbExecution = false
         showmes = false
         message = "pk"
 
@@ -60,34 +59,16 @@ class AddExpense_ViewModel: ObservableObject
     public func validateAmountEfficiency(amount: Double, collectionName1: String,collectionName2: String, userId: String, category: String, date: Date)  {
       
      
-        //avilable total allowance on database
-        var totalAllowanceInDb = 0.0
-        
-        //total amount of selected category  in the selected month
-        var totalAmountOfMonth = 0.0
-        
-        
-        
-        
-        
-        
-        // Create a DispatchGroup to wait for Firestore queries to complete
-       let dispatchGroup = DispatchGroup()
-        
-        
-
-        // Fetch total allowance from Firestore
-        dispatchGroup.enter() // Enter the group before the Firestore query
-     
         
         let docrf = Firestore.firestore().collection(collectionName1).document(userId)
         docrf.getDocument { (document, error) in
             defer {
-                dispatchGroup.leave() // Leave the group whether the query succeeds or fails
+        
             }
             if let document = document {
                 if let fieldVal = document.data()?[category] as? Double {
-                    totalAllowanceInDb = fieldVal
+        
+                    self.totalAllowanceInDb = fieldVal
                 }
             }
         }
@@ -95,9 +76,7 @@ class AddExpense_ViewModel: ObservableObject
       
 
         
-        
-        // Fetch total amount of selected category in the selected month from Firestore
-        dispatchGroup.enter() // Enter the group before the Firestore query
+   
         let dtformatter = DateFormatter()
         dtformatter.dateFormat = "YYYY/MM"
         let dtForOp = dtformatter.string(from: date)
@@ -111,7 +90,7 @@ class AddExpense_ViewModel: ObservableObject
             .whereField("dtForOperations", isEqualTo: dtForOp)
             .getDocuments { (querySnapshot, error) in
                 defer {
-                    dispatchGroup.leave() // Leave the group whether the query succeeds or fails
+            
                 }
                 if let error = error {
                     print("Error getting documents: \(error)")
@@ -126,30 +105,20 @@ class AddExpense_ViewModel: ObservableObject
                     }
                 }
 
-                totalAmountOfMonth = tempTotalAmount
+        
+                self.totalAmountOfMonth = tempTotalAmount
             }
         
       
         
         
-        // Wait for both Firestore queries to complete
-       dispatchGroup.notify(queue: .main) {
-            // Now you can use totalAllowanceInDb and totalAmountOfMonth
-          
-    
-            
-                if (totalAmountOfMonth + amount) > totalAllowanceInDb
-               {
-               self.notValidAmountEffiecency = true
-            //        self.canRunTheDbExecution = false
-                    
-               //     self.message = String (totalAllowanceInDb)+" "+String(totalAmountOfMonth)+String(self.notValidAmountEffiecency)
-                //    self.showmes = true
-               }
-            
-            
-         
+        
+        if ( totalAmountOfMonth + amount ) > totalAllowanceInDb
+        {
+            self.notValidAmountEffiecency = true
         }
+        
+      
     }
 
     
@@ -158,48 +127,42 @@ class AddExpense_ViewModel: ObservableObject
     
     func addExpense(userId: String,description: String,place: String,amount: Double,date: Date,category: String)
     {
-        
-
-        let dispatchGroup = DispatchGroup()
-        
-
+     
         validateAmountValueZero(amount: amount)
    
-        
-        dispatchGroup.enter()
+ 
   
         validateAmountEfficiency(amount: amount, collectionName1: "Allowance",collectionName2: "Expenses", userId: userId, category: category,date: date)
       
-        dispatchGroup.leave()
-        
-        
-       
-        dispatchGroup.notify(queue: .main) {
-        
-            
-            self.message = String (self.notValidAmountValueZero)+String(self.notValidAmountEffiecency)
-            self.showmes = true
+  
             
             
-            if self.notValidAmountValueZero
+            if self.notValidAmountValueZero == true
             {
-                
+              
             }
-            else
+            else if self.notValidAmountValueZero == false
             {
-                if self.notValidAmountEffiecency
+               
+                 
+                if self.notValidAmountEffiecency == true
+                {
+                  
+                }
+                else if self.notValidAmountEffiecency == false
                 {
                     
-                }
-                else
-                {
-                  // self.addToDatabase(collectionName: "Expenses", userId: userId, description: description, place: place, amount: amount, date: date ,category: category)
+                  //  self.message = String (self.notValidAmountValueZero)+String(self.notValidAmountEffiecency)+String //(self.totalAllowanceInDb)+String(self.totalAmountOfMonth)
+                  //  self.showmes = true
+                    
+                    
+                    
+                    
+                  self.addToDatabase(collectionName: "Expenses", userId: userId, description: description, place: place, amount: amount, date: date ,category: category)
                 }
             }
 
-      
-               
-        }
+
     }
     
     private func addToDatabase (collectionName: String,userId: String,description: String,place: String,amount: Double,date: Date,category: String)

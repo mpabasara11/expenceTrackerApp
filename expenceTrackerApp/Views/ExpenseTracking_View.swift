@@ -29,60 +29,65 @@ struct ExpenseTracking_View: View {
             VStack{
                 List(expenseTracking_viewModel.expense_model, id: \.id) { expense in
                     
-                                VStack(alignment: .leading) {
-                           
-                                    HStack {
-                                        //   Image(systemName: "folder.fill") // Replace with the appropriate SF Symbol name
-                                            //   .foregroundColor(Color.blue)
-                                             //  .font(.title)
-                                           Text("Category: \(expense.category)")
-                                             //  .font(.headline)
-                                             //  .foregroundColor(Color.blue)
-                                       }
-                                    
-                                    HStack {
-                                      //   Image(systemName: "creditcard.fill") // Replace with the appropriate SF Symbol name
-                                           //  .foregroundColor(.secondary)
-                                           //  .font(.subheadline)
-                                         Text("Amount: \(String(format: "%.2f", expense.amount))")
-                                           //  .font(.subheadline)
-                                           //  .foregroundColor(.secondary)
-                                     }
-                                    HStack {
-                                         // Image(systemName: "calendar") // Replace with the appropriate SF Symbol name
-                                             // .foregroundColor(.secondary)
-                                             // .font(.subheadline)
-                                          Text("Date: \(expense.date, formatter: dateFormatter)")
-                                            //  .font(.subheadline)
-                                            //  .foregroundColor(.secondary)
-                                      }
-                                    
-                                    HStack {
-                                        //   Image(systemName: "doc.text") // Replace with the appropriate SF Symbol name
-                                             //  .foregroundColor(.primary)
-                                             //  .font(.body)
-                                           Text("Description: \(expense.description)")
-                                            //   .font(.body)
-                                            //   .foregroundColor(.primary)
-                                       }
-                                    
-                                    if let place = expense.place {
-                                         HStack {
-                                            // Image(systemName: "location.fill") // Replace with the appropriate SF Symbol name
-                                              //  .foregroundColor(.primary)
-                                              //   .font(.footnote)
-                                             Text("Place: \(place)")
-                                               //  .font(.footnote)
-                                              //   .foregroundColor(.primary)
-                                         }
-                                     }
-             
-                                }
+                    VStack(alignment:.leading){
+                        
+                        HStack{
+                            Text("🚀").font(.title2)
+                            Text("Category: \(expense.category)").font(.title3).bold()
+                                .foregroundColor(.primary)
+                            
+                            
+                        }
+                        
+                        
+                        HStack{
+                            Text("💰").font(.subheadline)
+                            Text("Amount: \(expense.amount)").font(.title3)
+                                .foregroundColor(.secondary)
+                            
+                        }
+                        
+                        HStack{
+                            Text("📅").font(.subheadline)
+                            Text("Date: \(expense.date,formatter:dateFormatter)").font(.title3)
+                                .foregroundColor(.secondary)
+
+                            
+                            
+                        }
+                        
+                  
+                        
+                        HStack{
+                            Text("📌").font(.subheadline)
+                            Text("Description: \(expense.description)").font(.title3)
+                                .foregroundColor(.secondary)
+
+                            
+                            
+                        }
+                        
+                        
+                        HStack{
+                            Text("🏠").font(.subheadline)
+                            Text("Location: \(expense.place)").font(.title3)
+                                .foregroundColor(.secondary)
+                                
+
+                            
+                            
+                        }
+                        
+                        
+                        
+                    }.background(Color.gray)
+                    
+                    
             
-                }.padding(10)
-                .background(Color.white)
+                }.padding(8)
+                .background(Color.blue)
                 .cornerRadius(10)
-                .shadow(radius: 5)
+                //.shadow(radius: 5)
                     
                     Button(action: {
                         expenseTracking_viewModel.isSheetPresent = true

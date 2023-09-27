@@ -44,48 +44,30 @@ struct AddExpense_View: View {
                 
                 TextField("Description",text:$addExpense_viewModel.expense_model.description)
                 TextField("Place",text: $addExpense_viewModel.expense_model.place)
-              
-                //debug area
+     
+                
+                      
+                         .alert(isPresented: $addExpense_viewModel.notValidAmountEffiecency) {
+                              Alert(title: Text("Unavilable Amount"), message: Text("Amount is too much"), dismissButton: .default(Text("OK"))
+                                          {
+                                          addExpense_viewModel.dismissAlert()
+                                      })}
+                              
+            
+            
       
-                    .alert(isPresented: $addExpense_viewModel.showmes) {
-                        Alert(title: Text(addExpense_viewModel.message), message: Text("Amount is too much"), dismissButton: .default(Text("OK"))
-                                     {
-                                     addExpense_viewModel.dismissAlert()
-                                 })}
-                         
-         
-                
-                
-                
-                
-                
-                
-                
-                
-                 //  .alert(isPresented: $addExpense_viewModel.notValidAmountEffiecency) {
-                      //  Alert(title: Text("Unavilable Amount"), message: Text("Amount is too much"), dismissButton: .default(Text("OK"))
-                             //       {
-                            //        addExpense_viewModel.dismissAlert()
-                           //     })}
-                        
         
                 
                     TextField("Amount",value: $addExpense_viewModel.expense_model.amount,formatter:quentityFormatter).keyboardType(.decimalPad)
                  
-                        .alert(isPresented: $addExpense_viewModel.notValidAmountValueZero) {
-                            Alert(title: Text("Zero Amount"), message: Text("Amount cannot be Zero"), dismissButton: .default(Text("OK"))
-                                        {
-                                        addExpense_viewModel.dismissAlert()
-                                    })}
-                            
-                
-                
-                
-                
-                
-            
-                
-          
+                     
+                        
+                              .alert(isPresented: $addExpense_viewModel.notValidAmountValueZero) {
+                                  Alert(title: Text("Zero Amount"), message: Text("Amount cannot be Zero"), dismissButton: .default(Text("OK"))
+                                              {
+                                              addExpense_viewModel.dismissAlert()
+                                          })}
+               
                 
                 DatePicker("Date",selection: $addExpense_viewModel.expense_model.date,displayedComponents: .date)
                             
@@ -143,13 +125,13 @@ struct AddExpense_View: View {
                     
                     
                     //setting the username before calling the method
-                    addExpense_viewModel.expense_model.userId = "test user"
+                    addExpense_viewModel.expense_model.userId = addExpense_viewModel.usdUserId ?? ""
                     
+                 
                     
                   addExpense_viewModel.addExpense(userId:addExpense_viewModel.expense_model.userId, description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
                     
-                    
-                    //addExpense_viewModel.validateAmountEfficiency(amount:addExpense_viewModel.expense_model.amount, collectionName1: "Allowance",collectionName2: "Expenses", userId: "test user", category:addExpense_viewModel.expense_model.category,date: addExpense_viewModel.expense_model.date)
+              
                     
                     
                     
