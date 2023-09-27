@@ -61,87 +61,99 @@ class AddExpense_ViewModel: ObservableObject
      
        }
     
-    public func validateAmountEfficiancy(amount: Double,collectionName: String,userId: String,category: String,date: Date)  {
-  
-       ///////////////////////
-    
-        
+
+    public func validateAmountEfficiency(amount: Double, collectionName: String, userId: String, category: String, date: Date) {
+      
         //avilable total allowance on database
         var totalAllowanceInDb = 0.0
         
         //total amount of selected category  in the selected month
         var totalAmountOfMonth = 0.0
         
-        
-        
-        
-        
-        let collectionName = collectionName
-        let documentName = userId
-        let docrf = Firestore.firestore().collection(collectionName).document(documentName)
-        docrf.getDocument {(document,error) in
-            if let document = document
-            {
-                let d = document.data()
-                if let fieldVal = d?[category] as? Double
-                {
-                   totalAllowanceInDb = fieldVal
-                }
-                else
-                {
-                   totalAllowanceInDb = 0.0
-                }
-            
-                self.massage = String(totalAllowanceInDb)
+        // Create a DispatchGroup to wait for Firestore queries to complete
+        let dispatchGroup = DispatchGroup()
+
+        // Fetch total allowance from Firestore
+        dispatchGroup.enter() // Enter the group before the Firestore query
+        let docrf = Firestore.firestore().collection(collectionName).document(userId)
+        docrf.getDocument { (document, error) in
+            defer {
+                dispatchGroup.leave() // Leave the group whether the query succeeds or fails
             }
-          
-      
+            if let document = document {
+                if let fieldVal = document.data()?[category] as? Double {
+                    totalAllowanceInDb = fieldVal
+                }
+            }
         }
-     /////////////////////
-      
-         let dtformatter = DateFormatter()
-          dtformatter.dateFormat = "YYYY/MM"
-          let dtForOp = dtformatter.string(from: date)
-        
-    
+
+        // Fetch total amount of selected category in the selected month from Firestore
+        dispatchGroup.enter() // Enter the group before the Firestore query
+        let dtformatter = DateFormatter()
+        dtformatter.dateFormat = "YYYY/MM"
+        let dtForOp = dtformatter.string(from: date)
+
         let db = Firestore.firestore()
-              let collectionRef = db.collection("Expenses")
+        let collectionRef = db.collection("Expenses")
 
-              collectionRef
-                .whereField("userId", isEqualTo: userId)
-                .whereField("category", isEqualTo: category)
-                .whereField("dtForOperations",isEqualTo:dtForOp )
-                  .getDocuments { (querySnapshot, error) in
-                      if let error = error {
-                          print("Error getting documents: \(error)")
-                          return
-                      }
+        collectionRef
+            .whereField("userId", isEqualTo: userId)
+            .whereField("category", isEqualTo: category)
+            .whereField("dtForOperations", isEqualTo: dtForOp)
+            .getDocuments { (querySnapshot, error) in
+                defer {
+                    dispatchGroup.leave() // Leave the group whether the query succeeds or fails
+                }
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                    return
+                }
 
-                      var tempTotalAmount: Double = 0.0
+                var tempTotalAmount: Double = 0.0
 
-                      for document in querySnapshot!.documents {
-                          if let amount = document.data()["amount"] as? Double {
-                              tempTotalAmount += amount
-                          }
-                      }
+                for document in querySnapshot!.documents {
+                    if let amount = document.data()["amount"] as? Double {
+                        tempTotalAmount += amount
+                    }
+                }
 
-                     totalAmountOfMonth = tempTotalAmount
-                    
-       
-                  }
-        
-        
-       
-        
-        
-        self.showMessage = true
-       self.massage = String(totalAllowanceInDb)
-        
-        
-      
-        //////////////////////
-       }
+                totalAmountOfMonth = tempTotalAmount
+            }
 
+        // Wait for both Firestore queries to complete
+        dispatchGroup.notify(queue: .main) {
+            // Now you can use totalAllowanceInDb and totalAmountOfMonth
+         
+            
+            
+            
+               if (totalAmountOfMonth + amount) > totalAllowanceInDb
+               {
+                   self.showMessage = true
+                   self.massage = String(totalAmountOfMonth)
+               }
+               else
+               {
+                   self.showMessage = true
+                 //  self.massage = String(totalAllowanceInDb)
+                self.massage = String(totalAmountOfMonth)+String(totalAllowanceInDb)
+               }
+            
+            
+            
+            
+            
+            
+            
+        }
+        
+   
+        
+        
+    }
+
+    
+    
 
     
     func addExpense(userId: String,description: String,place: String,amount: Double,date: Date,category: String)
