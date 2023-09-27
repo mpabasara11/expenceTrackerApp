@@ -62,7 +62,7 @@ class AddExpense_ViewModel: ObservableObject
        }
     
 
-    public func validateAmountEfficiency(amount: Double, collectionName: String, userId: String, category: String, date: Date) {
+    public func validateAmountEfficiency(amount: Double, collectionName1: String,collectionName2: String, userId: String, category: String, date: Date) {
       
         //avilable total allowance on database
         var totalAllowanceInDb = 0.0
@@ -75,7 +75,7 @@ class AddExpense_ViewModel: ObservableObject
 
         // Fetch total allowance from Firestore
         dispatchGroup.enter() // Enter the group before the Firestore query
-        let docrf = Firestore.firestore().collection(collectionName).document(userId)
+        let docrf = Firestore.firestore().collection(collectionName1).document(userId)
         docrf.getDocument { (document, error) in
             defer {
                 dispatchGroup.leave() // Leave the group whether the query succeeds or fails
@@ -94,7 +94,7 @@ class AddExpense_ViewModel: ObservableObject
         let dtForOp = dtformatter.string(from: date)
 
         let db = Firestore.firestore()
-        let collectionRef = db.collection("Expenses")
+        let collectionRef = db.collection(collectionName2)
 
         collectionRef
             .whereField("userId", isEqualTo: userId)

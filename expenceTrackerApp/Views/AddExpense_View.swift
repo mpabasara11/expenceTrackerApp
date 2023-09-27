@@ -136,7 +136,7 @@ struct AddExpense_View: View {
                 //  addExpense_viewModel.addExpense(userId:addExpense_viewModel.expense_model.userId, description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
                     
                     
-                    addExpense_viewModel.validateAmountEfficiency(amount:addExpense_viewModel.expense_model.amount, collectionName: "Allowance", userId: "test user", category:addExpense_viewModel.expense_model.category,date: addExpense_viewModel.expense_model.date)
+                    addExpense_viewModel.validateAmountEfficiency(amount:addExpense_viewModel.expense_model.amount, collectionName1: "Allowance",collectionName2: "Expenses", userId: "test user", category:addExpense_viewModel.expense_model.category,date: addExpense_viewModel.expense_model.date)
                     
                     
                     
