@@ -17,7 +17,7 @@ struct expense_Model : Identifiable
     var place : String
     
     
-    init(userId: String,date: Date,category: String,amount: Double,description: String,place: String) {
+init(userId: String,date: Date,category: String,amount: Double,description: String,place: String) {
         
         self.userId = userId
        self.date = date

@@ -13,6 +13,11 @@ struct Settings_View: View {
     @ObservedObject var settings_viewModel = Settings_ViewModel()
     
     
+    @AppStorage("useTouchId") private var useTouchId:Bool = false
+    
+    @State var signOutConfirm = false
+    
+    
     //custom numberformatter for removing zero on textboxes
     let quentityFormatter: NumberFormatter = {
             let formatter = NumberFormatter()
@@ -132,7 +137,7 @@ struct Settings_View: View {
                             settings_viewModel.loadLabels( userId: settings_viewModel.userAllowance_modelRead.userId)
                             
                         })}
-                
+                    
                 }
             
             
@@ -167,16 +172,47 @@ struct Settings_View: View {
                 } .buttonStyle(BorderlessButtonStyle())           }
                 
                 
-            Section
+            
+            Section(header: Text("Additional Security"), footer: Text("Once enabled touchID will be used to sign in"))
             {
+                Toggle("Use Touch ID to sign in",isOn: $useTouchId).onChange(of: useTouchId){ value in
+                    
+                    UserDefaults.standard.setValue(value, forKey: "useTouchId")
+                }
+                
+                
+                
+                
+            }
+            
+            
+            
+            
+            
+            
+            Section
+                {
+                
                 Button(action: {
-                    settings_viewModel.sighOut()
+                   signOutConfirm = true
                 }){
                     Text("Sign Out")
                         .foregroundColor(.red)
                         .frame(maxWidth: .infinity)
+                        
            
-                } .buttonStyle(BorderlessButtonStyle())               }
+                } .buttonStyle(BorderlessButtonStyle())
+                .alert(isPresented: $signOutConfirm) {
+                    Alert(title: Text("Are you sure you want to Sign Out ?"),message: Text(""),primaryButton: .destructive(Text("Sure"))
+                        {
+                        signOutConfirm = false
+                       // settings_viewModel.sighOut()
+                    },secondaryButton: .cancel()
+                    {
+                        signOutConfirm = false
+                    }
+                )}
+            }
             
             
             
@@ -189,7 +225,7 @@ struct Settings_View: View {
 struct Settings_View_Previews: PreviewProvider {
     static var previews: some View {
         Settings_View()
-            .preferredColorScheme(.dark)
+           // .preferredColorScheme(.dark)
             
     }
 }

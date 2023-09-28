@@ -62,7 +62,10 @@ class Login_ViewModel : ObservableObject
                 
                 let isLoggedIn = true
                 
-                UserDefaults.standard.set(uid,forKey: "userId")
+                var testUserid = "test user"
+                
+                
+                UserDefaults.standard.set(testUserid,forKey: "userId")
                 UserDefaults.standard.set(isLoggedIn,forKey: "isLoggedIn")
             }
         }

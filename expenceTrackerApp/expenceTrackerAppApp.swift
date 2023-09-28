@@ -10,7 +10,8 @@ import Firebase
 
 @main
 struct expenceTrackerAppApp: App {
-    
+   
+  
     init() {
         
         FirebaseApp.configure()

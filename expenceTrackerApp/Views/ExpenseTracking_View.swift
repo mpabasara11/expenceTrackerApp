@@ -27,30 +27,30 @@ struct ExpenseTracking_View: View {
         NavigationView
         {
             VStack{
-                List(expenseTracking_viewModel.expense_model, id: \.id) { expense in
+                List(expenseTracking_viewModel.expense_modelArray, id: \.id) { expense in
                     
                     VStack(alignment:.leading){
                         
                         HStack{
-                            Text("🚀").font(.title2)
+                          //  Text("🚀").font(.title2)
                             Text("Category: \(expense.category)").font(.title3).bold()
-                                .foregroundColor(.primary)
+                               .foregroundColor(.primary)
                             
                             
                         }
                         
                         
                         HStack{
-                            Text("💰").font(.subheadline)
-                            Text("Amount: \(expense.amount)").font(.title3)
-                                .foregroundColor(.secondary)
+                          //  Text("💰").font(.subheadline)
+                          //  Text("Amount: \(expense.amount)").font(.title3)
+                          //      .foregroundColor(.secondary)
                             
                         }
                         
                         HStack{
-                            Text("📅").font(.subheadline)
-                            Text("Date: \(expense.date,formatter:dateFormatter)").font(.title3)
-                                .foregroundColor(.secondary)
+                        //    Text("📅").font(.subheadline)
+                          //  Text("Date: \(expense.date,formatter:dateFormatter)").font(.title3)
+                            //    .foregroundColor(.secondary)
 
                             
                             
@@ -59,9 +59,9 @@ struct ExpenseTracking_View: View {
                   
                         
                         HStack{
-                            Text("📌").font(.subheadline)
+                          //  Text("📌").font(.subheadline)
                             Text("Description: \(expense.description)").font(.title3)
-                                .foregroundColor(.secondary)
+                           //     .foregroundColor(.secondary)
 
                             
                             
@@ -69,9 +69,9 @@ struct ExpenseTracking_View: View {
                         
                         
                         HStack{
-                            Text("🏠").font(.subheadline)
+                          //  Text("🏠").font(.subheadline)
                             Text("Location: \(expense.place)").font(.title3)
-                                .foregroundColor(.secondary)
+                           //     .foregroundColor(.secondary)
                                 
 
                             
@@ -80,7 +80,7 @@ struct ExpenseTracking_View: View {
                         
                         
                         
-                    }.background(Color.gray)
+                    }
                     
                     
             

@@ -30,6 +30,9 @@ class Settings_ViewModel: ObservableObject
     @Published var massage = ""
     
     
+    
+    
+    
     init() {
         loadLabels(userId: usdUserId ?? "")
     }
@@ -272,14 +275,17 @@ class Settings_ViewModel: ObservableObject
     func sighOut()
     {
         let isLoggedIn = false
+        let useTouchId = false
         let uid = ""
         UserDefaults.standard.set(uid,forKey: "userId")
         UserDefaults.standard.set(isLoggedIn,forKey: "isLoggedIn")
+        UserDefaults.standard.setValue(useTouchId, forKey: "useTouchId")
     }
     
     
     
- 
+  //  UserDefaults.standard.set(uid,forKey: "userId")
+  //  UserDefaults.standard.set(isLoggedIn,forKey: "isLoggedIn")
     
     
 }
