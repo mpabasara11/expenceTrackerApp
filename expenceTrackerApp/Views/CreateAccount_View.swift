@@ -103,7 +103,7 @@ struct CreateAccount_View: View {
 struct createAccount_View_Previews: PreviewProvider {
     static var previews: some View {
         CreateAccount_View()
-            .preferredColorScheme(.dark)
+            
             
     }
 }

@@ -31,7 +31,7 @@ struct SplashScreen_View: View {
                 Image("owl_002")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height:100)
+                    .frame(width: 150, height:150)
                     .font(.system(size: 80))
                     .foregroundColor(.red)
                 Text("WalletWise")
@@ -81,7 +81,7 @@ struct SplashScreen_View: View {
 struct SplashScreen_View_Previews: PreviewProvider {
     static var previews: some View {
         SplashScreen_View()
-            .preferredColorScheme(.dark)
+          //  .preferredColorScheme(.dark)
     }
 }
 
