@@ -109,6 +109,22 @@ struct ExpenseTracking_View: View {
             }.sheet(isPresented: $expenseTracking_viewModel.isSheetPresent,onDismiss:
                         {
                             expenseTracking_viewModel.isSheetPresent = false
+                            
+                            
+                            
+                            //setting the user id before calling the method
+                           
+                            expenseTracking_viewModel.expense_model.userId = expenseTracking_viewModel.usdUserId ?? ""
+                            
+                            
+                            
+                            expenseTracking_viewModel.addExpensesToView(userId: expenseTracking_viewModel.expense_model.userId)
+                            
+                            
+                            
+                            
+                            
+                            
                         })
                 {
                 

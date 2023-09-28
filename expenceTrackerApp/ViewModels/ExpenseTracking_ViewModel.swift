@@ -12,17 +12,18 @@ import Firebase
 class ExpenseTracking_ViewModel: ObservableObject
 {
     @Published var expense_modelArray : [expense_Model] = []
+    @Published var expense_model = expense_Model(userId: "", date: Date(), category: "", amount: 0.0, description: "", place: "")
     @Published var isSheetPresent: Bool = false
     @Published var usdUserId = UserDefaults.standard.string(forKey: "userId")
     init() {
-        addSampleExpenses(collectionName: "Expenses", userId: "test user")
+        addExpensesToView(userId: usdUserId ?? "")
     }
     
-    private func addSampleExpenses(collectionName: String,userId: String) {
+    public func addExpensesToView(userId: String) {
 
         
         let db = Firestore.firestore()
-        let collectionRef = db.collection(collectionName)
+        let collectionRef = db.collection("Expenses")
             collectionRef.whereField("userId", isEqualTo: userId)
       
       
