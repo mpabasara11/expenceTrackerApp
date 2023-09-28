@@ -26,7 +26,16 @@ class Login_ViewModel : ObservableObject
         user_model.confirmPassword = ""
     }
     
+    //login with touch id
+    func loginTouchId()
+    {
+        
+    }
     
+    
+    
+    
+    //login with userName
     func login(email : String , password : String)
     {
   
