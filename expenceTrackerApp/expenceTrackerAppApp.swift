@@ -20,7 +20,8 @@ struct expenceTrackerAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Login_View()
+          //  Login_View()
+            SplashScreen_View()
         }
     }
 }

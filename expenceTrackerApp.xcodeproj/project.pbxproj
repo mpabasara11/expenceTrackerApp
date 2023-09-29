@@ -21,6 +21,8 @@
 		84B9FE382AB971CE00BE67D1 /* expense_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9FE372AB971CD00BE67D1 /* expense_Model.swift */; };
 		84B9FE3A2AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */; };
 		84BDDAAD2AB4305500582D94 /* Dashboard_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDDAAC2AB4305500582D94 /* Dashboard_View.swift */; };
+		84BEB2552AC718F900B382D7 /* OverView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB2542AC718F800B382D7 /* OverView_ViewModel.swift */; };
+		84BEB2572AC7247E00B382D7 /* overView_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB2562AC7247E00B382D7 /* overView_Model.swift */; };
 		84D306A62AB5B4EF00EFFD95 /* SplashScreen_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */; };
 		84DCF7D62AC0AD8800B21D5C /* userAllowance_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCF7D52AC0AD8800B21D5C /* userAllowance_Model.swift */; };
 		84DEED5B2AB02DEA00B31716 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84DEED5A2AB02DEA00B31716 /* GoogleService-Info.plist */; };
@@ -52,6 +54,8 @@
 		84B9FE372AB971CD00BE67D1 /* expense_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expense_Model.swift; sourceTree = "<group>"; };
 		84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTracking_ViewModel.swift; sourceTree = "<group>"; };
 		84BDDAAC2AB4305500582D94 /* Dashboard_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard_View.swift; sourceTree = "<group>"; };
+		84BEB2542AC718F800B382D7 /* OverView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverView_ViewModel.swift; sourceTree = "<group>"; };
+		84BEB2562AC7247E00B382D7 /* overView_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = overView_Model.swift; sourceTree = "<group>"; };
 		84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen_View.swift; sourceTree = "<group>"; };
 		84DCF7D52AC0AD8800B21D5C /* userAllowance_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userAllowance_Model.swift; sourceTree = "<group>"; };
 		84DEED5A2AB02DEA00B31716 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				84DEED652AB03B2A00B31716 /* user_Model.swift */,
 				84B9FE372AB971CD00BE67D1 /* expense_Model.swift */,
 				84DCF7D52AC0AD8800B21D5C /* userAllowance_Model.swift */,
+				84BEB2562AC7247E00B382D7 /* overView_Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 				84B9FE392AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift */,
 				84EBADAF2ABDA45A001270EC /* AddExpense_ViewModel.swift */,
 				8422D52E2ABEFF34003E5ADA /* Settings_ViewModel.swift */,
+				84BEB2542AC718F800B382D7 /* OverView_ViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -249,6 +255,7 @@
 				84B9FE382AB971CE00BE67D1 /* expense_Model.swift in Sources */,
 				84EFB1602AC4C0A10066C066 /* OverView_View.swift in Sources */,
 				84B9FE3A2AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift in Sources */,
+				84BEB2552AC718F900B382D7 /* OverView_ViewModel.swift in Sources */,
 				84EBADB02ABDA45A001270EC /* AddExpense_ViewModel.swift in Sources */,
 				84BDDAAD2AB4305500582D94 /* Dashboard_View.swift in Sources */,
 				846DD5FE2AADA15B00C3B636 /* Login_View.swift in Sources */,
@@ -256,6 +263,7 @@
 				84D306A62AB5B4EF00EFFD95 /* SplashScreen_View.swift in Sources */,
 				8422D52B2ABEC26D003E5ADA /* Settings_View.swift in Sources */,
 				84DEED662AB03B2A00B31716 /* user_Model.swift in Sources */,
+				84BEB2572AC7247E00B382D7 /* overView_Model.swift in Sources */,
 				84DEED622AB039DA00B31716 /* Login_ViewModel.swift in Sources */,
 				84EFB1622AC4C0C10066C066 /* Reports_View.swift in Sources */,
 				84B9FE362AB96FE400BE67D1 /* ExpenseTracking_View.swift in Sources */,

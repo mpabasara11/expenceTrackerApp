@@ -8,7 +8,19 @@
 import SwiftUI
 
 struct OverView_View: View {
+    
+    
+     @ObservedObject var overview_viewModel = OverView_ViewModel()
+
+     
+    
+    
+    
     var body: some View {
+       
+        
+        
+        
        /////
         var   totalExpenses = 1234.56 // Replace with your data
         var expenseLimit = 2000.00 //
@@ -17,46 +29,114 @@ struct OverView_View: View {
         
         Form {
             
-                Section(header: Text("Budget Overview")) {
+                Section(header: Text("This month")) {
                     HStack {
-                        Text("Total Expenses:")
+                        Text("Allowance Limit :")
                         Spacer()
-                        Text("$\(totalExpenses, specifier: "%.2f")")
+                        Text("Rs \(overview_viewModel.overview_model.totalAllowance, specifier: "%.2f")")
                     }
                     HStack {
-                        Text("Expense Limit:")
+                        Text("Total Expenses :")
                         Spacer()
-                        Text("$\(expenseLimit, specifier: "%.2f")")
+                        Text("Rs \(overview_viewModel.overview_model.totalExpenses, specifier: "%.2f")")
                     }
                     HStack {
                         Text("Remaining Budget:")
                         Spacer()
-                     //   Text("$\(expenseLimit - totalExpenses, specifier: "%.2f")")
-                         //   .foregroundColor((expenseLimit - totalExpenses) >= 0 ? .green : .red)
+                        Text("Rs \(overview_viewModel.overview_model.totalAllowance - overview_viewModel.overview_model.totalExpenses  , specifier: "%.2f")")
+                            .foregroundColor((overview_viewModel.overview_model.totalAllowance - overview_viewModel.overview_model.totalExpenses ) >= 0 ? .green : .red)
                     }
                    //  Progress for remaining budget
-                //    ProgressView(value: min(max((totalExpenses / expenseLimit), 0.0), 1.0))
-                    //    .progressViewStyle(LinearProgressViewStyle(tint: (expenseLimit - totalExpenses) >= 0 ? .green : .red))
+                   ProgressView(value: min(max((overview_viewModel.overview_model.totalExpenses / overview_viewModel.overview_model.totalAllowance), 0.0), 1.0))
+                    .progressViewStyle(LinearProgressViewStyle(tint: (overview_viewModel.overview_model.totalAllowance - overview_viewModel.overview_model.totalExpenses) >= 0 ? .green : .red))
                 }
 
                 Section(header: Text("Expense Categories")) {
-                    // Display expense categories and their spending in a list or chart.
-                    // You can use a ForEach loop to iterate through categories.
+                    // Display expense categories and their
+                    
+                    VStack{
+                        
+                        Text("Groceries")
+                    
+                    ProgressView(value: min(max((overview_viewModel.overview_model.expenseGroceries / overview_viewModel.overview_model.allowanceGroceries), 0.0), 1.0))
+                        .progressViewStyle(LinearProgressViewStyle(tint: (overview_viewModel.overview_model.allowanceGroceries - overview_viewModel.overview_model.expenseGroceries) >= 0 ? .green : .red))
+                    
+                    }.padding(.vertical,20)
+                    
+                    VStack{
+                        
+                        Text("Entertainment")
+                    
+                    ProgressView(value: min(max((overview_viewModel.overview_model.expenseEntertainment / overview_viewModel.overview_model.allowanceEntertainment), 0.0), 1.0))
+                        .progressViewStyle(LinearProgressViewStyle(tint: (overview_viewModel.overview_model.allowanceEntertainment - overview_viewModel.overview_model.expenseEntertainment) >= 0 ? .green : .red))
+                    
+                    }.padding(.vertical,20)
+                    
+                    
+                    
+                    VStack{
+                        
+                        Text("Dining Out")
+                    
+                    ProgressView(value: min(max((overview_viewModel.overview_model.expenseDining / overview_viewModel.overview_model.allowanceDining), 0.0), 1.0))
+                        .progressViewStyle(LinearProgressViewStyle(tint: (overview_viewModel.overview_model.allowanceDining - overview_viewModel.overview_model.expenseDining) >= 0 ? .green : .red))
+                    
+                    }.padding(.vertical,20)
+                    
+                    
+                    
+                    VStack{
+                        
+                        Text("Rent")
+                    
+                    ProgressView(value: min(max((overview_viewModel.overview_model.expenseRent / overview_viewModel.overview_model.allowanceRent), 0.0), 1.0))
+                        .progressViewStyle(LinearProgressViewStyle(tint: (overview_viewModel.overview_model.allowanceRent - overview_viewModel.overview_model.expenseRent) >= 0 ? .green : .red))
+                    
+                    }.padding(.vertical,20)
+                    
+                    
+                    
+                    VStack{
+                        
+                        Text("Shopping")
+                    
+                    ProgressView(value: min(max((overview_viewModel.overview_model.expenseShopping / overview_viewModel.overview_model.allowanceShopping), 0.0), 1.0))
+                        .progressViewStyle(LinearProgressViewStyle(tint: (overview_viewModel.overview_model.allowanceShopping - overview_viewModel.overview_model.expenseShopping) >= 0 ? .green : .red))
+                    
+                    }.padding(.vertical,20)
+                    
+                    
+                    
+                    VStack{
+                        
+                        Text("Transportation")
+                    
+                    ProgressView(value: min(max((overview_viewModel.overview_model.expenseTransportation / overview_viewModel.overview_model.allowanceTransportation), 0.0), 1.0))
+                        .progressViewStyle(LinearProgressViewStyle(tint: (overview_viewModel.overview_model.allowanceTransportation - overview_viewModel.overview_model.expenseTransportation) >= 0 ? .green : .red))
+                    
+                    }.padding(.vertical,20)
+                    
+                    
+                    
+                    VStack{
+                        
+                        Text("Utilities")
+                    
+                    ProgressView(value: min(max((overview_viewModel.overview_model.expenseUtilities / overview_viewModel.overview_model.allowanceUtilities), 0.0), 1.0))
+                        .progressViewStyle(LinearProgressViewStyle(tint: (overview_viewModel.overview_model.allowanceUtilities - overview_viewModel.overview_model.expenseUtilities) >= 0 ? .green : .red))
+                    
+                    }.padding(.vertical,20)
+                    
+                
                 }
 
-                Section(header: Text("Expense Trends")) {
-                    // Display a line chart or graph showing spending trends.
-                }
-
+            
                 Section(header: Text("Alerts and Notifications")) {
                     // Show alerts or notifications related to budget limits.
                 }
             }
-            .onAppear {
-                // Load and calculate total expenses and expense limit from your data.
-                totalExpenses = 1234.56 // Replace with your data
-              expenseLimit = 2000.00 // Replace with your data
-            }
+            
+            
             .navigationBarTitle("Budget Overview")
         }
         /////

@@ -26,6 +26,8 @@ class Settings_ViewModel: ObservableObject
     @Published var successOperation: Bool = false
     
     
+    
+    //added for debugging purposes
     @Published var showMessage = false
     @Published var massage = ""
     
@@ -227,9 +229,7 @@ class Settings_ViewModel: ObservableObject
     
     func loadLabels(userId: String)
     {
-        ///////////
-        
-        
+      
         
         let docrf = Firestore.firestore().collection("Allowance").document(userId)
         docrf.getDocument { (document, error) in

@@ -17,13 +17,13 @@ struct ExpenseTracking_View: View {
     private let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateStyle = .short
-            formatter.timeStyle = .short
+        formatter.timeStyle = .none
             return formatter
     }()
     
     
     var body: some View {
-        
+ /////
         NavigationView
         {
             VStack{
@@ -31,26 +31,30 @@ struct ExpenseTracking_View: View {
                     
                     VStack(alignment:.leading){
                         
+                        //////////////start hstack
+                        
+                        
                         HStack{
-                          //  Text("🚀").font(.title2)
+                            Text("🚀").font(.title2)
                             Text("Category: \(expense.category)").font(.title3).bold()
                                .foregroundColor(.primary)
+                           
+                       
                             
+                        }
+                        Spacer()
+                        
+                        HStack{
+                        
+                            Text("Amount: \(expense.amount)").font(.title3)
+                                .foregroundColor(.secondary)
                             
                         }
                         
-                        
                         HStack{
-                          //  Text("💰").font(.subheadline)
-                          //  Text("Amount: \(expense.amount)").font(.title3)
-                          //      .foregroundColor(.secondary)
-                            
-                        }
-                        
-                        HStack{
-                        //    Text("📅").font(.subheadline)
-                          //  Text("Date: \(expense.date,formatter:dateFormatter)").font(.title3)
-                            //    .foregroundColor(.secondary)
+                     
+                            Text("Date: \(expense.date,formatter:dateFormatter)").font(.title3)
+                               .foregroundColor(.secondary)
 
                             
                             
@@ -59,9 +63,9 @@ struct ExpenseTracking_View: View {
                   
                         
                         HStack{
-                          //  Text("📌").font(.subheadline)
+                       
                             Text("Description: \(expense.description)").font(.title3)
-                           //     .foregroundColor(.secondary)
+                                .foregroundColor(.secondary)
 
                             
                             
@@ -69,24 +73,24 @@ struct ExpenseTracking_View: View {
                         
                         
                         HStack{
-                          //  Text("🏠").font(.subheadline)
+                    
                             Text("Location: \(expense.place)").font(.title3)
-                           //     .foregroundColor(.secondary)
+                                .foregroundColor(.secondary)
                                 
 
                             
                             
                         }
                         
-                        
+                        //////////////////////stop hstack
                         
                     }
                     
                     .listRowInsets(EdgeInsets(top:0,leading:0,bottom:10,trailing:0))
             
-                }.padding(8)
+                }//.padding(.vertical,20)
              //   .background(Color.blue)
-                .cornerRadius(10)
+              //  .cornerRadius(10)
                 //.shadow(radius: 5)
                     
                     Button(action: {
@@ -136,7 +140,7 @@ struct ExpenseTracking_View: View {
         
         
     }
-    
+    /////////////
 }
 
 struct ExpenseTracking_View_Previews: PreviewProvider {

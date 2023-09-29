@@ -31,7 +31,7 @@ struct Login_View: View {
                                    .padding(.vertical)
                                 .shadow(radius: 2)
                                 .alert(isPresented:$loginViewModel.notValidLogin) {
-                                    Alert(title: Text("Invalid Login"), message: Text("Please check your Email and Password "), dismissButton: .default(Text("OK"))
+                                    Alert(title: Text("Could not Sign In"), message: Text("Please try again"), dismissButton: .default(Text("OK"))
                                         {
                                        
                                     })}
@@ -44,14 +44,7 @@ struct Login_View: View {
                                  .padding(.bottom, 5)
                                 .shadow(radius: 2)
                 
-                TextField("Email", text: $loginViewModel.user_model.password)
-                                 .foregroundColor(.secondary)
-                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                                 .padding(.horizontal)
-                                 .padding(.bottom, 5)
-                                .shadow(radius: 2)
-                
-                
+               
                 
                 SecureField("Password", text: $loginViewModel.user_model.password)
                                 .foregroundColor(.secondary)

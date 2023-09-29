@@ -92,14 +92,14 @@ class Login_ViewModel : ObservableObject
             
             if error != nil
             {
-                
-             
+               
+           
+
                 print(error!.localizedDescription)
                 self.notValidLogin = true
                 self.isLoggedIn = false
                 
-                
-              
+           
             }
             else
             {
