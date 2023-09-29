@@ -124,12 +124,11 @@ struct AddExpense_View: View {
                     addExpense_viewModel.expense_model.category = selectedOp
                     
                     
-                    //setting the username before calling the method
-                    addExpense_viewModel.expense_model.userId = addExpense_viewModel.usdUserId ?? ""
+               
                     
                  
                     
-                  addExpense_viewModel.addExpense(userId:addExpense_viewModel.expense_model.userId, description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
+                  addExpense_viewModel.addExpense(userId:addExpense_viewModel.usdUserId ?? "", description: addExpense_viewModel.expense_model.description, place: addExpense_viewModel.expense_model.place, amount: addExpense_viewModel.expense_model.amount, date: addExpense_viewModel.expense_model.date, category: addExpense_viewModel.expense_model.category)
                     
               
                     
@@ -160,7 +159,7 @@ struct AddExpense_View: View {
 struct AddExpense_View_Previews: PreviewProvider {
     static var previews: some View {
         AddExpense_View()
-            .preferredColorScheme(.dark)
+            
             
     }
 }

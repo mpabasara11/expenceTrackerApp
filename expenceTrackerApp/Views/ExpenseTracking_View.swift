@@ -82,10 +82,10 @@ struct ExpenseTracking_View: View {
                         
                     }
                     
-                    
+                    .listRowInsets(EdgeInsets(top:0,leading:0,bottom:10,trailing:0))
             
                 }.padding(8)
-                .background(Color.blue)
+             //   .background(Color.blue)
                 .cornerRadius(10)
                 //.shadow(radius: 5)
                     
@@ -112,13 +112,10 @@ struct ExpenseTracking_View: View {
                             
                             
                             
-                            //setting the user id before calling the method
-                           
-                            expenseTracking_viewModel.expense_model.userId = expenseTracking_viewModel.usdUserId ?? ""
+                          
+    
                             
-                            
-                            
-                            expenseTracking_viewModel.addExpensesToView(userId: expenseTracking_viewModel.expense_model.userId)
+                            expenseTracking_viewModel.addExpensesToView(userId:   expenseTracking_viewModel.usdUserId ?? "")
                             
                             
                             

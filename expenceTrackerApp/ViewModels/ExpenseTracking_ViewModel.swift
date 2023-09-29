@@ -13,29 +13,37 @@ class ExpenseTracking_ViewModel: ObservableObject
 {
     @Published var expense_modelArray : [expense_Model] = []
     @Published var expense_model = expense_Model(userId: "", date: Date(), category: "", amount: 0.0, description: "", place: "")
+    
     @Published var isSheetPresent: Bool = false
+    
     @Published var usdUserId = UserDefaults.standard.string(forKey: "userId")
+
+    
     init() {
         addExpensesToView(userId: usdUserId ?? "")
     }
     
+    
+    
+    
+    
+    
     public func addExpensesToView(userId: String) {
 
+        expense_modelArray.removeAll()
         
+   
         let db = Firestore.firestore()
         let collectionRef = db.collection("Expenses")
-            collectionRef.whereField("userId", isEqualTo: userId)
-      
-      
-        collectionRef.getDocuments { (querySnapshot, error) in
-            defer {
-        
-            }
-            if let error = error {
-                print("Error getting documents: \(error)")
-                return
-            }
-
+            collectionRef.whereField("userId",isEqualTo: userId)
+            .getDocuments { (querySnapshot, error) in
+                    defer {
+                
+                    }
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                    return
+                }
          
 
             for document in querySnapshot!.documents {

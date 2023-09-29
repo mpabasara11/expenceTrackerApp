@@ -26,6 +26,7 @@ class AddExpense_ViewModel: ObservableObject
     @Published var message = ""
     @Published var showmes: Bool = false
     @Published var usdUserId = UserDefaults.standard.string(forKey: "userId")
+
     
     @Published var totalAllowanceInDb = 0.0
     @Published var totalAmountOfMonth = 0.0
@@ -56,7 +57,7 @@ class AddExpense_ViewModel: ObservableObject
         notValidAmountValueZero = !(amount > 0)
     }
 
-    public func validateAmountEfficiency(amount: Double, collectionName1: String,collectionName2: String, userId: String, category: String, date: Date)  {
+     func validateAmountEfficiency(amount: Double, collectionName1: String,collectionName2: String, userId: String, category: String, date: Date)  {
       
      
         

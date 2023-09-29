@@ -129,12 +129,12 @@ struct Settings_View: View {
                         Alert(title: Text("Success"), message: Text("Allowance updated successfully"), dismissButton: .default(Text("OK"))
                             {
                             
-                            //setting the user id before calling the method
-                            settings_viewModel.userAllowance_modelRead.userId = settings_viewModel.usdUserId ?? ""
                             
                             
                             settings_viewModel.clearFields()
-                            settings_viewModel.loadLabels( userId: settings_viewModel.userAllowance_modelRead.userId)
+                            
+                            settings_viewModel.loadLabels( userId:                  settings_viewModel.usdUserId ?? ""
+)
                             
                         })}
                     
@@ -147,13 +147,12 @@ struct Settings_View: View {
                 Button(action: {
                     
                     
-                    //setting the user id before calling the method
-                    settings_viewModel.userAllowance_modelWrite.userId =  settings_viewModel.usdUserId ?? ""
+                  
                     
                     //setting the date before calling the method
                     let todayDate = Date()
                     
-                    settings_viewModel.updateSettings(userId: settings_viewModel.userAllowance_modelWrite.userId, mnthlyGrocerries: settings_viewModel.userAllowance_modelWrite.mnthlyGrocerries, mnthlyEntertainment: settings_viewModel.userAllowance_modelWrite.mnthlyEntertainment, mnthlyRent: settings_viewModel.userAllowance_modelWrite.mnthlyRent, mnthlyUtility: settings_viewModel.userAllowance_modelWrite.mnthlyUtility, mnthlyTransportation: settings_viewModel.userAllowance_modelWrite.mnthlyTransportation, mnthlyDiningOut: settings_viewModel.userAllowance_modelWrite.mnthlyDiningOut, mnthlyShopping: settings_viewModel.userAllowance_modelWrite.mnthlyShopping,date: todayDate)
+                    settings_viewModel.updateSettings(userId: settings_viewModel.usdUserId ?? "", mnthlyGrocerries: settings_viewModel.userAllowance_modelWrite.mnthlyGrocerries, mnthlyEntertainment: settings_viewModel.userAllowance_modelWrite.mnthlyEntertainment, mnthlyRent: settings_viewModel.userAllowance_modelWrite.mnthlyRent, mnthlyUtility: settings_viewModel.userAllowance_modelWrite.mnthlyUtility, mnthlyTransportation: settings_viewModel.userAllowance_modelWrite.mnthlyTransportation, mnthlyDiningOut: settings_viewModel.userAllowance_modelWrite.mnthlyDiningOut, mnthlyShopping: settings_viewModel.userAllowance_modelWrite.mnthlyShopping,date: todayDate)
                    
                 }){
                     Text("Update")
@@ -206,7 +205,7 @@ struct Settings_View: View {
                     Alert(title: Text("Are you sure you want to Sign Out ?"),message: Text(""),primaryButton: .destructive(Text("Sure"))
                         {
                         signOutConfirm = false
-                       // settings_viewModel.sighOut()
+                        settings_viewModel.sighOut()
                     },secondaryButton: .cancel()
                     {
                         signOutConfirm = false

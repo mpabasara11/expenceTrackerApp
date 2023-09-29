@@ -44,6 +44,15 @@ struct Login_View: View {
                                  .padding(.bottom, 5)
                                 .shadow(radius: 2)
                 
+                TextField("Email", text: $loginViewModel.user_model.password)
+                                 .foregroundColor(.secondary)
+                                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                                 .padding(.horizontal)
+                                 .padding(.bottom, 5)
+                                .shadow(radius: 2)
+                
+                
+                
                 SecureField("Password", text: $loginViewModel.user_model.password)
                                 .foregroundColor(.secondary)
                                  .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -56,6 +65,11 @@ struct Login_View: View {
                 Button(action: {
                     
                     loginViewModel.login(email: loginViewModel.user_model.email, password: loginViewModel.user_model.password)
+                    
+                  //  loginViewModel.loginWithPw(email: "mpabasara11@gmail.com", password:loginViewModel.user_model.password)
+                    
+                   // loginViewModel.user_model.password
+                   // loginViewModel.loginTouchId()
                     
                 }) {
                 

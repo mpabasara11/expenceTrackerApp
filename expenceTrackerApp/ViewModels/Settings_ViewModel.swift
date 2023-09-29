@@ -58,7 +58,7 @@ class Settings_ViewModel: ObservableObject
     
     
     //validate inputs and add necessary missing values to the model
-    private func validateGroceries(userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date)  {
+  func validateGroceries(userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date)  {
         
         userAllowance_modelSendToDb.userId = userId
         userAllowance_modelSendToDb.date = date
@@ -274,11 +274,11 @@ class Settings_ViewModel: ObservableObject
     
     func sighOut()
     {
-        let isLoggedIn = false
+ 
         let useTouchId = false
         let uid = ""
         UserDefaults.standard.set(uid,forKey: "userId")
-        UserDefaults.standard.set(isLoggedIn,forKey: "isLoggedIn")
+      
         UserDefaults.standard.setValue(useTouchId, forKey: "useTouchId")
     }
     
