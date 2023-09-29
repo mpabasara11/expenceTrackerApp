@@ -25,6 +25,8 @@ class Settings_ViewModel: ObservableObject
     @Published var notSuccessOperation: Bool = false
     @Published var successOperation: Bool = false
     
+    @Published var isLoggedOut: Bool = false
+    
     
     
     //added for debugging purposes
@@ -275,11 +277,13 @@ class Settings_ViewModel: ObservableObject
     func sighOut()
     {
  
-        let useTouchId = false
-        let uid = ""
-        UserDefaults.standard.set(uid,forKey: "userId")
+    //    let useTouchId = false
+    //    let uid = ""
+    //    UserDefaults.standard.set(uid,forKey: "userId")
       
-        UserDefaults.standard.setValue(useTouchId, forKey: "useTouchId")
+     //   UserDefaults.standard.setValue(useTouchId, forKey: "useTouchId")
+        
+        isLoggedOut = true
     }
     
     

@@ -206,11 +206,30 @@ struct Settings_View: View {
                         {
                         signOutConfirm = false
                         settings_viewModel.sighOut()
+                        
+                        
+                     
                     },secondaryButton: .cancel()
                     {
                         signOutConfirm = false
                     }
                 )}
+                
+                
+                ////////////////
+                
+                
+      
+              
+        NavigationLink(destination: Login_View(),
+            isActive: $settings_viewModel.isLoggedOut)
+            {}
+  
+                
+                
+                
+                
+                ////////////
             }
             
             

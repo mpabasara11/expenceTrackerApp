@@ -24,6 +24,13 @@ class Login_ViewModel : ObservableObject
     @Published var isLoggedIn: Bool = false
   //  @Published var loginId = ""
     
+    
+
+    
+ 
+    
+    
+    
     private func clearFields()
     {
         user_model.email = ""
