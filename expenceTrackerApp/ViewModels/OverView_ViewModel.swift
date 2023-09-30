@@ -10,11 +10,13 @@ import Firebase
 
 class OverView_ViewModel: ObservableObject
 {
+    //get default userId fron usr defaults
     @Published var usdUserId = UserDefaults.standard.string(forKey: "userId")
     
     @Published var totalAmount = 0.0
 
     
+    //overview model instance
     @Published var overview_model = overView_Model(totalAllowance: 0.0, totalExpenses: 0.0, allowanceDining: 0.0, allowanceEntertainment: 0.0, allowanceGroceries: 0.0, allowanceRent: 0.0, allowanceShopping: 0.0, allowanceTransportation: 0.0, allowanceUtilities: 0.0, expenseDining: 0.0, expenseEntertainment: 0.0, expenseGroceries: 0.0, expenseRent: 0.0, expenseShopping: 0.0, expenseTransportation: 0.0, expenseUtilities: 0.0)
     
     init() {
@@ -22,7 +24,7 @@ class OverView_ViewModel: ObservableObject
     }
     
     
-    func fetchData(userId: String)
+   public func fetchData(userId: String)
     {
         ////////////////////////
         
@@ -103,11 +105,18 @@ class OverView_ViewModel: ObservableObject
         ////////////////////////////
         
         
+        let dtformatter1 = DateFormatter()
+        dtformatter1.dateFormat = "YYYY/MM"
+        let dtForOp1 = dtformatter1.string(from: Date())
+
+        
+        
       
         let collectionRef = db.collection("Expenses")
 
         collectionRef
             .whereField("userId", isEqualTo: userId)
+            .whereField("dtForOperations", isEqualTo: dtForOp1)
             .getDocuments { (querySnapshot, error) in
                 defer {
             

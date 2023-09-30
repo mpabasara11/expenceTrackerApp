@@ -59,10 +59,7 @@ struct Login_View: View {
                     
                     loginViewModel.login(email: loginViewModel.user_model.email, password: loginViewModel.user_model.password)
                     
-                  //  loginViewModel.loginWithPw(email: "mpabasara11@gmail.com", password:loginViewModel.user_model.password)
-                    
-                   // loginViewModel.user_model.password
-                   // loginViewModel.loginTouchId()
+         
                     
                 }) {
                 

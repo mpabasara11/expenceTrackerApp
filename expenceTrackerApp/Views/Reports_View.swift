@@ -9,8 +9,15 @@ import SwiftUI
 
 struct Reports_View: View {
     var body: some View {
+        
+        NavigationView{
+        
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         
+            .navigationBarTitle("Reports",displayMode: .automatic)
+        }
+        
+        .navigationBarHidden(true)
             .edgesIgnoringSafeArea(.top)
             .navigationBarBackButtonHidden(true)
     }

@@ -59,7 +59,7 @@ struct SplashScreen_View: View {
             
         }.onAppear
         {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3)
                 {
                 withAnimation
                 {

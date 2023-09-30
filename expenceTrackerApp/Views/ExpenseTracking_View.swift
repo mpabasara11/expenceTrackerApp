@@ -130,12 +130,13 @@ struct ExpenseTracking_View: View {
                 AddExpense_View()
             
     
-            }.navigationTitle("Your expenses")
+            }   .navigationBarTitle("Your Expenses",displayMode: .automatic)
+            
      
         
         }
          
-        
+        .navigationBarHidden(true)
         .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)    }
     /////////////

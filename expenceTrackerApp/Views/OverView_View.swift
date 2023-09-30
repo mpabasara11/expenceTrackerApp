@@ -129,11 +129,11 @@ struct OverView_View: View {
                     // Show alerts or notifications related to budget limits.
                 }
             }
-        .navigationBarTitle("Budget Overview")
+        .navigationBarTitle("Budget Overview",displayMode: .automatic)
        
         }
         /////
-        
+        .navigationBarHidden(true)
         .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
     }

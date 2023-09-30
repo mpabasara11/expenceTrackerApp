@@ -9,12 +9,13 @@ import SwiftUI
 
 struct Dashboard_View: View {
     
-
+    @ObservedObject var settings_viewModel = Settings_ViewModel()
     
     
         var body: some View {
            
         
+                
             TabView  {
                    
                 OverView_View()
@@ -43,12 +44,11 @@ struct Dashboard_View: View {
                         
                         Text("Settings")
                     }
-                
-                
-                
+      
             }
-            
-        
+                
+           
+                
             
             .edgesIgnoringSafeArea(.top)
             .navigationBarBackButtonHidden(true)

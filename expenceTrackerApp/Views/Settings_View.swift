@@ -11,6 +11,7 @@ struct Settings_View: View {
     
  
     @ObservedObject var settings_viewModel = Settings_ViewModel()
+    @ObservedObject var overView_viewModel = OverView_ViewModel()
     
     
     @AppStorage("useTouchId") private var useTouchId:Bool = false
@@ -36,9 +37,10 @@ struct Settings_View: View {
     var body: some View {
         
       
-        
-       
         NavigationView{
+            
+            
+   
         Form
         {
             Section(header: Text("Current"), footer: Text("View your current allowance settings"))
@@ -133,8 +135,10 @@ struct Settings_View: View {
                             
                             settings_viewModel.clearFields()
                             
-                            settings_viewModel.loadLabels( userId:                  settings_viewModel.usdUserId ?? ""
-)
+                            settings_viewModel.loadLabels( userId:                  settings_viewModel.usdUserId ?? "")
+                            
+                            overView_viewModel.fetchData(userId: overView_viewModel.usdUserId ?? "")
+                            
                             
                         })}
                     
@@ -219,30 +223,43 @@ struct Settings_View: View {
                 ////////////////
                 
                 
-      
-              
-        NavigationLink(destination: Login_View(),
-            isActive: $settings_viewModel.isLoggedOut)
-            {}
-  
-                
-                
-                
+                NavigationLink(
+                 destination: Login_View(),
+                  isActive: $settings_viewModel.isLoggedOut){}
+          
                 
                 ////////////
             }
             
             
-            
-        }.navigationTitle("Settings")
+          
         
-        }
+            
+        }.navigationBarTitle("Settings",displayMode: .automatic)
+        
+            
+          
+                      
+            
+    }
+      .navigationBarHidden(true)
         
         
         .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
         
+        
+        
+        
+
+        
+        
     }
+    
+    
+    
+    
+              
     
 }
 

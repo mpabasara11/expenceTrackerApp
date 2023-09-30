@@ -280,13 +280,15 @@ class Settings_ViewModel: ObservableObject
         //reset user defaults
         let useTouchId = false
         let uid = ""
-        UserDefaults.standard.set(uid,forKey: "userId")
+       // UserDefaults.standard.set(uid,forKey: "userId")
       
-        UserDefaults.standard.setValue(useTouchId, forKey: "useTouchId")
+      //  UserDefaults.standard.setValue(useTouchId, forKey: "useTouchId")
         
         
         //redirect to login
         isLoggedOut = true
+        
+        
     }
     
     
