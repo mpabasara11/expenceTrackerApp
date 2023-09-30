@@ -13,12 +13,14 @@ struct Dashboard_View: View {
     
     
         var body: some View {
-            
+           
+        
             TabView  {
                    
                 OverView_View()
                     .tabItem { Image(systemName: "doc.text.fill")
                         Text("Insight")
+                       
                     }
                 
                 
@@ -28,7 +30,7 @@ struct Dashboard_View: View {
                         Text("Expenses")
                     }
                 
-                ExpenseTracking_View()
+                Reports_View()
                     .tabItem { Image(systemName: "chart.bar.doc.horizontal.fill")
                         Text("Reports")
                             
@@ -44,10 +46,12 @@ struct Dashboard_View: View {
                 
                 
                 
-            }.edgesIgnoringSafeArea(.top)
+            }
             
-   
+        
             
+            .edgesIgnoringSafeArea(.top)
+            .navigationBarBackButtonHidden(true)
         }
                
 }

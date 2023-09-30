@@ -17,13 +17,7 @@ struct OverView_View: View {
     
     
     var body: some View {
-       
-        
-        
-        
-       /////
-        var   totalExpenses = 1234.56 // Replace with your data
-        var expenseLimit = 2000.00 //
+      
         
         NavigationView{
         
@@ -135,11 +129,13 @@ struct OverView_View: View {
                     // Show alerts or notifications related to budget limits.
                 }
             }
-            
-            
-            .navigationBarTitle("Budget Overview")
+        .navigationBarTitle("Budget Overview")
+       
         }
         /////
+        
+        .edgesIgnoringSafeArea(.top)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

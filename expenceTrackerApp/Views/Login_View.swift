@@ -115,7 +115,8 @@ struct Login_View: View {
          
             
         }
-    
+        .edgesIgnoringSafeArea(.top)
+        .navigationBarBackButtonHidden(true)
     
     }
     

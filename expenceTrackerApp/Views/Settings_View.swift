@@ -237,7 +237,13 @@ struct Settings_View: View {
         }.navigationTitle("Settings")
         
         }
+        
+        
+        .edgesIgnoringSafeArea(.top)
+        .navigationBarBackButtonHidden(true)
+        
     }
+    
 }
 
 struct Settings_View_Previews: PreviewProvider {

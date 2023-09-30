@@ -89,9 +89,7 @@ struct ExpenseTracking_View: View {
                     .listRowInsets(EdgeInsets(top:0,leading:0,bottom:10,trailing:0))
             
                 }//.padding(.vertical,20)
-             //   .background(Color.blue)
-              //  .cornerRadius(10)
-                //.shadow(radius: 5)
+           
                     
                     Button(action: {
                         expenseTracking_viewModel.isSheetPresent = true
@@ -138,8 +136,8 @@ struct ExpenseTracking_View: View {
         }
          
         
-        
-    }
+        .edgesIgnoringSafeArea(.top)
+        .navigationBarBackButtonHidden(true)    }
     /////////////
 }
 
