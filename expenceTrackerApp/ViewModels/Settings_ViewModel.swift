@@ -28,14 +28,7 @@ class Settings_ViewModel: ObservableObject
     @Published var isLoggedOut: Bool = false
     
     
-    
-    //added for debugging purposes
-    @Published var showMessage = false
-    @Published var massage = ""
-    
-    
-    
-    
+  
     
     init() {
         loadLabels(userId: usdUserId ?? "")
@@ -278,11 +271,11 @@ class Settings_ViewModel: ObservableObject
     {
  
         //reset user defaults
-        let useTouchId = false
-        let uid = ""
-       // UserDefaults.standard.set(uid,forKey: "userId")
+       let useTouchId = false
+        let uid = "noUser"
+        UserDefaults.standard.set(uid,forKey: "userId")
       
-      //  UserDefaults.standard.setValue(useTouchId, forKey: "useTouchId")
+        UserDefaults.standard.setValue(useTouchId, forKey: "useTouchId")
         
         
         //redirect to login

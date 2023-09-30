@@ -10,6 +10,8 @@
 		84042A772AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84042A762AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift */; };
 		8422D52B2ABEC26D003E5ADA /* Settings_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8422D52A2ABEC244003E5ADA /* Settings_View.swift */; };
 		8422D52F2ABEFF34003E5ADA /* Settings_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8422D52E2ABEFF34003E5ADA /* Settings_ViewModel.swift */; };
+		844F62A82AC87757009A006F /* Report_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F62A72AC87757009A006F /* Report_ViewModel.swift */; };
+		844F62AC2AC87F80009A006F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 844F62AB2AC87F80009A006F /* GoogleService-Info.plist */; };
 		846DD5FC2AADA15B00C3B636 /* expenceTrackerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD5FB2AADA15B00C3B636 /* expenceTrackerAppApp.swift */; };
 		846DD5FE2AADA15B00C3B636 /* Login_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD5FD2AADA15B00C3B636 /* Login_View.swift */; };
 		846DD6002AADA16200C3B636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846DD5FF2AADA16200C3B636 /* Assets.xcassets */; };
@@ -25,7 +27,6 @@
 		84BEB2572AC7247E00B382D7 /* overView_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB2562AC7247E00B382D7 /* overView_Model.swift */; };
 		84D306A62AB5B4EF00EFFD95 /* SplashScreen_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */; };
 		84DCF7D62AC0AD8800B21D5C /* userAllowance_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCF7D52AC0AD8800B21D5C /* userAllowance_Model.swift */; };
-		84DEED5B2AB02DEA00B31716 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84DEED5A2AB02DEA00B31716 /* GoogleService-Info.plist */; };
 		84DEED5E2AB033A500B31716 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84DEED5D2AB033A500B31716 /* FirebaseAuth */; };
 		84DEED602AB033A500B31716 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 84DEED5F2AB033A500B31716 /* FirebaseFirestore */; };
 		84DEED622AB039DA00B31716 /* Login_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEED612AB039DA00B31716 /* Login_ViewModel.swift */; };
@@ -41,6 +42,8 @@
 		84042A762AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword_ViewModel.swift; sourceTree = "<group>"; };
 		8422D52A2ABEC244003E5ADA /* Settings_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings_View.swift; sourceTree = "<group>"; };
 		8422D52E2ABEFF34003E5ADA /* Settings_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings_ViewModel.swift; sourceTree = "<group>"; };
+		844F62A72AC87757009A006F /* Report_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report_ViewModel.swift; sourceTree = "<group>"; };
+		844F62AB2AC87F80009A006F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		846DD5F82AADA15B00C3B636 /* expenceTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expenceTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846DD5FB2AADA15B00C3B636 /* expenceTrackerAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expenceTrackerAppApp.swift; sourceTree = "<group>"; };
 		846DD5FD2AADA15B00C3B636 /* Login_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_View.swift; sourceTree = "<group>"; };
@@ -58,7 +61,6 @@
 		84BEB2562AC7247E00B382D7 /* overView_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = overView_Model.swift; sourceTree = "<group>"; };
 		84D306A52AB5B4EF00EFFD95 /* SplashScreen_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen_View.swift; sourceTree = "<group>"; };
 		84DCF7D52AC0AD8800B21D5C /* userAllowance_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userAllowance_Model.swift; sourceTree = "<group>"; };
-		84DEED5A2AB02DEA00B31716 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84DEED612AB039DA00B31716 /* Login_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_ViewModel.swift; sourceTree = "<group>"; };
 		84DEED632AB03B0000B31716 /* CreateAccount_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount_ViewModel.swift; sourceTree = "<group>"; };
 		84DEED652AB03B2A00B31716 /* user_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user_Model.swift; sourceTree = "<group>"; };
@@ -106,7 +108,7 @@
 				846DD60E2AADB73700C3B636 /* fonts */,
 				846DD5FB2AADA15B00C3B636 /* expenceTrackerAppApp.swift */,
 				846DD5FF2AADA16200C3B636 /* Assets.xcassets */,
-				84DEED5A2AB02DEA00B31716 /* GoogleService-Info.plist */,
+				844F62AB2AC87F80009A006F /* GoogleService-Info.plist */,
 				846DD6042AADA16200C3B636 /* Info.plist */,
 				846DD6012AADA16200C3B636 /* Preview Content */,
 			);
@@ -167,6 +169,7 @@
 				84EBADAF2ABDA45A001270EC /* AddExpense_ViewModel.swift */,
 				8422D52E2ABEFF34003E5ADA /* Settings_ViewModel.swift */,
 				84BEB2542AC718F800B382D7 /* OverView_ViewModel.swift */,
+				844F62A72AC87757009A006F /* Report_ViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -236,7 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				846DD6102AADB77000C3B636 /* BLUE.ttf in Resources */,
-				84DEED5B2AB02DEA00B31716 /* GoogleService-Info.plist in Resources */,
+				844F62AC2AC87F80009A006F /* GoogleService-Info.plist in Resources */,
 				846DD6032AADA16200C3B636 /* Preview Assets.xcassets in Resources */,
 				846DD6002AADA16200C3B636 /* Assets.xcassets in Resources */,
 			);
@@ -252,6 +255,7 @@
 				84DCF7D62AC0AD8800B21D5C /* userAllowance_Model.swift in Sources */,
 				84042A772AB1E586007CCDB7 /* ForgotPassword_ViewModel.swift in Sources */,
 				846DD6152AADC66500C3B636 /* CreateAccount_View.swift in Sources */,
+				844F62A82AC87757009A006F /* Report_ViewModel.swift in Sources */,
 				84B9FE382AB971CE00BE67D1 /* expense_Model.swift in Sources */,
 				84EFB1602AC4C0A10066C066 /* OverView_View.swift in Sources */,
 				84B9FE3A2AB97FE000BE67D1 /* ExpenseTracking_ViewModel.swift in Sources */,

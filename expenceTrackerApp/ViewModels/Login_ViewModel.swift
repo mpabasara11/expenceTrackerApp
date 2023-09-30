@@ -12,20 +12,62 @@ import LocalAuthentication
 
 class Login_ViewModel : ObservableObject
 {
-      
+
+    
+    
     
     //model instance
     @Published var user_model = user_Model(email: "", password: "", confirmPassword: "")
     
+    @Published var useTouchId = false
+    @Published var savedUderId = "noUser"
     
-    @Published var useTouchId = UserDefaults.standard.bool(forKey: "useTouchId")
-    @Published var savedUderId = UserDefaults.standard.string(forKey: "userId")
+    
+  // @Published var useTouchId = UserDefaults.standard.bool(forKey: "useTouchId")
+  // @Published var savedUderId = UserDefaults.standard.string(forKey: "userId")
 
+
+      
+    
     
     @Published var notValidLogin: Bool = false
     @Published var isLoggedIn: Bool = false
 
+    init() {
+      
+     
+        
+        let val1 =   UserDefaults.standard.object(forKey: "userId")
+        if val1 != nil
+        {
+            
+            savedUderId = UserDefaults.standard.string(forKey: "userId")!
+            
+        }else
+        {
+            UserDefaults.standard.set("imADummyValue",forKey: "userId")
+        }
+        
+        
+        
+        let val2 =   UserDefaults.standard.object(forKey: "useTouchId")
+        if val2 != nil
+        {
+            useTouchId = UserDefaults.standard.bool(forKey: "useTouchId")
+        }else
+        {
+            UserDefaults.standard.setValue(false, forKey: "useTouchId")
+        }
+        
+       
+        
+        
+       
+      
+     
+        
     
+    }
   
     //clear fields
     
@@ -94,7 +136,7 @@ class Login_ViewModel : ObservableObject
         user_model.password = password
         
         
-        Auth.auth().signIn(withEmail: user_model.email, password: user_model.password) {
+       Auth.auth().signIn(withEmail: user_model.email, password: user_model.password) {
             result , error in
             
             
@@ -137,9 +179,9 @@ class Login_ViewModel : ObservableObject
     func login(email : String , password : String)
     {
   
-        if useTouchId == true
+        if useTouchId 
         {
-            if savedUderId == ""
+            if savedUderId == "imADummyValue"
             {
                 let value = false
                 UserDefaults.standard.setValue(value, forKey: "useTouchId")

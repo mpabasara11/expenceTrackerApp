@@ -11,7 +11,7 @@ struct Settings_View: View {
     
  
     @ObservedObject var settings_viewModel = Settings_ViewModel()
-    @ObservedObject var overView_viewModel = OverView_ViewModel()
+  
     
     
     @AppStorage("useTouchId") private var useTouchId:Bool = false
@@ -137,7 +137,7 @@ struct Settings_View: View {
                             
                             settings_viewModel.loadLabels( userId:                  settings_viewModel.usdUserId ?? "")
                             
-                            overView_viewModel.fetchData(userId: overView_viewModel.usdUserId ?? "")
+                   
                             
                             
                         })}

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Login_View: View {
     
-    @ObservedObject var loginViewModel = Login_ViewModel()
+   @ObservedObject var loginViewModel = Login_ViewModel()
     
 
     var body: some View {
@@ -30,34 +30,34 @@ struct Login_View: View {
                                    .bold()
                                    .padding(.vertical)
                                 .shadow(radius: 2)
-                                .alert(isPresented:$loginViewModel.notValidLogin) {
-                                    Alert(title: Text("Could not Sign In"), message: Text("Please try again"), dismissButton: .default(Text("OK"))
-                                        {
+                               .alert(isPresented:$loginViewModel.notValidLogin) {
+                                   Alert(title: Text("Could not Sign In"), message: Text("Please try again"), dismissButton: .default(Text("OK"))
+                                    {
                                        
-                                    })}
+                                 })}
                              
                        
-                TextField("Email", text: $loginViewModel.user_model.email)
+               TextField("Email", text: $loginViewModel.user_model.email)
                                  .foregroundColor(.secondary)
-                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                                 .padding(.horizontal)
-                                 .padding(.bottom, 5)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal)
+                                .padding(.bottom, 5)
                                 .shadow(radius: 2)
                 
                
                 
-                SecureField("Password", text: $loginViewModel.user_model.password)
+               SecureField("Password", text: $loginViewModel.user_model.password)
                                 .foregroundColor(.secondary)
                                  .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal)
                                 .padding(.bottom, 20)
-                                .shadow(radius: 2)
+                               .shadow(radius: 2)
                 
           
                    
                 Button(action: {
                     
-                    loginViewModel.login(email: loginViewModel.user_model.email, password: loginViewModel.user_model.password)
+                 loginViewModel.login(email: loginViewModel.user_model.email, password: loginViewModel.user_model.password)
                     
          
                     
@@ -78,8 +78,8 @@ struct Login_View: View {
    
                 
       NavigationLink(
-        destination: Dashboard_View(),
-        isActive: $loginViewModel.isLoggedIn){}
+      destination: Dashboard_View(),
+       isActive: $loginViewModel.isLoggedIn){}
                 
   
                 

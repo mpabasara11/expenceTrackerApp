@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Firebase
+
 
 struct SplashScreen_View: View {
    
@@ -18,8 +20,9 @@ struct SplashScreen_View: View {
         if isActive
         {
             
+    // Reports_View()
             
-            Login_View()
+        Login_View()
         }
         else
         {
@@ -59,7 +62,7 @@ struct SplashScreen_View: View {
             
         }.onAppear
         {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)
                 {
                 withAnimation
                 {
