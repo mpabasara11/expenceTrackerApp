@@ -43,7 +43,7 @@ class Settings_ViewModel: ObservableObject
     
     
     
-    
+    //inpt fields clear
     func clearFields()
     {
         userAllowance_modelWrite.userId = ""
@@ -131,7 +131,7 @@ class Settings_ViewModel: ObservableObject
     
  
    
-    
+    //button function
     public func updateSettings(userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date)
     {
         
@@ -144,7 +144,7 @@ class Settings_ViewModel: ObservableObject
     
     
     
-    
+    ////save to db
     private func addToDatabase (collectionName: String,userId: String,mnthlyGrocerries: Double,mnthlyEntertainment: Double,mnthlyRent: Double,mnthlyUtility: Double,mnthlyTransportation: Double,mnthlyDiningOut: Double,mnthlyShopping: Double,date: Date)
     {
      
@@ -228,7 +228,7 @@ class Settings_ViewModel: ObservableObject
     
     
     
-    
+    //load settings labels
     func loadLabels(userId: String)
     {
       
@@ -273,16 +273,19 @@ class Settings_ViewModel: ObservableObject
 
     }
     
-    
+    //sign out button func
     func sighOut()
     {
  
-    //    let useTouchId = false
-    //    let uid = ""
-    //    UserDefaults.standard.set(uid,forKey: "userId")
+        //reset user defaults
+        let useTouchId = false
+        let uid = ""
+        UserDefaults.standard.set(uid,forKey: "userId")
       
-     //   UserDefaults.standard.setValue(useTouchId, forKey: "useTouchId")
+        UserDefaults.standard.setValue(useTouchId, forKey: "useTouchId")
         
+        
+        //redirect to login
         isLoggedOut = true
     }
     

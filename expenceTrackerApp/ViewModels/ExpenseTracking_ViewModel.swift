@@ -11,11 +11,19 @@ import Firebase
 
 class ExpenseTracking_ViewModel: ObservableObject
 {
+    
+    //array of expense model type
     @Published var expense_modelArray : [expense_Model] = []
+    
+    //instance of expense model
     @Published var expense_model = expense_Model(userId: "", date: Date(), category: "", amount: 0.0, description: "", place: "")
     
+    
+    //add expense sheet trigger
     @Published var isSheetPresent: Bool = false
     
+    
+    //retrieve userId from userdefault values
     @Published var usdUserId = UserDefaults.standard.string(forKey: "userId")
 
     
@@ -27,7 +35,7 @@ class ExpenseTracking_ViewModel: ObservableObject
     
     
     
-    
+    //data load to the list function
     public func addExpensesToView(userId: String) {
 
         expense_modelArray.removeAll()

@@ -11,11 +11,15 @@ import Firebase
 
 class ForgotPassword_ViewModel: ObservableObject
 {
+    
+    //user model instance
     @Published var user_model = user_Model(email: "", password: "", confirmPassword: "")
     
     @Published var notValidMail: Bool = false
     @Published var successReset: Bool = false
     
+    
+    //alert dismiss
     func dismissAlert()
     {
         notValidMail = false
@@ -24,7 +28,7 @@ class ForgotPassword_ViewModel: ObservableObject
     }
     
     
-    
+    //email validate
     private func isValidMail(email : String)
     {
         let emailRegexPattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
@@ -34,6 +38,8 @@ class ForgotPassword_ViewModel: ObservableObject
       
     }
     
+    
+    //clear fields
     private func clearFields()
     {
         user_model.email = ""
@@ -42,7 +48,7 @@ class ForgotPassword_ViewModel: ObservableObject
     }
     
     
-    
+    //password reset button fucntion
     func resPass(email : String )
    {
         user_model.email = email

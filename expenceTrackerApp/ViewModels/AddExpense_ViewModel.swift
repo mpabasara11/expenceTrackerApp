@@ -12,6 +12,8 @@ import Firebase
 
 class AddExpense_ViewModel: ObservableObject
 {
+    
+    //instance of expense model
     @Published var expense_model = expense_Model(userId: "",date: Date(), category: "", amount: 0, description: "", place: "")
     
     
@@ -23,8 +25,8 @@ class AddExpense_ViewModel: ObservableObject
     @Published var notValidAmountValueZero:Bool = false
     @Published var notSuccessOperation: Bool = false
     @Published var successOperation: Bool = false
-    @Published var message = ""
-    @Published var showmes: Bool = false
+   // @Published var message = ""
+  //  @Published var showmes: Bool = false
     @Published var usdUserId = UserDefaults.standard.string(forKey: "userId")
 
     
@@ -32,6 +34,8 @@ class AddExpense_ViewModel: ObservableObject
     @Published var totalAmountOfMonth = 0.0
    
 
+    
+    //clear input fields
      func clearFields()
     {
         expense_model.userId = "" 
@@ -41,22 +45,24 @@ class AddExpense_ViewModel: ObservableObject
         expense_model.place = ""
     }
     
+    
+    //alert dismiss
     func dismissAlert()
     {
 
         notValidAmountEffiecency = false
         notValidAmountValueZero = false
-        showmes = false
-        message = "pk"
-
+     
     }
     
-
+//check amount is 0
     func validateAmountValueZero(amount: Double)
     {
         notValidAmountValueZero = !(amount > 0)
     }
 
+    
+    //check amount is not efficient
      func validateAmountEfficiency(amount: Double, collectionName1: String,collectionName2: String, userId: String, category: String, date: Date)  {
       
      
@@ -125,7 +131,7 @@ class AddExpense_ViewModel: ObservableObject
     
     
 
-    
+    //add expense button function
     func addExpense(userId: String,description: String,place: String,amount: Double,date: Date,category: String)
     {
      
@@ -152,20 +158,14 @@ class AddExpense_ViewModel: ObservableObject
                 }
                 else if self.notValidAmountEffiecency == false
                 {
-                    
-                  //  self.message = String (self.notValidAmountValueZero)+String(self.notValidAmountEffiecency)+String //(self.totalAllowanceInDb)+String(self.totalAmountOfMonth)
-                  //  self.showmes = true
-                    
-                    
-                    
-                    
+                  
                   self.addToDatabase(collectionName: "Expenses", userId: userId, description: description, place: place, amount: amount, date: date ,category: category)
                 }
             }
 
 
     }
-    
+    //add to database
     private func addToDatabase (collectionName: String,userId: String,description: String,place: String,amount: Double,date: Date,category: String)
     {
      

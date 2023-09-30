@@ -12,7 +12,9 @@ import LocalAuthentication
 
 class Login_ViewModel : ObservableObject
 {
-
+      
+    
+    //model instance
     @Published var user_model = user_Model(email: "", password: "", confirmPassword: "")
     
     
@@ -22,14 +24,10 @@ class Login_ViewModel : ObservableObject
     
     @Published var notValidLogin: Bool = false
     @Published var isLoggedIn: Bool = false
-  //  @Published var loginId = ""
-    
-    
 
     
- 
-    
-    
+  
+    //clear fields
     
     private func clearFields()
     {
@@ -87,6 +85,9 @@ class Login_ViewModel : ObservableObject
         }
     }
     
+    
+    
+    //login with password
    public func loginWithPw(email : String , password : String)
     {
         user_model.email = email
@@ -118,11 +119,7 @@ class Login_ViewModel : ObservableObject
                 let uid = user?.uid
            //     self.loginId = uid!
                 
-       
-                
-           //     var testUserid = "test user"
-                
-                
+      
                 UserDefaults.standard.set(uid,forKey: "userId")
                 
                 self.isLoggedIn = true
@@ -136,7 +133,7 @@ class Login_ViewModel : ObservableObject
     }
     
     
-    //login with userName
+    //login button function
     func login(email : String , password : String)
     {
   

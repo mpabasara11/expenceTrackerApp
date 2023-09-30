@@ -9,16 +9,11 @@ import Foundation
 import Firebase
 
 
-
-
 class CreateAccount_ViewModel : ObservableObject
 {
-     //   @Published private var user_model : user_Model?
-       
-  // @Published var email: String = ""
-   // @Published var password: String = ""
-   // @Published var confirmPassword: String = ""
+
     
+    //user model instance
     
     @Published var user_model = user_Model(email: "", password: "", confirmPassword: "")
    
@@ -29,6 +24,8 @@ class CreateAccount_ViewModel : ObservableObject
         @Published var successAcCreate: Bool = false
     
     
+    
+    //dismiss alerts
     func dismissAlert()
     {
         notValidMail = false
@@ -39,7 +36,7 @@ class CreateAccount_ViewModel : ObservableObject
     }
     
     
-    
+    //validate email address
     private func isValidMail(email : String)
     {
         let emailRegexPattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
@@ -49,6 +46,8 @@ class CreateAccount_ViewModel : ObservableObject
       
     }
     
+    
+    //validate password
     private func isValidPassword(password : String)
     {
         let passwordRegex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}"
@@ -57,13 +56,15 @@ class CreateAccount_ViewModel : ObservableObject
         
     }
     
+    
+    //validate confirm password
     private func isConfirmPassValid(password : String , confirmPassword : String)
     {
        notMatchedConfirmPass = !(password == confirmPassword)
         
     }
     
-    
+    //clear input fields
     private func clearFields()
     {
         user_model.email = ""
@@ -73,7 +74,7 @@ class CreateAccount_ViewModel : ObservableObject
     
 
     
-     
+     //create account button fucntion
     func createAc(email : String , password : String , confirmpassword : String)
    {
     
